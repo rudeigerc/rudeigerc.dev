@@ -21,7 +21,7 @@ hasCJKLanguage = true
     featherIconsCDN = true
     author = "Yuchen Cheng"
     description = "Yuchen Cheng's Blog"
-    customCSS = "css/custom.css"
+    customCSS = "/css/custom.css"
 
 [[menu.main]]
 name = "Home"
