@@ -1,0 +1,74 @@
+baseURL = "https://rudeigerc.github.io"
+languageCode = "zh-Hans"
+title = "Luthadel"
+theme = "ezhil"
+copyright = "© 2019 Yuchen Cheng"
+
+pygmentsstyle = "github"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "rudeigerc"
+enableEmoji = true
+enableGitInfo = true
+enableRobotsTXT = true
+googleAnalytics = "UA-110870583-1"
+hasCJKLanguage = true
+
+[params]
+    subtitle = "Yuchen Cheng's Blog"
+    disableDisqusTypes = ["page"]
+    featherIconsCDN = true
+    author = "Yuchen Cheng"
+    description = "Yuchen Cheng's Blog"
+    customCSS = "css/custom.css"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 4
+
+# Social media links which shows up on site header.
+# Uses feather icons for icons. You can [search icon names from here](https://feathericons.com/).
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/rudeigerc"
+
+[[params.social]]
+name = "Facebook"
+icon = "facebook"
+url = "https://www.facebook.com/rudeigercheng"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "linkedin"
+url = "https://www.linkedin.com/in/rudeigerc/"
+
+[[params.social]]
+name = "Email"
+icon = "mail"
+url = "mailto:rudeigerc@gmail.com"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+[taxonomies]
+   tag = "tags"
