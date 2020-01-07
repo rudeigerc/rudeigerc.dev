@@ -2,7 +2,7 @@ baseURL = "https://rudeigerc.github.io"
 languageCode = "zh-Hans"
 title = "Luthadel"
 theme = "ezhil"
-copyright = "© 2019 Yuchen Cheng"
+copyright = "© 2020 Yuchen Cheng"
 
 pygmentsstyle = "github"
 pygmentscodefences = true
