@@ -1,7 +1,7 @@
 ---
 title: "About"
 description: Yuchen Cheng
-date: 2019-05-23T00:24:22+08:00
+date: 2020-01-07T00:00:00+08:00
 type: "page"
 ---
 
@@ -35,12 +35,15 @@ type: "page"
 - *Jun. 2018 - Sep. 2018*
 - iOS Developer Internship
 - Module **JingZao**
+  - Implement several parts in Objective-C
+  - Refactor the module with React Native
 
 #### Dongyue Web Studio
 
 - *Dec. 2016 - Present*
 - Student Technical Organization of Shanghai Jiao Tong University
 - iOS Developer
+- Maintainer of the iOS Client of [Tongqu](https://tongqu.me)
 
 ### Languages
 
