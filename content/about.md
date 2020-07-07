@@ -25,6 +25,7 @@ type: "static"
 - SE418: Software Product Design and User Experience, *Spring 2019*
 - SE26017: Software Innovation and R&D Management, *Spring 2019*
 - SE417: Software Engineering Economics, *Autumn 2019*
+- SE128: Design and Development of Internet Products, *Summer 2020*
 
 ## Experience
 
