@@ -56,11 +56,6 @@ icon = "twitter"
 url = "https://twitter.com/yuchen_cheng"
 
 [[params.social]]
-name = "Facebook"
-icon = "facebook"
-url = "https://www.facebook.com/rudeigercheng"
-
-[[params.social]]
 name = "LinkedIn"
 icon = "linkedin"
 url = "https://www.linkedin.com/in/rudeigerc/"
