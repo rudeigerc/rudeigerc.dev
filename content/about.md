@@ -1,7 +1,7 @@
 ---
 title: "About"
 description: Yuchen Cheng
-date: 2020-01-07T00:00:00+08:00
+date: 2020-07-27T00:00:00+08:00
 type: "static"
 ---
 
@@ -17,31 +17,37 @@ type: "static"
 
 - Master of Engineering in Software Engineering
 - Shanghai, China
-- *Sep. 2019 - Present*
+- *Sep. 2019 - Mar. 2022 (Expected)*
 
-#### Teaching Assistant
+## Publications
 
-- SE232: Programming and Data Structures, *Autumn 2018*
-- SE418: Software Product Design and User Experience, *Spring 2019*
-- SE26017: Software Innovation and R&D Management, *Spring 2019*
-- SE417: Software Engineering Economics, *Autumn 2019*
-- SE128: Design and Development of Internet Products, *Summer 2020*
+- **Yuchen Cheng**, Chunghsuan Wu, Yanqiang Liu, Rui Ren, Hong Xu, Bin Yang, and Zhengwei Qi. 2020. OPS: Optimized Shuffle Management System for Apache Spark. In 49th International Conference on Parallel Processing - ICPP (ICPP ’20).
 
 ## Experience
 
-### **JD.com**
+### JD.com
 
+- Software Engineer Intern
 - *Jun. 2018 - Sep. 2018*
-- iOS Developer Internship
-- Module **JingZao**
-  - Implement several parts in Objective-C
-  - Refactor the module with React Native
+- **JingZao**
+  - Implement several components in Objective-C
+  - Rewrite the module with React Native
 
-### **Dongyue Web Studio**
+## Service
 
-- *Dec. 2016 - Present*
+### Teaching Assistant
+
+- **SE128:** Design and Development of Internet Products, *Summer 2020*
+- **SE417:** Software Engineering Economics, *Autumn 2019*
+- **SE26017:** Software Innovation and R&D Management, *Spring 2019*
+- **SE418:** Software Product Design and User Experience, *Spring 2019*
+- **SE232:** Programming and Data Structures, *Autumn 2018*
+
+### Dongyue Web Studio
+
 - Student Technical Organization of Shanghai Jiao Tong University
 - iOS Developer
+- *Dec. 2016 - Dec. 2019*
 - Maintainer of the iOS Client of [Tongqu](https://tongqu.sjtu.edu.cn/)
 
 ## Languages
@@ -49,9 +55,3 @@ type: "static"
 - **Chinese**
 - **English**
 - **Japanese**: Japanese-Language Proficiency Test N1
-
-## Miscellaneous
-
-- **Email**: [rudeigerc@gmail.com](mailto:rudeigerc@gmail.com)
-- **Blog**: https://rudeigerc.github.io
-- **LinkedIn**: https://www.linkedin.com/in/rudeigerc/

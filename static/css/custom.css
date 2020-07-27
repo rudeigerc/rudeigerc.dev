@@ -1,3 +1,7 @@
+body {
+    font-family: "ubuntu", sans-serif;
+}
+
 a, a:hover {
     color: #2E5C6E;
 }
