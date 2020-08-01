@@ -9,19 +9,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         ref: develop
         submodules: true
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.74.0'
+        hugo-version: 'latest'
+        extended: true
     - name: Build
       run: hugo --minify
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2
+      uses: peaceiris/actions-gh-pages@v3
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        PUBLISH_BRANCH: master
-        PUBLISH_DIR: ./public
+        github_token: ${{ secrets.DEPLOY_KEY }}
+        publish_dir: ./public
+        publish_branch: master
