@@ -1,12 +1,8 @@
 baseURL = "https://rudeigerc.dev/"
 languageCode = "zh-Hans"
 title = "Luthadel"
-theme = "ezhil"
-copyright = "© 2020 Yuchen Cheng. This site is licensed under CC-BY-SA-4.0."
-
-pygmentsstyle = "github"
-pygmentscodefences = true
-pygmentscodefencesguesssyntax = true
+theme = "yggdrasill"
+copyright = "© 2020 Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license."
 
 disqusShortname = "rudeigerc"
 enableEmoji = true
@@ -14,61 +10,81 @@ enableGitInfo = true
 enableRobotsTXT = true
 googleAnalytics = "UA-110870583-1"
 hasCJKLanguage = true
+paginate = 5
 
 [params]
-    subtitle = "Yuchen Cheng's Blog"
-    disableDisqusTypes = ["page"]
-    featherIconsCDN = true
-    author = "Yuchen Cheng"
-    description = "Yuchen Cheng's Blog"
-    customCSS = "css/custom.css"
+  subtitle = "Yuchen Cheng's Blog"
+  author = "Yuchen Cheng"
+  description = "Yuchen Cheng's Blog"
 
-[[menu.main]]
-name = "Home"
-url = "/"
-weight = 1
+[menu]
 
-[[menu.main]]
-name = "Posts"
-url = "/posts"
-weight = 2
+  [[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
 
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
+  # [[menu.main]]
+  # name = "Posts"
+  # url = "/posts"
+  # weight = 2
 
-[[menu.main]]
-name = "About"
-url = "/about"
-weight = 4
+  [[menu.main]]
+  name = "Catagories"
+  url = "/categories"
+  weight = 3
 
-# Social media links which shows up on site header.
-# Uses feather icons for icons. You can [search icon names from here](https://feathericons.com/).
+  [[menu.main]]
+  name = "Tags"
+  url = "/tags"
+  weight = 4
+
+  [[menu.main]]
+  name = "About"
+  url = "/about"
+  weight = 5
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.highlight]
+    lineNos = true
+    style = "vs"
+
 [[params.social]]
 name = "GitHub"
-icon = "github"
 url = "https://github.com/rudeigerc"
+type = "fab"
+icon = "github"
 
 [[params.social]]
 name = "Twitter"
-icon = "twitter"
 url = "https://twitter.com/yuchen_cheng"
+type = "fab"
+icon = "twitter"
 
 [[params.social]]
 name = "LinkedIn"
-icon = "linkedin"
 url = "https://www.linkedin.com/in/rudeigerc/"
+type = "fab"
+icon = "linkedin"
 
 [[params.social]]
-name = "Email"
-icon = "mail"
+name = "E-mail"
 url = "mailto:rudeigerc@gmail.com"
+type = "fas"
+icon = "envelope"
+
+[[params.social]]
+name = "Resume"
+url = "#"
+type = "fas"
+icon = "file"
 
 [[params.social]]
 name = "RSS"
-icon = "rss"
 url = "/index.xml"
-
-[taxonomies]
-   tag = "tags"
+type = "fas"
+icon = "rss"
