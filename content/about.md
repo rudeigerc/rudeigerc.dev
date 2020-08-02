@@ -14,12 +14,14 @@ type: "static"
 | | |
 | :- | -: |
 | **Shanghai Jiao Tong University** | Shanghai, China |
-| B.Eng. in Software Engineering | *Sep. 2015 - Jun. 2019* |
+| M.Eng. in Software Engineering | *Sep. 2019 - Mar. 2022 (Expected)* |
+| Advisors: Prof. Zhengwei Qi and Rui Ren | |
 
 | | |
 | :- | -: |
 | **Shanghai Jiao Tong University** | Shanghai, China |
-| M.Eng. in Software Engineering | *Sep. 2019 - Mar. 2022 (Expected)* |
+| B.Eng. in Software Engineering | *Sep. 2015 - Jun. 2019* |
+| Advisor: Rui Ren | |
 
 ## Publications
 
@@ -31,10 +33,6 @@ type: "static"
 | :- | -: |
 | **JD.com** | Shanghai, China |
 | Software Development Engineer Intern | *Jun. 2018 - Sep. 2018* |
-
-- **JingZao**
-  - Implement several components in Objective-C
-  - Rewrite the module with React Native
 
 ## Service
 
@@ -54,8 +52,7 @@ type: "static"
 | **Dongyue Web Studio** | Shanghai, China |
 | iOS Developer | *Dec. 2016 - Dec. 2019* |
 
-- Student Technical Organization of Shanghai Jiao Tong University
-- Maintainer of the iOS Client of [Tongqu](https://tongqu.sjtu.edu.cn/)
+- Student Technical Organization in Shanghai Jiao Tong University
 
 ## Languages
 
