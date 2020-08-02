@@ -51,7 +51,7 @@ paginate = 5
 [markup]
   [markup.highlight]
     lineNos = true
-    style = "vs"
+    style = "github"
 
 [[params.social]]
 name = "GitHub"
