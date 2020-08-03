@@ -34,6 +34,13 @@ type: "static"
 | **JD.com** | Shanghai, China |
 | Software Development Engineer Intern | *Jun. 2018 - Sep. 2018* |
 
+## Projects
+
+| | |
+| :- | -: |
+| **CaseCloud** | Shanghai, China |
+| Responsible for Project Management and Development | *May. 2019 - Present* |
+
 ## Service
 
 | | |

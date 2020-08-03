@@ -24,10 +24,10 @@ paginate = 5
   url = "/"
   weight = 1
 
-  # [[menu.main]]
-  # name = "Posts"
-  # url = "/posts"
-  # weight = 2
+  [[menu.main]]
+  name = "Posts"
+  url = "/posts"
+  weight = 2
 
   [[menu.main]]
   name = "Catagories"
@@ -77,11 +77,11 @@ url = "mailto:rudeigerc@gmail.com"
 type = "fas"
 icon = "envelope"
 
-[[params.social]]
-name = "Resume"
-url = "#"
-type = "fas"
-icon = "file"
+# [[params.social]]
+# name = "Resume"
+# url = "#"
+# type = "fas"
+# icon = "file"
 
 [[params.social]]
 name = "RSS"
