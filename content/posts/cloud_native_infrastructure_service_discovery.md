@@ -12,7 +12,7 @@ tags: ["cloud-native", "microservices", "service-discovery"]
 
 Usually, a microservice will register itself to the center of service discovery components when it was started successfully, including necessary parameters such as the unique name of service, IP address and the port bind. This process is called as **Service Registry**.
 
-The mainstream solutions of service discovery include **mDNS**（multicast Domain Name Service）, **ZooKeeper** and **etcd**, which are based on distributed key-value storage service, **Eureka**, open-sourced by Netflix, and [**Consul**](https://www.consul.io/), open-sourced by HashiCorp etc.
+The mainstream solutions of service discovery include **mDNS** (multicast Domain Name Service), **ZooKeeper** and **etcd**, which are based on distributed key-value storage service, **Eureka**, open-sourced by Netflix, and [**Consul**](https://www.consul.io/), open-sourced by HashiCorp etc.
 
 ## Consul
 
