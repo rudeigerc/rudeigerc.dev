@@ -1,6 +1,6 @@
 ---
 title: "Cloud Native Infrastructure: Part 2 Monitoring"
-description: Monitoring.
+description: The post introduces the combination of Prometheus and Grafana.
 date: 2019-05-27T22:44:05+08:00
 categories: ["cloud-native"]
 tags: ["cloud-native", "microservices", "monitoring"]

@@ -1,5 +1,6 @@
 ---
 title: "Securing Key-Value Storages with SGX"
+description: 本文简要介绍了两篇基于 SGX 进行的存储相关的安全优化的工作，SPEICHER 和 ShieldStore。这两篇工作发表的时间是平行的，两者具有相同的切入点，但基于两者的数据结构有不同的侧重点。
 date: 2020-07-27T08:33:27+08:00
 categories: ["storage", "security"]
 tags: ["sgx", "lsm-tree", "storage"]
@@ -10,7 +11,7 @@ tags: ["sgx", "lsm-tree", "storage"]
 随着云计算的发展，键值对存储作为持久化的存储系统被广泛使用，如 in-memory 的 Memcached 和 Redis，以及基于 LSM-tree 的 LevelDB 和 RocksDB 等，但在云端这样一个不受信任的环境之中如何保证存储系统的安全是一个很大的问题。为了提供一个能被信任的环境，
 Intel 和 ARM 分别提出了基于硬件的 TEE（Trusted Execution Environment）的支持，即 Intel SGX 和 ARM TrustZone，通过 TEE 可以在不被信任的的基础设施之上有一个独立的安全的 memory space，我们称其为 enclave，来进行 shielded execution 保证了数据或代码的机密性和完整性。
 
-这篇文章主要想介绍的是基于 SGX 进行存储相关的优化的两篇工作，一篇是来自爱丁堡大学的 SPEICHER，另一篇是来自韩国科学技术研究院的 ShieldStore。这两篇工作发表的时间是平行的，前者发表在 FAST '19 上，后者发表在 EuroSys '19 上，两者具有相同的切入点，即两者同样意识到了根据现有的 SGX 的实现，由于其本身的限制，不可能将所有存储的数据结构都存储在 EPC 当中，同时频繁的 enclave exiting 会带来严重的性能开销。两者的不同之处在于前者是基于 LSM-tree 的实现，大部分的存储结构是基于 HDD / SSD 的，所以需要调整 LSM tree 的实现才能保证其安全性；后者是 in-memory 的实现，主要根据 hashing 进行存储的映射，同时为了规避 hashing collision 的情况采用了链表作为相同 bucket 时的数据结构。
+这篇文章主要想介绍的是基于 SGX 进行存储相关的安全优化的两篇工作，一篇是来自爱丁堡大学的 SPEICHER，另一篇是来自韩国科学技术研究院的 ShieldStore。这两篇工作发表的时间是平行的，前者发表在 FAST '19 上，后者发表在 EuroSys '19 上，两者具有相同的切入点，即两者同样意识到了根据现有的 SGX 的实现，由于其本身的限制，不可能将所有存储的数据结构都存储在 EPC 当中，同时频繁的 enclave exiting 会带来严重的性能开销。两者的不同之处在于前者是基于 LSM-tree 的实现，大部分的存储结构是基于 HDD / SSD 的，所以需要调整 LSM tree 的实现才能保证其安全性；后者是 in-memory 的实现，主要根据 hashing 进行存储的映射，同时为了规避 hashing collision 的情况采用了链表作为相同 bucket 时的数据结构。
 
 ## 背景
 
@@ -26,7 +27,7 @@ Intel 和 ARM 分别提出了基于硬件的 TEE（Trusted Execution Environment
 
 ### 系统设计
 
-![speicher-overview](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/speicher-overview.png)
+{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/speicher-overview.png" title="SPEICHER overview" alt="speicher-overview" >}}
 
 整个系统包括 SPEICHER 的 controller，shielded execution 的 I/O library，受信任的单调计数器，存储引擎，还有改进的 LSM data structure。SPEICHER 这边利用了 SCONE 的 container support 来进行自身的部署，并且基于 SPDK 建立了一个 shielded I/O library。SPDK 是一个高性能的 user mode 的 storage library，其通过将 direct memory access（DMA）的 buffer 映射到用户地址空间实现了 zero-copy 的 I/O。
 
@@ -54,11 +55,11 @@ ShieldStore 也是基于前述的背景，他们首先产生了一个初步的�
 
 ### 系统设计
 
-![shieldstore-overview](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-overview.png)
+{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-overview.png" title="ShieldStore overview" alt="shieldstore-overview" >}}
 
 ShieldStore 整体的设计基本上延续了之前的设想，是将 metadata 存储在 enclave 内部，然后将主要的 data structure 的部分经过加密存储在 untrusted memory region 中，只有 secret keys 和 integrity 的metadata 会存储在 EPC 当中，主要的 hash table 的数据结构存储在 unprotected memory region。
 
-![shieldstore-data-organization](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-data-organization.png)
+{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-data-organization.png" title="ShieldStore data organization" alt="shieldstore-data-organization" >}}
 
 为了防止 rollback attack，ShieldStore 这里和 SPEICHER 一样使用了 Merkle tree，但是这里不可能将每个 key-value pair 都维护在 merkle tree 中，这里的方法是为以 bucket 为单位的 MAC 生成 in-enclave 的 hash，这个会根据 MAC hash 的数量和 bucket 的数量进行调整，这实际上也是一个 trade-off，具体的调参在论文后面的 evaluation 有详细的解释。这里可能会有超出 EPC 大小限制的顾虑，可以通过 paging mechanism 的 eviction 来解决这个问题，虽然会带来我们先前所提到的 drawback。ShieldStore 在加密过程中主要采用的是 AES-CTR 进行加密，这里会将 key 和 value 一起加密，最后会生成包含 key-value pair size 等参数的 128 bit 的 MAC 来保证其完整性。
 
