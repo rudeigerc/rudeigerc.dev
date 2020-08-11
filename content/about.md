@@ -5,6 +5,8 @@ date: 2020-08-03T00:00:00+08:00
 type: "static"
 ---
 
+**Bio:** Yuchen Cheng is currently a graduate student of School of Software at Shanghai Jiao Tong University,  advised by Prof. Zhengwei Qi and Rui Ren. He received the B.Eng. degree in software engineering from Shanghai Jiao Tong University in 2019. His research interests include **distributed computing** and **resource management**.
+
 ## Research Interests
 
 - **Distributed system:** Distributed computing, resource management
