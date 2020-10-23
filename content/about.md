@@ -27,7 +27,7 @@ type: "static"
 
 ## Publications
 
-1. **Yuchen Cheng**, Chunghsuan Wu, Yanqiang Liu, Rui Ren, Hong Xu, Bin Yang, and Zhengwei Qi. 2020. OPS: Optimized Shuffle Management System for Apache Spark. In 49th International Conference on Parallel Processing - ICPP (ICPP ’20).
+1. **Yuchen Cheng**, Chunghsuan Wu, Yanqiang Liu, Rui Ren, Hong Xu, Bin Yang, and Zhengwei Qi. 2020. **OPS: Optimized Shuffle Management System for Apache Spark.** In 49th International Conference on Parallel Processing - ICPP (ICPP ’20).
 
 ## Experience
 
