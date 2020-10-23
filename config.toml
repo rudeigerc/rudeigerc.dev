@@ -50,7 +50,6 @@ paginate = 5
 
 [markup]
   [markup.highlight]
-    lineNos = true
     style = "github"
 
 [[params.social]]
