@@ -77,11 +77,11 @@ url = "mailto:rudeigerc@gmail.com"
 type = "fas"
 icon = "envelope"
 
-# [[params.social]]
-# name = "Resume"
-# url = "#"
-# type = "fas"
-# icon = "file"
+[[params.social]]
+name = "Resume"
+url = "/files/resume.pdf"
+type = "fas"
+icon = "file"
 
 [[params.social]]
 name = "RSS"
