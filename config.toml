@@ -8,7 +8,7 @@ disqusShortname = "rudeigerc"
 enableEmoji = true
 enableGitInfo = true
 enableRobotsTXT = true
-googleAnalytics = "UA-110870583-1"
+googleAnalytics = "G-HXB6L4QSKP"
 hasCJKLanguage = true
 paginate = 5
 
@@ -16,7 +16,6 @@ paginate = 5
   subtitle = "Yuchen Cheng's Blog"
   author = "Yuchen Cheng"
   description = "Yuchen Cheng's Blog"
-  gtag = "G-HXB6L4QSKP"
 
 [menu]
 
