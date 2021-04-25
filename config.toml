@@ -12,34 +12,33 @@ googleAnalytics = "G-HXB6L4QSKP"
 hasCJKLanguage = true
 paginate = 5
 
-[params]
-  subtitle = "Yuchen Cheng's Blog"
-  author = "Yuchen Cheng"
-  description = "Yuchen Cheng's Blog"
+[author]
+  name = "Yuchen Cheng"
+  email = "rudeigerc@gmail.com"
 
 [menu]
 
-  [[menu.main]]
+[[menu.main]]
   name = "Home"
   url = "/"
   weight = 1
 
-  [[menu.main]]
+[[menu.main]]
   name = "Posts"
   url = "/posts"
   weight = 2
 
-  [[menu.main]]
+[[menu.main]]
   name = "Catagories"
   url = "/categories"
   weight = 3
 
-  [[menu.main]]
+[[menu.main]]
   name = "Tags"
   url = "/tags"
   weight = 4
 
-  [[menu.main]]
+[[menu.main]]
   name = "About"
   url = "/about"
   weight = 5
@@ -47,43 +46,48 @@ paginate = 5
 [taxonomies]
   category = "categories"
   tag = "tags"
+  series = "series"
 
 [markup]
   [markup.highlight]
     style = "github"
 
-[[params.social]]
-name = "GitHub"
-url = "https://github.com/rudeigerc"
-type = "fab"
-icon = "github"
+[params]
+  subtitle = "Yuchen Cheng's Blog"
+  description = "Yuchen Cheng's Blog"
 
 [[params.social]]
-name = "Twitter"
-url = "https://twitter.com/yuchen_cheng"
-type = "fab"
-icon = "twitter"
+  name = "GitHub"
+  url = "https://github.com/rudeigerc"
+  type = "fab"
+  icon = "github"
 
 [[params.social]]
-name = "LinkedIn"
-url = "https://www.linkedin.com/in/rudeigerc/"
-type = "fab"
-icon = "linkedin"
+  name = "Twitter"
+  url = "https://twitter.com/yuchen_cheng"
+  type = "fab"
+  icon = "twitter"
 
 [[params.social]]
-name = "E-mail"
-url = "mailto:rudeigerc@gmail.com"
-type = "fas"
-icon = "envelope"
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/rudeigerc/"
+  type = "fab"
+  icon = "linkedin"
 
 [[params.social]]
-name = "Resume"
-url = "/files/resume.pdf"
-type = "fas"
-icon = "file"
+  name = "E-mail"
+  url = "mailto:rudeigerc@gmail.com"
+  type = "fas"
+  icon = "envelope"
 
 [[params.social]]
-name = "RSS"
-url = "/index.xml"
-type = "fas"
-icon = "rss"
+  name = "Resume"
+  url = "/files/resume.pdf"
+  type = "fas"
+  icon = "file"
+
+[[params.social]]
+  name = "RSS"
+  url = "/index.xml"
+  type = "fas"
+  icon = "rss"
