@@ -11,6 +11,10 @@ enableRobotsTXT = true
 googleAnalytics = "G-HXB6L4QSKP"
 hasCJKLanguage = true
 paginate = 5
+# pygmentsCodefencesGuessSyntax = true
+# pygmentsCodeFences = true
+# pygmentsUseClasses = true
+
 
 [author]
   name = "Yuchen Cheng"
@@ -34,23 +38,28 @@ paginate = 5
   weight = 3
 
 [[menu.main]]
+  name = "Series"
+  url = "/series"
+  weight = 4
+
+[[menu.main]]
   name = "Tags"
   url = "/tags"
-  weight = 4
+  weight = 5
 
 [[menu.main]]
   name = "About"
   url = "/about"
-  weight = 5
+  weight = 6
 
 [taxonomies]
   category = "categories"
-  tag = "tags"
   series = "series"
+  tag = "tags"
 
 [markup]
   [markup.highlight]
-    style = "github"
+    style = "native"
 
 [params]
   subtitle = "Yuchen Cheng's Blog"
