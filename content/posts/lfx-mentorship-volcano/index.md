@@ -36,7 +36,7 @@ This is the main workflow of the scheduler of Volcano. Volcano defines five acti
 2. Create a `Session` object to store data required in the current scheduling lifecycle.
 3. Transfer `Job`s not scheduled in the cache to the (to be scheduled) queue in the session.
 4. Execute the defined actions consequently and find the most suitable node for each `Job`.
-5. Bing the `Job` to the node.
+5. Bind the `Job` to the node.
 6. Close the `Session`.
 
 ## On the Road: How to Move Forward
