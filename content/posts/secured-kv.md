@@ -1,9 +1,16 @@
 ---
-title: "Securing Key-Value Storages with SGX"
+title: 使用 SGX 对键值对存储加密
 description: 本文简要介绍了两篇基于 SGX 进行的存储相关的安全优化的工作，SPEICHER 和 ShieldStore。这两篇工作发表的时间是平行的，两者具有相同的切入点，但基于两者的数据结构有不同的侧重点。
 date: 2020-07-27T08:33:27+08:00
-categories: ["storage", "security"]
-tags: ["sgx", "lsm-tree", "storage"]
+categories:
+  - storage
+  - security
+tags:
+  - sgx
+  - lsm-tree
+  - storage
+series:
+  - Paper Reading
 ---
 
 ## 引言
@@ -80,8 +87,8 @@ ShieldStore 整体的设计基本上延续了之前的设想，是将 metadata �
 
 论文的 evaluation 主要有三个 metric，一个是 secured memcached，这边采用的实现是 Graphene-SGX，第二个是 ShieldBase，指的是未经过优化的 ShieldStore，第三个是 ShieldOPT，指的是经过上述策略优化的 ShieldStore。
 
-![shieldstore-evaluation-thread](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-thread.png)
-![shieldstore-evaluation-scalability](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-scalability.png)
+{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-thread.png" alt="shieldstore-evaluation-thread" width="60%">}}
+{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-scalability.png" alt="shieldstore-evaluation-scalability" width="60%">}}
 
 ShieldStore 和前两者相比具有显著的 throughput 的提升，可以看到在 value 的大小较小的时候性能的提升越明显。在多线程的情况下 memcached 的 throughput 甚至会有所下滑，在单线程的情况下 ShieldStore 的性能是 secure memcached 的七到八倍，在四个线程的情况下是其的 24 到 27 倍，更详细的对比实验可以参阅论文，包括进行不同优化以及与另外一篇工作 Eleos 的对比。
 
