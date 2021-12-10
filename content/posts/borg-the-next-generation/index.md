@@ -1,5 +1,5 @@
 ---
-title: "[Paper Reading] [EuroSys '20] Borg: the Next Generation"
+title: "[Paper Reading] EuroSys '20 | Borg: the Next Generation"
 description: "Muhammad Tirmazi, Adam Barker, Nan Deng, Md E. Haque, Zhijing Gene Qin, Steven Hand, Mor Harchol-Balter, and John Wilkes. 2020. Borg: the next generation. In Proceedings of the Fifteenth European Conference on Computer Systems (EuroSys '20). Association for Computing Machinery, New York, NY, USA, Article 30, 1–14. DOI:https://doi.org/10.1145/3342195.3387517"
 date: 2021-04-24T22:21:33+08:00
 categories:
