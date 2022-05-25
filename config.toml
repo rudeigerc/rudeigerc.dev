@@ -2,7 +2,7 @@ baseURL = "https://rudeigerc.dev/"
 languageCode = "zh-Hans"
 title = "Luthadel"
 theme = "yggdrasill"
-copyright = "© 2021 Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license."
+copyright = "© 2022 Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license."
 
 disqusShortname = "rudeigerc"
 enableEmoji = true
@@ -64,6 +64,12 @@ paginate = 5
 [params]
   subtitle = "Yuchen Cheng's Blog"
   description = "Yuchen Cheng's Blog"
+
+  [params.giscus]
+    dataRepo = "rudeigerc/rudeigerc.github.io"
+    dataRepoID = "MDEwOlJlcG9zaXRvcnkxMDcxNDQ2MTg="
+    dataCategory = "Comments"
+    dataCategoryID = "DIC_kwDOBmLlqs4CPSgG"
 
 [[params.social]]
   name = "GitHub"
