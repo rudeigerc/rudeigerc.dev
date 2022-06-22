@@ -59,7 +59,7 @@ paginate = 5
 
 [markup]
   [markup.highlight]
-    style = "native"
+    style = "github"
 
 [params]
   subtitle = "Yuchen Cheng's Blog"
