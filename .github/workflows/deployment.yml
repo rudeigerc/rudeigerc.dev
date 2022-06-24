@@ -16,7 +16,7 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: 'latest'
+        hugo-version: latest
         extended: true
     - name: Build
       run: hugo --minify
@@ -25,4 +25,4 @@ jobs:
       with:
         deploy_key: ${{ secrets.DEPLOY_KEY }}
         publish_dir: ./public
-        publish_branch: master
+        publish_branch: main

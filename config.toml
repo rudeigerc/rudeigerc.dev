@@ -11,10 +11,6 @@ enableRobotsTXT = true
 googleAnalytics = "G-HXB6L4QSKP"
 hasCJKLanguage = true
 paginate = 5
-# pygmentsCodefencesGuessSyntax = true
-# pygmentsCodeFences = true
-# pygmentsUseClasses = true
-
 
 [author]
   name = "Yuchen Cheng"
@@ -74,35 +70,35 @@ paginate = 5
 [[params.social]]
   name = "GitHub"
   url = "https://github.com/rudeigerc"
-  type = "fab"
+  type = "brands"
   icon = "github"
 
 [[params.social]]
   name = "Twitter"
   url = "https://twitter.com/yuchen_cheng"
-  type = "fab"
+  type = "brands"
   icon = "twitter"
 
 [[params.social]]
   name = "LinkedIn"
   url = "https://www.linkedin.com/in/rudeigerc/"
-  type = "fab"
+  type = "brands"
   icon = "linkedin"
 
 [[params.social]]
   name = "E-mail"
   url = "mailto:rudeigerc@gmail.com"
-  type = "fas"
+  type = "solid"
   icon = "envelope"
 
 [[params.social]]
   name = "Resume"
   url = "/files/resume.pdf"
-  type = "fas"
+  type = "solid"
   icon = "file"
 
 [[params.social]]
   name = "RSS"
   url = "/index.xml"
-  type = "fas"
+  type = "solid"
   icon = "rss"

@@ -14,6 +14,7 @@ series:
   - Google's Infrastructure
 images:
   - /posts/borg-the-next-generation/images/frontmatter.png
+katex: true
 ---
 
 Borg 是 Google 内部使用的集群资源管理系统，也是 Kubernetes 的前身，因此可以在 Kubernetes 的架构中看见不少 Borg 的影子[^1]，有关 Borg 本身架构的介绍可以参见 Google 于 EuroSys 2015 上发表的论文[^2]。Google 在 2020 年 04 月发布了有关 Borg 集群管理系统的最新跟踪数据[^3]，这是自 2011 年以来发布的最新数据，包括 Machine events、Collection events、Instance events 与 Instance usage 四个维度的数据，总计 2.8 TiB。Google 同时也在 EuroSys 2020 上发表了对其进行分析的论文[^4]，该文将 2019 年的数据与 2011 年的数据进行了全方面的对比，包括资源利用率与资源消耗等，同时指出了两者都存在的重尾效应，并在文末给出了一些可能的研究方向。本文主要基于上述论文进行介绍，并基于文末所提出的可能的研究方向进行一些简单的讨论。
