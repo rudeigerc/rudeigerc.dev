@@ -1,6 +1,8 @@
-# rudeigerc.github.io
+# rudeigerc.dev
 
-[![Build Status](https://github.com/rudeigerc/rudeigerc.github.io/workflows/GitHub%20Pages/badge.svg)](https://github.com/rudeigerc/rudeigerc.github.io/actions)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b12e474d-0f25-4310-9289-fb85302269dc/deploy-status)](https://app.netlify.com/sites/rudeigerc-dev/deploys)
+
+[@rudeigerc](https://github.com/rudeigerc)'s personal blog
 
 ## License
 

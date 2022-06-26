@@ -62,11 +62,12 @@ paginate = 5
   description = "Yuchen Cheng's Blog"
 
   [params.giscus]
-    dataRepo = "rudeigerc/rudeigerc.github.io"
+    dataRepo = "rudeigerc/rudeigerc.dev"
     dataRepoID = "MDEwOlJlcG9zaXRvcnkxMDcxNDQ2MTg="
     dataCategory = "Comments"
     dataCategoryID = "DIC_kwDOBmLlqs4CPSgG"
 
+# https://fontawesome.com/icons
 [[params.social]]
   name = "GitHub"
   url = "https://github.com/rudeigerc"
