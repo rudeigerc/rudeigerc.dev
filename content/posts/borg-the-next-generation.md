@@ -1,5 +1,5 @@
 ---
-title: "[Paper Reading] EuroSys '20 | Borg: the Next Generation"
+title: "Paper Reading | EuroSys '20 | Borg: the Next Generation"
 description: "Muhammad Tirmazi, Adam Barker, Nan Deng, Md E. Haque, Zhijing Gene Qin, Steven Hand, Mor Harchol-Balter, and John Wilkes. 2020. Borg: the next generation. In Proceedings of the Fifteenth European Conference on Computer Systems (EuroSys '20). Association for Computing Machinery, New York, NY, USA, Article 30, 1–14. DOI:https://doi.org/10.1145/3342195.3387517"
 date: 2021-04-24T22:21:33+08:00
 categories:
@@ -92,27 +92,27 @@ Borg 是 Google 内部使用的集群资源管理系统，也是 Kubernetes 的�
 
 ### 平均资源利用率（utilization）
 
-{{< figure src="images/total-resource-capacity-used.png" title="" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/27b0b120-e118-46d3-e2fc-682509471600/public" >}}
 
 上图是在 2011 年与 2019 年的的跟踪数据的每小时的平均计算与内存资源使用率，这八年间，集群的平均资源利用率有了显著增长，这主要来源于 best-effort batch 阶层，即由批调度器管理的作业，这些作业占据了集群将近 20% 的容量，包括 CPU 和内存。
 
-{{< figure src="images/average-utilization.png" title="" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/6637fc75-ec75-445b-6384-8387b4083900/public" >}}
 
 上图展示了不同节点在不同阶层的 CPU 与内存的使用情况，集群之间的工作负载有着相当大的差异，同时在一个集群内部不同的资源维度也存在着差异。
 
 ### 平均资源分配率（allocation）
 
-{{< figure src="images/total-resource-capacity-allocated.png" title="" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/49429512-3ade-4e96-581d-64c3af2a9e00/public" >}}
 
 作业通常会指定上限作为其所需的资源上限，从 2011 年至 2019 年，上限的总和显著地增加，CPU 和内存都被分配到远高于 100% 的容量，这表明 Borg 在使用统计多路复用对资源进行超售，即打赌作业会使用比其请求要少的资源。在 2011 年，CPU 比内存更激进地被超售，因为短时间超售 CPU 只会导致 CPU 节流，然后内存不足的话会导致 OOM；而在 2019 年，内存超售的程度已经和 CPU 相当了。
 
-{{< figure src="images/average-allocation.png" title="" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/f34abf2a-ff48-4945-218d-aa653b24c400/public" >}}
 
 上图展示了不同节点在不同阶层的 CPU 与内存的分配情况，可以看到集群间存在相当大的差异，以及一些高度超售的集群。
 
 ### 机器资源利用率
 
-{{< figure src="images/ccdf-cpu-memory-utilization.png" title="" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/a86945dc-5242-45b6-5118-cca421e1c800/public" >}}
 
 - 与 2011 年的数据相比，2019 年的机器资源利用率更高，最高的百分比除外，对于整体利用率的中位数，CPU 增加了 20-40%，而内存增加了 3-30%；
 - 与 2011 年的数据相比，2019 年的机器资源利用率变异性较小；
@@ -124,23 +124,23 @@ Borg 是 Google 内部使用的集群资源管理系统，也是 Kubernetes 的�
 
 ### 作业提交速率
 
-{{< figure src="images/ccdf-job-submission-rate.png" title="每个集群每个小时给 Borg 调度器提交作业的平均速率的 CCDF" width="50%" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/6b935bb7-b239-4ef5-bd0b-93ba3a834900/public" title="每个集群每个小时给 Borg 调度器提交作业的平均速率的 CCDF" >}}
 
 上图为每个集群每个小时给 Borg 调度器提交**作业（Job）**的平均速率的 CCDF。虽然 2011 年与 2019 年的集群规模相当，但是平均作业到达速率从 2011 年的 3360 个作业每小时增长到 2019 年的 3360 个作业每小时（3.5 倍）；而到达速率中位数由 885 增长到 3309 个作业每小时（3.7 倍）；而 90% 分位点增长了约三倍。
 
 ### 任务提交速率
 
-{{< figure src="images/ccdf-task-submission-rate.png" title="每个集群每个小时给 Borg 调度器提交任务的平均速率的 CCDF" width="50%" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/0bf6e99d-5688-4b06-d03d-9e30dd03d500/public" title="每个集群每个小时给 Borg 调度器提交任务的平均速率的 CCDF" >}}
 
 上图为每个集群每个小时给 Borg 调度器提交**任务（Task）**的平均速率的 CCDF，包括*新的任务*与*所有任务*，后者包括重调度后的任务。任务调度速率中位数相比 2011 年增长了 3.6 倍。另一方面，很多调度事件是为了重调度，重提交任务率中位数与新任务率中位数之比由 0.66:1 增加到 2.26:1。
 
 ### 调度延迟
 
-{{< figure src="images/ccdf-job-scheduling-delay.png" title="作业调度延迟的 CCDF" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/93d87d19-47ac-4fe7-86f2-18c0e03d3200/public" title="作业调度延迟的 CCDF" >}}
 
 考虑到作业和任务提交率的增加，Borg 调度器可能需要更长的时间来做出调度决定，和/或任务或作业可能保持停滞以等待调度决定，因此作者测量了 Borg 将 `Ready` 的作业的第一个任务调度到机器上的时间（`Running`），由此来排除批处理调度器造成的排队延迟。由上图可以发现调度延迟的中位数实际上已经下降，虽然最后 28% 的作业的尾部更长。大部分的长延迟都与 best-effort batch 和 mid 阶层的作业有关，而生产作业的调度明显比 2011 年快。
 
-{{< figure src="images/ccdf-number-of-tasks-per-job.png" title="" width="50%" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/a9a2e4b6-09f3-41e6-0cdb-2298ee784100/public" >}}
 
 为了理解上述现象的原因，作者根据阶层查看了每个作业的任务数量，从而得知 best-effort batch 和 mid 的任务数比其它层级的要多，因此两者的作业需要更多时间进行调度。
 
@@ -173,7 +173,7 @@ $$
 
 ### 帕累托分布
 
-{{< figure src="images/ccdf-resource-usage-hours.png" title="作业的资源使用小时 CCDF（log-log）" width="50%" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/69cb4538-1666-4594-eb03-bea87855b400/public" title="作业的资源使用小时 CCDF（log-log）" >}}
 
 另一方面，上图为 2011 年与 2019年的跟踪数据中的作业的资源使用小时的 log-log 维度的 CCDF，由图像可知两者满足幂定律，具体而言，两者服从[帕累托分布](https://zh.wikipedia.org/zh-hans/%E5%B8%95%E7%B4%AF%E6%89%98%E5%88%86%E5%B8%83)：
 
@@ -191,7 +191,7 @@ $$
 
 ### 计算与内存资源消耗的关系
 
-{{< figure src="images/nmu-ncu.png" title="" width="50%" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/fcace455-d3fa-4f70-d766-93396006a700/public" >}}
 
 从上一节当中的图像可以发现，计算和内存的消耗几乎服从于相同的分布，因此考虑两者的相关性是十分合理的。上图的横坐标是 NCU 小时，纵坐标为相对应的 NMU 小时的中位数，可以发现拟合出来的几乎是一条直线（Pearson 相关系数为 0.97），实际上考虑到作业运行的时长是两者的共同因素，这个结果并不是那么令人惊讶。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 SGX 对键值对存储加密
+title: Paper Reading | 使用 SGX 对键值对存储加密
 description: 本文简要介绍了两篇基于 SGX 进行的存储相关的安全优化的工作，SPEICHER 和 ShieldStore。这两篇工作发表的时间是平行的，两者具有相同的切入点，但基于两者的数据结构有不同的侧重点。
 date: 2020-07-27T08:33:27+08:00
 categories:
@@ -34,7 +34,7 @@ Intel 和 ARM 分别提出了基于硬件的 TEE（Trusted Execution Environment
 
 ### 系统设计
 
-{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/speicher-overview.png" title="SPEICHER overview" alt="speicher-overview" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/0e141ed1-2ed6-4a83-8cc6-6d5c4f0e8000/public" title="SPEICHER Overview" alt="speicher-overview" >}}
 
 整个系统包括 SPEICHER 的 controller，shielded execution 的 I/O library，受信任的单调计数器，存储引擎，还有改进的 LSM data structure。SPEICHER 这边利用了 SCONE 的 container support 来进行自身的部署，并且基于 SPDK 建立了一个 shielded I/O library。SPDK 是一个高性能的 user mode 的 storage library，其通过将 direct memory access（DMA）的 buffer 映射到用户地址空间实现了 zero-copy 的 I/O。
 
@@ -52,7 +52,7 @@ SPEICHER 将 MemTable 中的 key 和 value 拆成了两部分，原先 key 和 v
 
 ### 评估
 
-![speicher-evaluation](https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/speicher-evaluation.png)
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/cad4d292-acb0-4f0d-c389-dfe04dd7c700/public" alt="speicher-evaluation" >}}
 
 在 evaluation 的部分这边作者主要关注的是两个问题，其一是 SPEICHER 用来实现 shielded execution 的 I/O library 的性能，其二是 SPEICHER 所引入的 overhead。针对前者， SPEICHER 的 I/O library 和 native 的 SPDK 的实现相比，两者的 throughput 接近，性能基本上没有损失。针对后者，论文给出了三个不同的场景，包括不同读写比例的 workload，不同 value 的大小的 workload，以及在多线程情况下的性能。
 
@@ -62,11 +62,11 @@ ShieldStore 也是基于前述的背景，他们首先产生了一个初步的�
 
 ### 系统设计
 
-{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-overview.png" title="ShieldStore overview" alt="shieldstore-overview" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/39b1ba19-a215-44ea-f7b4-0e295cecab00/public" title="ShieldStore Overview" alt="shieldstore-overview" >}}
 
 ShieldStore 整体的设计基本上延续了之前的设想，是将 metadata 存储在 enclave 内部，然后将主要的 data structure 的部分经过加密存储在 untrusted memory region 中，只有 secret keys 和 integrity 的metadata 会存储在 EPC 当中，主要的 hash table 的数据结构存储在 unprotected memory region。
 
-{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-data-organization.png" title="ShieldStore data organization" alt="shieldstore-data-organization" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/e797f2b5-2894-48b1-3d12-176c3896b400/public" title="ShieldStore Data Organization" alt="shieldstore-data-organization" >}}
 
 为了防止 rollback attack，ShieldStore 这里和 SPEICHER 一样使用了 Merkle tree，但是这里不可能将每个 key-value pair 都维护在 merkle tree 中，这里的方法是为以 bucket 为单位的 MAC 生成 in-enclave 的 hash，这个会根据 MAC hash 的数量和 bucket 的数量进行调整，这实际上也是一个 trade-off，具体的调参在论文后面的 evaluation 有详细的解释。这里可能会有超出 EPC 大小限制的顾虑，可以通过 paging mechanism 的 eviction 来解决这个问题，虽然会带来我们先前所提到的 drawback。ShieldStore 在加密过程中主要采用的是 AES-CTR 进行加密，这里会将 key 和 value 一起加密，最后会生成包含 key-value pair size 等参数的 128 bit 的 MAC 来保证其完整性。
 
@@ -87,8 +87,9 @@ ShieldStore 整体的设计基本上延续了之前的设想，是将 metadata �
 
 论文的 evaluation 主要有三个 metric，一个是 secured memcached，这边采用的实现是 Graphene-SGX，第二个是 ShieldBase，指的是未经过优化的 ShieldStore，第三个是 ShieldOPT，指的是经过上述策略优化的 ShieldStore。
 
-{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-thread.png" alt="shieldstore-evaluation-thread" width="60%">}}
-{{< figure src="https://rudeigerc-images.oss-cn-shanghai.aliyuncs.com/blog/shieldstore-evaluation-scalability.png" alt="shieldstore-evaluation-scalability" width="60%">}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/4010ec60-467f-4c2d-9477-f2e93d933c00/public" alt="shieldstore-evaluation-thread" >}}
+
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/6fab4567-3016-4735-f156-07e87a90da00/public" alt="shieldstore-evaluation-scalability" >}}
 
 ShieldStore 和前两者相比具有显著的 throughput 的提升，可以看到在 value 的大小较小的时候性能的提升越明显。在多线程的情况下 memcached 的 throughput 甚至会有所下滑，在单线程的情况下 ShieldStore 的性能是 secure memcached 的七到八倍，在四个线程的情况下是其的 24 到 27 倍，更详细的对比实验可以参阅论文，包括进行不同优化以及与另外一篇工作 Eleos 的对比。
 

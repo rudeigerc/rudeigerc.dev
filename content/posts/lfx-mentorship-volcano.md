@@ -22,13 +22,13 @@ I remembered that was an afternoon of the weekend when I got a phone call from [
 
 ## Volcano 101
 
-{{< figure src="volcano-logo.png" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/12ac0c7b-b07b-43cf-87d5-1a3b3c32a300/public" alt="volcano-logo" >}}
 
-{{< figure src="volcano-architecture.png" title="Volcano Architecture" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/83e3fc11-5ba6-4437-0f15-2491d2003a00/public" title="Volcano Architecture" alt="volcano-architecture" >}}
 
 [Volcano](https://github.com/volcano-sh/volcano) is a batch scheduling system built on Kubernetes, partly based on [kube-batch](https://github.com/kubernetes-sigs/kube-batch). It provides powerful mechanisms for batching and elastic workloads in cloud-native architecture including machine learning, bioinformatics and big data applications such as batch processing, and stream processing. Compared with Kubernetes default scheduler, Volcano is more capable of various scenarios benefiting from the extensibility gain from its job lifecycle management via manifold plugins.
 
-{{< figure src="volcano-scheduler-workflow.png" title="Volcano Scheduler Workflow" >}}
+{{< figure src="https://cdn.rudeigerc.dev/cdn-cgi/imagedelivery/zHp1Y4Kl9MXfXkk0kqREVw/bf0e51dd-1b75-4c98-39f0-ecba7e6ea700/public" title="Volcano Scheduler Workflow" alt="volcano-scheduler-workflow" >}}
 
 This is the main workflow of the scheduler of Volcano. Volcano defines five actions as extension points during the lifecycle of a scheduling session. Users could register user-defined plugins to extension points and these plugins would be executed in the corresponding sequence. The scheduler works as follows:
 
