@@ -3,6 +3,7 @@ title: Paper Reading | 使用 SGX 对键值对存储加密
 description: 本文简要介绍了两篇基于 SGX 进行的存储相关的安全优化的工作，SPEICHER 和 ShieldStore。这两篇工作发表的时间是平行的，两者具有相同的切入点，但基于两者的数据结构有不同的侧重点。
 date: 2020-07-27T08:33:27+08:00
 categories:
+  - paper
   - storage
   - security
 tags:

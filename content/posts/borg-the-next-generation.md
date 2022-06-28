@@ -64,7 +64,7 @@ Borg 是 Google 内部使用的集群资源管理系统，也是 Kubernetes 的�
 
 [^5]: John Wilkes. Google cluster-usage traces v3. https://drive.google.com/file/d/10r6cnJ5cJ89fPWCgj7j4LtLBqYN9RiI9/view. 论文中为 110-115，实际为笔误。
 
-## 2011 与 2019 年跟踪数据的对比
+## 跟踪数据的对比
 
 2011 年的跟踪数据包含 40 GiB 的压缩数据，即 2.8 TiB 的完整数据；而2019 年的跟踪数据包含平均每个集群 350 GiB 的压缩数据。下表概括了 2011 年与 2019 年跟踪数据的变化：
 

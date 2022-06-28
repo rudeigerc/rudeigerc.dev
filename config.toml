@@ -1,6 +1,6 @@
 baseURL = "https://rudeigerc.dev/"
 languageCode = "zh-Hans"
-title = "Luthadel"
+title = "Yuchen Cheng's Blog"
 theme = "yggdrasill"
 copyright = "© 2022 Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license."
 
@@ -11,6 +11,11 @@ enableRobotsTXT = true
 googleAnalytics = "G-HXB6L4QSKP"
 hasCJKLanguage = true
 paginate = 5
+
+# custom hightlight style
+# Reference: https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highlighter-css
+pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 [author]
   name = "Yuchen Cheng"
@@ -58,7 +63,7 @@ paginate = 5
     style = "github"
 
 [params]
-  subtitle = "Yuchen Cheng's Blog"
+  subtitle = "@rudeigerc"
   description = "Yuchen Cheng's Blog"
 
   [params.giscus]
@@ -67,7 +72,8 @@ paginate = 5
     dataCategory = "Comments"
     dataCategoryID = "DIC_kwDOBmLlqs4CPSgG"
 
-# https://fontawesome.com/icons
+# custom social icons
+# Reference: https://fontawesome.com/icons
 [[params.social]]
   name = "GitHub"
   url = "https://github.com/rudeigerc"
