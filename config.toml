@@ -65,6 +65,7 @@ pygmentsUseClasses = true
 [params]
   subtitle = "@rudeigerc"
   description = "Yuchen Cheng's Blog"
+  logo = "img/icon.svg"
 
   [params.giscus]
     dataRepo = "rudeigerc/rudeigerc.dev"
