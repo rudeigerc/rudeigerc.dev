@@ -1,3 +1,7 @@
 {{- if not .IsHome }}
-<meta property="og:image" content="https://opengraph.rudeigerc.dev/{{ $.Title | safeHTML }}.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Frudeigerc.dev%2Fimg%2Ficon.svg"/>
+<meta
+  property="og:image"
+  content="https://opengraph.rudeigerc.dev/{{ $.Title | safeHTML }}.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Frudeigerc.dev%2Fimg%2Ficon.svg"
+/>
 {{- end -}}
+<link rel="me" href="https://mastodon.social/@rudeigerc" />

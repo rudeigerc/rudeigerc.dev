@@ -18,95 +18,101 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [author]
-  name = "Yuchen Cheng"
-  email = "rudeigerc@gmail.com"
+name = "Yuchen Cheng"
+email = "rudeigerc@gmail.com"
 
 [menu]
 
 [[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 1
+name = "Home"
+url = "/"
+weight = 1
 
 [[menu.main]]
-  name = "Posts"
-  url = "/posts"
-  weight = 2
+name = "Posts"
+url = "/posts"
+weight = 2
 
 [[menu.main]]
-  name = "Catagories"
-  url = "/categories"
-  weight = 3
+name = "Catagories"
+url = "/categories"
+weight = 3
 
 [[menu.main]]
-  name = "Series"
-  url = "/series"
-  weight = 4
+name = "Series"
+url = "/series"
+weight = 4
 
 [[menu.main]]
-  name = "Tags"
-  url = "/tags"
-  weight = 5
+name = "Tags"
+url = "/tags"
+weight = 5
 
 [[menu.main]]
-  name = "About"
-  url = "/about"
-  weight = 6
+name = "About"
+url = "/about"
+weight = 6
 
 [taxonomies]
-  category = "categories"
-  series = "series"
-  tag = "tags"
+category = "categories"
+series = "series"
+tag = "tags"
 
 [markup]
-  [markup.highlight]
-    style = "github"
+[markup.highlight]
+style = "github"
 
 [params]
-  subtitle = "@rudeigerc"
-  description = "Yuchen Cheng's Blog"
-  logo = "img/icon.svg"
+subtitle = "@rudeigerc"
+description = "Yuchen Cheng's Blog"
+logo = "img/icon.svg"
 
-  [params.giscus]
-    dataRepo = "rudeigerc/rudeigerc.dev"
-    dataRepoID = "MDEwOlJlcG9zaXRvcnkxMDcxNDQ2MTg="
-    dataCategory = "Comments"
-    dataCategoryID = "DIC_kwDOBmLlqs4CPSgG"
+[params.giscus]
+dataRepo = "rudeigerc/rudeigerc.dev"
+dataRepoID = "MDEwOlJlcG9zaXRvcnkxMDcxNDQ2MTg="
+dataCategory = "Comments"
+dataCategoryID = "DIC_kwDOBmLlqs4CPSgG"
 
 # custom social icons
 # Reference: https://fontawesome.com/icons
 [[params.social]]
-  name = "GitHub"
-  url = "https://github.com/rudeigerc"
-  type = "brands"
-  icon = "github"
+name = "GitHub"
+url = "https://github.com/rudeigerc"
+type = "brands"
+icon = "github"
 
 [[params.social]]
-  name = "Twitter"
-  url = "https://twitter.com/yuchen_cheng"
-  type = "brands"
-  icon = "twitter"
+name = "Twitter"
+url = "https://twitter.com/yuchen_cheng"
+type = "brands"
+icon = "twitter"
 
 [[params.social]]
-  name = "LinkedIn"
-  url = "https://www.linkedin.com/in/rudeigerc/"
-  type = "brands"
-  icon = "linkedin"
+name = "Mastodon"
+url = "https://mastodon.social/@rudeigerc"
+type = "brands"
+icon = "mastodon"
 
 [[params.social]]
-  name = "E-mail"
-  url = "mailto:rudeigerc@gmail.com"
-  type = "solid"
-  icon = "envelope"
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/rudeigerc/"
+type = "brands"
+icon = "linkedin"
 
 [[params.social]]
-  name = "Resume"
-  url = "/files/resume.pdf"
-  type = "solid"
-  icon = "file"
+name = "E-mail"
+url = "mailto:rudeigerc@gmail.com"
+type = "solid"
+icon = "envelope"
 
 [[params.social]]
-  name = "RSS"
-  url = "/index.xml"
-  type = "solid"
-  icon = "rss"
+name = "Resume"
+url = "/files/resume.pdf"
+type = "solid"
+icon = "file"
+
+[[params.social]]
+name = "RSS"
+url = "/index.xml"
+type = "solid"
+icon = "rss"
