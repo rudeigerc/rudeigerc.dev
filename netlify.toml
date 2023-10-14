@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --gc --minify"
+command = "hugo --gc --minify && pnpm dlx pagefind"
 
 [build.environment]
 HUGO_VERSION = "0.108.0"

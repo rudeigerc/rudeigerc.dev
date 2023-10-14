@@ -1,4 +1,4 @@
-baseURL = "https://rudeigerc.dev/"
+# baseURL = "https://rudeigerc.dev/"
 languageCode = "zh-Hans"
 title = "Yuchen Cheng's Blog"
 theme = "yggdrasill"
@@ -88,31 +88,19 @@ type = "brands"
 icon = "twitter"
 
 [[params.social]]
-name = "Mastodon"
-url = "https://mastodon.social/@rudeigerc"
-type = "brands"
-icon = "mastodon"
-
-[[params.social]]
-name = "LinkedIn"
-url = "https://www.linkedin.com/in/rudeigerc/"
-type = "brands"
-icon = "linkedin"
-
-[[params.social]]
 name = "E-mail"
 url = "mailto:rudeigerc@gmail.com"
 type = "solid"
 icon = "envelope"
 
 [[params.social]]
-name = "Resume"
-url = "/files/resume.pdf"
-type = "solid"
-icon = "file"
-
-[[params.social]]
 name = "RSS"
 url = "/index.xml"
 type = "solid"
 icon = "rss"
+
+[[params.social]]
+name = "Search"
+url = "/search"
+type = "solid"
+icon = "search"
