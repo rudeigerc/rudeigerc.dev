@@ -71,10 +71,13 @@ Gödel 主要由以下三个组件组成：Dispatcher、Scheduler 与 Binder，�
 - [containerd/nri](https://github.com/containerd/nri)
 - [containers/nri-plugins](https://github.com/containers/nri-plugins)
 
-**相关演讲：**
+**相关 KubeCon 演讲：**
 
 - [Beyond Default: Harnessing CPU Affinity for Enhanced Performance Across Your Workload Portfolio - Antti Kervinen, Intel & Dixita Narang, Google LLC](https://kccnceu2024.sched.com/event/1YeMY), KubeCon EU 2024
 - [Advancing Memory Management in Kubernetes: Next Steps with Memory QoS - Dixita Narang, Google & Antti Kervinen, Intel](https://kccncna2023.sched.com/event/1R2nL), KubeCon NA 2023
+- [使用可插拔和可定制的智能运行时提升工作负载的QoS | Enhance Workload QoS with Pluggable and Customizable Smarter Runtimes - Rougang Han, Alibaba & Kang Zhang, Intel](https://kccncosschn2023.sched.com/event/1PTH5), KubeCon China 2023
+- [NRI: Extending Containerd And CRI-O With Common Plugins - Krisztian Litkey, Intel & Mike Brown, IBM](https://kccncna2022.sched.com/event/182JT), KubeCon NA 2022
+- [Maximizing Workload's Performance With Smarter Runtimes - Krisztian Litkey & Alexander Kanevskiy, Intel](https://kccnceu2021.sched.com/event/iE1Y), KubeCon EU 2021
 
 ## AI & Cloud
 
