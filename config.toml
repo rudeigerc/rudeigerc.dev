@@ -82,10 +82,10 @@ type = "brands"
 icon = "github"
 
 [[params.social]]
-name = "Twitter"
-url = "https://twitter.com/yuchen_cheng"
+name = "X"
+url = "https://x.com/yuchenrcheng"
 type = "brands"
-icon = "twitter"
+icon = "x-twitter"
 
 [[params.social]]
 name = "E-mail"
