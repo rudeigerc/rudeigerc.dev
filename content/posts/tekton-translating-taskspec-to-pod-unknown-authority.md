@@ -1,5 +1,6 @@
 ---
 title: 排查在 Tekton 中使用来自自签名私有镜像仓库的镜像时的证书问题
+description: 本文介绍了排查在 Tekton 中使用来自自签名私有镜像仓库的镜像时的证书问题的症状、原因以及解决方案。
 date: 2024-09-09T16:56:35+08:00
 categories:
 - Troubleshooting
