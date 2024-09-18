@@ -9,7 +9,6 @@ type: static
 
 (Source: [SAWARATSUKI/KawaiiLogos](https://github.com/SAWARATSUKI/KawaiiLogos/blob/main/IamSeries/IamProgrammer!.png))
 
-AI Platform Development Engineer at WizardQuant / #Kubernetes #MLOps / ex-SRE Intern at Ant Group / M.Eng. in Software Engineering at Shanghai Jiao Tong University
-
+Software Engineer / #Kubernetes #MLSys / ex-WizardQuant & Ant Group / M.Eng. in Software Engineering at Shanghai Jiao Tong University
 
 [[Résumé]](/files/resume.pdf) [[简历]](/files/resume_zh.pdf)
