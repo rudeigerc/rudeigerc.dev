@@ -1,17 +1,44 @@
 {
-  "name": "",
+  "name": "next.rudeigerc.dev",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "biome check"
   },
   "dependencies": {
-    "astro": "^4.15.7",
     "@astrojs/check": "^0.9.3",
+    "@astrojs/mdx": "^3.1.6",
+    "@astrojs/react": "^3.6.2",
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/tailwind": "^5.1.1",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@types/react": "^18.3.7",
+    "@types/react-dom": "^18.3.0",
+    "astro": "^4.15.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "katex": "^0.16.11",
+    "lucide-react": "^0.441.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "remark-toc": "^9.0.0",
+    "sharp": "^0.33.5",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.12",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.1"
   }
 }

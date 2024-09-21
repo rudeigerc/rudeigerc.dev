@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import Header from "@/components/Header.astro";
+
+import "../../node_modules/katex/dist/katex.min.css";
+import Giscus from "@/components/Giscus.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="prose">
+					<div class="title">
+						<h1>{title}</h1>
+            <div class="date">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+					</div>
+					<slot />
+          <Giscus />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+  main {
+    width: calc(100% - 2em);
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .prose {
+    max-width: 65ch;
+    margin: auto;
+    padding: 1em;
+  }
+
+  .prose h1 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    line-height: 1;
+    font-size: 2.25em;
+  }
+</style>

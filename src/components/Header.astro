@@ -1,0 +1,73 @@
+---
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { Mail, Rss } from "lucide-react";
+import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header class="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur ">
+	<div class="container flex h-14 max-w-screen-2xl items-center">
+    <div class="mb-2 mt-4 text-lg font-medium">
+      <a href="/">{SITE_TITLE}</a>
+    </div>
+    <div class="flex flex-1 items-center justify-between space-x-4 md:justify-end">
+      <div class="w-full flex-1 md:w-auto md:flex-none space-x-4">
+        <HeaderLink href="/">Home</HeaderLink>
+        <HeaderLink href="/posts">Blog</HeaderLink>
+        <HeaderLink href="/about">About</HeaderLink>
+      </div>
+      <nav class="flex items-center space-x-2">
+        <a href="https://github.com/rudeigerc" target="_blank" rel="noreferrer">
+          <div
+          class={cn(
+            buttonVariants({
+              variant: "ghost",
+            }),
+            "h-8 w-8 px-0"
+          )}>
+            <span class="sr-only">GitHub</span>
+            <GitHubLogoIcon className="h-4 w-4" />
+          </div>
+        </a>
+        <a href="https://x.com/yuchenrcheng" target="_blank" rel="noreferrer">
+          <div
+          class={cn(
+            buttonVariants({
+              variant: "ghost",
+            }),
+            "h-8 w-8 px-0"
+          )}>
+            <span class="sr-only">X</span>
+            <TwitterLogoIcon className="h-4 w-4" />
+          </div>
+        </a>
+        <a href="mailto:rudeigerc@gmail.com" target="_blank" rel="noreferrer">
+          <div
+          class={cn(
+            buttonVariants({
+              variant: "ghost",
+            }),
+            "h-8 w-8 px-0"
+          )}>
+            <span class="sr-only">Mail</span>
+            <Mail className="h-4 w-4" />
+          </div>
+        </a>
+        <a href="rss.xml" target="_blank" rel="noreferrer">
+          <div
+          class={cn(
+            buttonVariants({
+              variant: "ghost",
+            }),
+            "h-8 w-8 px-0"
+          )}>
+            <span class="sr-only">RSS</span>
+            <Rss className="h-4 w-4" />
+          </div>
+        </a>
+      </nav>
+    </div>
+	</div>
+</header>

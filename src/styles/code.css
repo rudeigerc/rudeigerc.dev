@@ -1,0 +1,26 @@
+.astro-code code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-white;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+.astro-code .line {
+  @apply px-4 py-1;
+}
+.astro-code [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+.astro-code .line--highlighted {
+  @apply bg-slate-300 bg-opacity-10;
+}
+.astro-code .line-highlighted span {
+  @apply relative;
+}
+.astro-code .word--highlighted {
+  @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
+}
