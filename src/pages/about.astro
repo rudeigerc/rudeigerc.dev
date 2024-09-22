@@ -1,5 +1,5 @@
 ---
-import { Content } from "@/content/about/about.md";
+import { Content } from "@/content/pages/about.md";
 import Layout from "@/layouts/BlogPost.astro";
 ---
 
@@ -7,6 +7,7 @@ import Layout from "@/layouts/BlogPost.astro";
 	title="About"
 	description="Lorem ipsum dolor sit amet"
 	pubDate={new Date('2024-09-21')}
+  draft={false}
 >
 	<Content />
 </Layout>
