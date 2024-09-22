@@ -1,3 +1,3 @@
 [build]
 publish = "dist"
-command = "astro build"
+command = "pnpm build"
