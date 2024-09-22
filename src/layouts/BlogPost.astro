@@ -21,12 +21,12 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 	<body>
 		<Header />
 		<main>
-			<article>
+			<article data-pagefind-body>
 				<div class="prose">
 					<div class="title">
-						<h1>{title}</h1>
+						<h1 data-pagefind-meta="title">{title}</h1>
             <div class="date">
-							<FormattedDate date={pubDate} />
+							<FormattedDate date={pubDate} data-pagefind-meta="date" />
 							{
 								updatedDate && (
 									<div class="last-updated-on">
