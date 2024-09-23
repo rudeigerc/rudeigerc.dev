@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Mail, Rss, Search } from "lucide-react";
 import { SITE_TITLE } from "../consts";
+import CommandMenu from "./CommandMenu.astro";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
@@ -15,7 +16,14 @@ import HeaderLink from "./HeaderLink.astro";
       </a>
     </div>
     <div class="flex flex-1 items-center justify-between space-x-4 md:justify-end">
-      <div class="w-full flex-1 md:w-auto md:flex-none"></div>
+      <div class="w-full flex-1 md:w-auto md:flex-none">
+        <a href="/search">
+          <div>
+            <span class="sr-only">Search</span>
+            <CommandMenu />
+          </div>
+        </a>
+      </div>
       <nav class="hidden w-full md:flex md:w-auto space-x-4">
         <HeaderLink href="/">Home</HeaderLink>
         <HeaderLink href="/posts">Blog</HeaderLink>
@@ -68,18 +76,6 @@ import HeaderLink from "./HeaderLink.astro";
             )}>
             <span class="sr-only">RSS</span>
             <Rss className="h-4 w-4" />
-          </div>
-        </a>
-        <a href="/search">
-          <div
-            class={cn(
-              buttonVariants({
-                variant: "ghost",
-              }),
-              "h-8 w-8 px-0"
-            )}>
-            <span class="sr-only">Search</span>
-            <Search className="h-4 w-4" />
           </div>
         </a>
       </nav>
