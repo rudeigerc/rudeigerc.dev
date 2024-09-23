@@ -1,11 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import BaseHead from "@/components/BaseHead.astro";
-import Footer from "@/components/Footer.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
-import Header from "@/components/Header.astro";
 import { Badge } from "@/components/ui/badge";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const posts = (
   await getCollection("blog", ({ data }) =>
@@ -14,56 +11,40 @@ const posts = (
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<!doctype html>
-<html lang="zh-Hans">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-      <div class="prose">
-        <section>
-          <ul class="space-y-10">
-            {
-              posts.map((post) => (
-                <li>
-                  <p class="date">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                  <a href={`/posts/${post.slug}/`}>
-                    <h4 class="title">{post.data.title}</h4>
-                  </a>
-                  {post.data.draft && <Badge>DRAFT</Badge>}
-                  <p class="description">
-                    {post.data.description ?? ""}
-                  </p>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-      </div>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout>
+  <div class="prose">
+    <section>
+      <ul class="space-y-10">
+        {
+          posts.map((post) => (
+            <li>
+              <p class="date">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <a href={`/posts/${post.slug}/`}>
+                <h4 class="title">{post.data.title}</h4>
+              </a>
+              {post.data.draft && <Badge>DRAFT</Badge>}
+              <p class="description">
+                {post.data.description ?? ""}
+              </p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
 
 <style>
-  main {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-  }
-
   .prose {
     max-width: 65ch;
-    margin: auto;
-    padding: 1em;
+
+    @apply m-auto p-4;
   }
 
   ul {
-    list-style-type: none;
+    @apply list-none !important;
   }
 
   .date {

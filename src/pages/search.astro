@@ -1,30 +1,9 @@
 ---
-import BaseHead from "@/components/BaseHead.astro";
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
 import Pagefind from "@/components/Pagefind.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
-<!doctype html>
-<html lang="zh-Hans">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-      <Pagefind />
-		</main>
-		<Footer />
-	</body>
-</html>
-
-<style>
-  main {
-    width: 100%;
-    max-width: 65ch;
-    margin: auto;
-    padding: 1em;
-  }
-</style>
+<BaseLayout title={`Search | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <Pagefind class="m-auto max-w-prose p-4">
+</BaseLayout>

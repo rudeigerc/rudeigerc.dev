@@ -1,20 +1,18 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import "@/styles/globals.css";
 import "@/styles/code.css";
 
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import GTag from "./GTag.astro";
 
 interface Props {
-  title: string;
-  description: string;
-  image?: string;
+  title?: string;
+  description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -38,14 +36,14 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="og:image" content={new URL(image, Astro.url)} /> -->
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- <meta property="twitter:image" content={new URL(image, Astro.url)} /> -->
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
