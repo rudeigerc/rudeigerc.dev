@@ -22,11 +22,13 @@ const posts = (
                 <p class="text-sm text-muted-foreground flex-1">
                   <FormattedDate date={post.data.pubDate} />
                 </p>
-                <div class="space-x-1">
+                <div>
                   {post.data.draft && <Badge>DRAFT</Badge>}
                   {
                     post.data.categories?.map(category => (
-                      <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+                      <>
+                        <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+                      </>
                     ))
                   }
                 </div>

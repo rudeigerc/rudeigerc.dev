@@ -30,12 +30,16 @@ const { title, description, draft, pubDate, updatedDate, categories, tags } =
         {draft && <Badge>DRAFT</Badge>}
         {
           categories?.map(category => (
-            <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+            <>
+              <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+            </>
           ))
         }
         {
           tags?.map(tag => (
-            <Badge variant="outline" data-pagefind-filter="tag">#{tag}</Badge>
+            <>
+              <Badge variant="outline" data-pagefind-filter="tag">#{tag}</Badge>
+            </>
           ))
         }
       </div>
