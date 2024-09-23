@@ -15,17 +15,13 @@ const { title, description } = Astro.props;
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
-	<body>
-		<Header />
-		<main>
-			<slot />
-		</main>
-		<Footer />
+	<body class="min-h-screen bg-background">
+    <div class="relative flex min-h-screen flex-col bg-background">
+      <Header />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
 	</body>
 </html>
-
-<style>
-  main {
-    @apply w-full max-w-full m-0;
-  }
-</style>

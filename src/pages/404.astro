@@ -1,0 +1,27 @@
+---
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { ArrowLeft } from "lucide-react";
+---
+
+<BaseLayout>
+  <div class="alert">
+    <Alert variant="destructive">
+      <ExclamationTriangleIcon className="h-4 w-4" />
+      <AlertTitle className="font-bold">404 Not Found</AlertTitle>
+      <AlertDescription>
+        <a href="/" class="underline">
+          Back to home
+        </a>
+      </AlertDescription>
+    </Alert>
+  </div>
+</BaseLayout>
+
+<style>
+  .alert {
+    max-width: 65ch;
+
+    @apply m-auto p-4;
+  }
