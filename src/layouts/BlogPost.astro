@@ -4,7 +4,6 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import "../../node_modules/katex/dist/katex.min.css";
 import Giscus from "@/components/Giscus.astro";
 import { Badge } from "@/components/ui/badge";
-import { SITE_TITLE } from "@/consts";
 import BaseLayout from "./BaseLayout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
@@ -12,7 +11,7 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, draft, pubDate, updatedDate } = Astro.props;
 ---
 
-<BaseLayout title={`${title} | ${SITE_TITLE}`} description={description}>
+<BaseLayout title={title} description={description}>
   <article data-pagefind-body>
     <div class="prose">
       <div class="title">
