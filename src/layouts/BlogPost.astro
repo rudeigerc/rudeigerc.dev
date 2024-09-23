@@ -8,7 +8,8 @@ import BaseLayout from "./BaseLayout.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, draft, pubDate, updatedDate } = Astro.props;
+const { title, description, draft, pubDate, updatedDate, categories, tags } =
+  Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -16,17 +17,27 @@ const { title, description, draft, pubDate, updatedDate } = Astro.props;
     <div class="prose">
       <div class="title">
         <h1 data-pagefind-meta="title">{title}</h1>
-        <div class="date">
+        <div class="text-muted-foreground text-sm mb-1">
           <FormattedDate date={pubDate} data-pagefind-meta="date" />
           {
             updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
+              <>
+                · Last updated on <FormattedDate date={updatedDate} />
+              </>
             )
           }
         </div>
         {draft && <Badge>DRAFT</Badge>}
+        {
+          categories?.map(category => (
+            <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+          ))
+        }
+        {
+          tags?.map(tag => (
+            <Badge variant="outline" data-pagefind-filter="tag">#{tag}</Badge>
+          ))
+        }
       </div>
       <slot />
       <Giscus />

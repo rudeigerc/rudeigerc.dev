@@ -18,13 +18,22 @@ const posts = (
         {
           posts.map((post) => (
             <li>
-              <p class="date">
-                <FormattedDate date={post.data.pubDate} />
-              </p>
+              <div class="flex">
+                <p class="text-sm text-muted-foreground flex-1">
+                  <FormattedDate date={post.data.pubDate} />
+                </p>
+                <div class="space-x-1">
+                  {post.data.draft && <Badge>DRAFT</Badge>}
+                  {
+                    post.data.categories?.map(category => (
+                      <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+                    ))
+                  }
+                </div>
+              </div>
               <a href={`/posts/${post.slug}/`}>
                 <h4 class="title">{post.data.title}</h4>
               </a>
-              {post.data.draft && <Badge>DRAFT</Badge>}
               <p class="description">
                 {post.data.description ?? ""}
               </p>
@@ -47,15 +56,11 @@ const posts = (
     @apply list-none !important;
   }
 
-  .date {
-    @apply text-sm text-muted-foreground !important;
-  }
-
   .title {
     @apply mt-0 no-underline !important;
   }
 
   .description {
-    @apply mt-2 line-clamp-2 text-base text-muted-foreground !important;
+    @apply mt-2 line-clamp-4 text-base text-muted-foreground !important;
   }
 </style>

@@ -88,19 +88,19 @@
     }
 
     h5 {
-      @apply mt-8 scroll-m-20 text-lg font-semibold tracking-tight
+      @apply mt-8 scroll-m-20 text-lg font-semibold tracking-tight;
     }
 
     h6 {
-      @apply mt-8 scroll-m-20 text-base font-semibold tracking-tight
+      @apply mt-8 scroll-m-20 text-base font-semibold tracking-tight;
     }
 
     a {
-      @apply font-medium
+      @apply font-medium;
     }
 
     a:hover {
-      @apply text-cyan-800
+      @apply text-cyan-800;
     }
 
     p {
@@ -108,47 +108,51 @@
     }
 
     ul {
-      @apply my-6 ml-6 list-disc
+      @apply my-6 ml-6 list-disc;
     }
 
     ol {
-      @apply my-6 ml-6 list-decimal
+      @apply my-6 ml-6 list-decimal;
     }
 
     li {
-      @apply mt-2
+      @apply mt-2;
     }
 
     blockquote {
-      @apply mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground
+      @apply mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground;
     }
 
     img {
-      @apply rounded-md border
+      @apply rounded-md border;
     }
 
     hr {
-      @apply my-4 md:my-8
+      @apply my-4 md:my-8;
     }
 
     tr {
-      @apply m-0 border-t p-0 even:bg-muted
+      @apply m-0 border-t p-0 even:bg-muted;
     }
 
     th {
-      @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right
+      @apply border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right;
     }
 
     td {
-      @apply border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right
+      @apply border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right;
     }
 
     pre {
-      @apply mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4
+      @apply mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4;
     }
 
     code {
-      @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm
+      @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm;
+    }
+
+    .footnotes {
+      @apply font-normal text-sm text-muted-foreground;
     }
   }
 }
