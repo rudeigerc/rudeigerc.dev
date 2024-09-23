@@ -6,9 +6,10 @@ import Header from "@/components/Header.astro";
 type Props = {
   title?: string;
   description?: string;
+  class?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, class: className } = Astro.props;
 ---
 
 <html lang="zh-Hans">
@@ -18,7 +19,7 @@ const { title, description } = Astro.props;
 	<body class="min-h-screen bg-background">
     <div class="relative flex min-h-screen flex-col bg-background">
       <Header />
-      <main class="flex-1">
+      <main class:list={["flex-1", className]}>
         <slot />
       </main>
       <Footer />

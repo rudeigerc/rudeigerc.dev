@@ -1,27 +1,16 @@
 ---
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import { ArrowLeft } from "lucide-react";
+import NotFoundImage from "../assets/NotFound.png";
 ---
 
-<BaseLayout>
-  <div class="alert">
-    <Alert variant="destructive">
-      <ExclamationTriangleIcon className="h-4 w-4" />
-      <AlertTitle className="font-bold">404 Not Found</AlertTitle>
-      <AlertDescription>
-        <a href="/" class="underline">
-          Back to home
-        </a>
-      </AlertDescription>
-    </Alert>
+<BaseLayout class:list={["place-content-center"]}>
+  <div class="flex flex-col place-items-center space-y-4">
+    <Image src={NotFoundImage} alt="404 Not Found" class="m-auto" width={NotFoundImage.width / 4}/>
+    <a href="/" class="flex items-center">
+      <ArrowLeft className="inline-block w-4 h-4 mr-2"/>
+      <p>Go back to the home page</p>
+    </a>
   </div>
 </BaseLayout>
-
-<style>
-  .alert {
-    max-width: 65ch;
-
-    @apply m-auto p-4;
-  }
