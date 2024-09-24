@@ -8,6 +8,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 import rehypeKatex from "rehype-katex";
+import rehypeMermaid from "rehype-mermaid";
 import remarkMath from "remark-math";
 
 // https://astro.build/config
@@ -28,6 +29,6 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeMermaid],
   },
 });

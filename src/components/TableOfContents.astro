@@ -1,0 +1,22 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<nav class="space-y-2">
+  <p class="font-medium">On This Page</p>
+  <ul class="m-0 list-none">
+    {headings.map(heading => (
+      <li class="mt-0 pt-2">
+        <a href={`#${heading.slug}`} class="inline-block no-underline transition-colors hover:text-foreground text-muted-foreground">
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

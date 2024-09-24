@@ -98,11 +98,7 @@
     }
 
     a {
-      @apply font-medium;
-    }
-
-    a:hover {
-      @apply text-cyan-800;
+      @apply font-medium hover:text-cyan-800;
     }
 
     p {

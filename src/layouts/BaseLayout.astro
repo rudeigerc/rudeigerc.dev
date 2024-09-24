@@ -19,9 +19,13 @@ const { title, description, class: className } = Astro.props;
 	<body class="min-h-screen bg-background">
     <div class="relative flex min-h-screen flex-col bg-background">
       <Header />
-      <main class:list={["flex-1", className]}>
-        <slot />
-      </main>
+      <div class="container flex-1" />
+        <div class="mx-auto max-w-6xl">
+          <main class:list={["flex-1", className]}>
+            <slot />
+          </main>
+        </div>
+      </div>
       <Footer />
     </div>
 	</body>
