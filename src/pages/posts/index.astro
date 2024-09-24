@@ -6,13 +6,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 const posts = (
   await getCollection("blog", ({ data }) =>
-    import.meta.env.PROD ? !data.draft : true,
+    import.meta.env.PROD ? !data.draft : true
   )
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout>
-  <div class="prose">
+  <div class="prose py-6">
     <section>
       <ul class="space-y-10">
         {

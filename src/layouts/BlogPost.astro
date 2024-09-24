@@ -32,68 +32,70 @@ const toc = generateToC(headings ?? [], {
 });
 ---
 
-<BaseLayout
-  title={title}
-  description={description}
-  class={cn(
-    "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
-    headings && "lg:grid-cols-[1fr_300px]"
-  )}
->
-  <div class="mx-auto w-full min-w-0">
-    <article data-pagefind-body>
-      <div class="prose">
-        <div class="title">
-          <h1 data-pagefind-meta="title">{title}</h1>
-          <div class="text-muted-foreground text-sm mb-1">
-            <FormattedDate date={pubDate} data-pagefind-meta="date" />
-            {
-              updatedDate && (
-                <>
-                  · Last updated on <FormattedDate date={updatedDate} />
-                </>
-              )
-            }
+<BaseLayout title={title} description={description}>
+  <div class="mx-auto max-w-6xl">
+    <main
+      class={cn(
+        "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
+        headings && "lg:grid-cols-[1fr_300px]"
+      )}
+    >
+      <div class="mx-auto w-full min-w-0">
+        <article data-pagefind-body>
+          <div class="prose">
+            <div class="title">
+              <h1 data-pagefind-meta="title">{title}</h1>
+              <div class="text-muted-foreground text-sm mb-1">
+                <FormattedDate date={pubDate} data-pagefind-meta="date" />
+                {
+                  updatedDate && (
+                    <>
+                      · Last updated on <FormattedDate date={updatedDate} />
+                    </>
+                  )
+                }
+              </div>
+              {draft && <Badge>DRAFT</Badge>}
+              {
+                categories?.map((category) => (
+                  <>
+                    <Badge variant="secondary" data-pagefind-filter="category">
+                      {category}
+                    </Badge>
+                  </>
+                ))
+              }
+              {
+                tags?.map((tag) => (
+                  <>
+                    <Badge variant="outline" data-pagefind-filter="tag">
+                      #{tag}
+                    </Badge>
+                  </>
+                ))
+              }
+            </div>
+            <slot />
+            <Giscus />
           </div>
-          {draft && <Badge>DRAFT</Badge>}
-          {
-            categories?.map((category) => (
-              <>
-                <Badge variant="secondary" data-pagefind-filter="category">
-                  {category}
-                </Badge>
-              </>
-            ))
-          }
-          {
-            tags?.map((tag) => (
-              <>
-                <Badge variant="outline" data-pagefind-filter="tag">
-                  #{tag}
-                </Badge>
-              </>
-            ))
-          }
-        </div>
-        <slot />
-        <Giscus />
+        </article>
       </div>
-    </article>
+      {
+        headings && (
+          <div class="hidden text-sm xl:block">
+            <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-16">
+              <ScrollArea className="h-full pb-10">
+                <nav class="space-y-2">
+                  <p class="font-medium">On This Page</p>
+                  <TableOfContents toc={toc} />
+                </nav>
+              </ScrollArea>
+            </div>
+          </div>
+        )
+      }
+    </main>
   </div>
-  {
-    headings && (
-      <div class="hidden text-sm xl:block">
-        <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-16">
-          <ScrollArea className="h-full pb-10">
-            <nav class="space-y-2">
-              <p class="font-medium">On This Page</p>
-              <TableOfContents toc={toc} />
-            </nav>
-          </ScrollArea>
-        </div>
-      </div>
-    )
-  }
 </BaseLayout>
 
 <style>

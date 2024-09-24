@@ -2,6 +2,7 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import { cn } from "@/lib/utils";
 
 type Props = {
   title?: string;
@@ -19,12 +20,8 @@ const { title, description, class: className } = Astro.props;
   <body class="min-h-screen bg-background">
     <div class="relative flex min-h-screen flex-col bg-background">
       <Header />
-      <div class="container flex-1">
-        <div class="mx-auto max-w-6xl">
-          <main class:list={["flex-1", className]}>
-            <slot />
-          </main>
-        </div>
+      <div class={cn("container flex-1", className)}>
+        <slot />
       </div>
       <Footer />
     </div>
