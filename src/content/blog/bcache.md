@@ -42,7 +42,7 @@ $ dnf install -y gcc automake autoconf libtool make ncurses-devel bison flex
 $ make menuconfig
 ```
 
-`D`evice Drivers => M`u`ltiple devices driver support (RAID and LVM) => <*> `B`lock device as cache
+`D`evice Drivers => M`u`ltiple devices driver support (RAID and LVM) => <\*> `B`lock device as cache
 
 ```shell
 $ dnf install -y libelf-devel elfutils-libelf-devel rpm-build openssl-devel

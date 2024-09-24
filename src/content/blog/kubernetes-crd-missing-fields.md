@@ -3,9 +3,9 @@ title: 排查创建 Kubernetes 自定义资源时缺失字段的问题
 description: 本文介绍了排查在创建 Kubernetes 自定义资源时缺失字段的问题的症状、原因以及解决方案。
 pubDate: 2024-09-16T21:16:44+08:00
 categories:
-- Troubleshooting
+  - Troubleshooting
 tags:
-- Kubernetes
+  - Kubernetes
 mermaid: true
 ---
 
@@ -215,6 +215,9 @@ func mutateSpec(tasks []v1alpha1.TaskSpec, basePath string, job *v1alpha1.Job) *
 基于修改过的 CRD API 定义重新构建镜像并部署 Webhook 服务即可。
 
 [^volcano]: [Volcano](https://volcano.sh/)
+
 [^authentication]: [Authenticating | Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
+
 [^authorization]: [Authenticating | Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/authorization/)
+
 [^admission-controllers]: [Admission Controllers | Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)

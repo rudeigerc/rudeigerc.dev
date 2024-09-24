@@ -81,10 +81,10 @@ ShieldStore 整体的设计基本上延续了之前的设想，是将 metadata �
 ### 评估
 
 | Data Set | Key Size (B) | Value Size (B) |
-| :-: | :-: | :-: |
-| Small | 16 | 16 |
-| Medium | 16 | 128 |
-| Large | 16 | 512 |
+| :------: | :----------: | :------------: |
+|  Small   |      16      |       16       |
+|  Medium  |      16      |      128       |
+|  Large   |      16      |      512       |
 
 论文的 evaluation 主要有三个 metric，一个是 secured memcached，这边采用的实现是 Graphene-SGX，第二个是 ShieldBase，指的是未经过优化的 ShieldStore，第三个是 ShieldOPT，指的是经过上述策略优化的 ShieldStore。
 

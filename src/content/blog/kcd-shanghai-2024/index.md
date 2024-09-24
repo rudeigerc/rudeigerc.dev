@@ -128,23 +128,23 @@ spec:
   gatewayClassName: kong-ai-gateways
   largeLanguageModels:
     cloudHosted:
-    - identifier: marketing-team-classic-chatgpt
-      model: gpt-3.5-turbo-instruct
-      promptType: completions
-      aiCloudProvider:
-        name: openai
-    - identifier: devteam-chatgpt
-      model: gpt-4
-      promptType: chat
-      defaultPrompts:
-      - role: system
-        content: "You are a helpful assistant who responds in the style of Sherlock Holmes."
-      defaultPromptParams:
-        # temperature: "0.5" # higher confidence predictions
-        maxTokens: 50 # shorter responses
-        # topP: "0.9" # higher diversity
-      aiCloudProvider:
-        name: openai
+      - identifier: marketing-team-classic-chatgpt
+        model: gpt-3.5-turbo-instruct
+        promptType: completions
+        aiCloudProvider:
+          name: openai
+      - identifier: devteam-chatgpt
+        model: gpt-4
+        promptType: chat
+        defaultPrompts:
+          - role: system
+            content: "You are a helpful assistant who responds in the style of Sherlock Holmes."
+        defaultPromptParams:
+          # temperature: "0.5" # higher confidence predictions
+          maxTokens: 50 # shorter responses
+          # topP: "0.9" # higher diversity
+        aiCloudProvider:
+          name: openai
   cloudProviderCredentials:
     name: acme-ai-cloud-providers
 ```
@@ -194,5 +194,7 @@ spec:
 [[Videos]](https://space.bilibili.com/1274679632/channel/collectiondetail?sid=2842495)
 
 [^godel]: Wu Xiang, Yakun Li, Yuquan Ren, Fan Jiang, Chaohui Xin, Varun Gupta, Chao Xiang, Xinyi Song, Meng Liu, Bing Li, Kaiyang Shao, Chen Xu, Wei Shao, Yuqi Fu, Wilson Wang, Cong Xu, Wei Xu, Caixue Lin, Rui Shi, and Yuming Liang. 2023. Gödel: Unified Large-Scale Resource Management and Scheduling at ByteDance. In Proceedings of the 2023 ACM Symposium on Cloud Computing (SoCC '23). Association for Computing Machinery, New York, NY, USA, 308–323. https://doi.org/10.1145/3620678.3624663
+
 [^omega]: Malte Schwarzkopf, Andy Konwinski, Michael Abd-El-Malek, and John Wilkes. 2013. Omega: flexible, scalable schedulers for large compute clusters. In Proceedings of the 8th ACM European Conference on Computer Systems (EuroSys '13). Association for Computing Machinery, New York, NY, USA, 351–364. https://doi.org/10.1145/2465351.2465386
+
 [^ruler]: Cheng-Ping Hsieh, Simeng Sun, Samuel Kriman, Shantanu Acharya, Dima Rekesh, Fei Jia, and Boris Ginsburg. 2024. RULER: What’s the Real Context Size of Your Long-Context Language Models?. http://arxiv.org/abs/2404.06654

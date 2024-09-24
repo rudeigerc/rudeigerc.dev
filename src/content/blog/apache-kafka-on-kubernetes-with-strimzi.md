@@ -17,7 +17,9 @@ tags:
 我们在这里采用的解决方案是由 RedHat 开源的 Strimzi[^3]，Strimzi 是 CNCF 的 Sandbox 级项目，其通过定义 Kubernetes Operator 来达到 Kubernetes-native 的 Kafka 集群管理以及相关组件的控制。
 
 [^1]: https://kafka.apache.org/
+
 [^2]: https://kubernetes.io/
+
 [^3]: https://strimzi.io/
 
 ## 预备
@@ -40,6 +42,7 @@ client <------------------------------------------------------------------------
 Strimzi 实际上在 repository 里已经给出了许多使用相关 CRD 的例子[^4]，同时也在文档里详细描述了部署的过程[^5]。我们这里主要基于上述的材料进行修改来达到我们实际的使用需求。
 
 [^4]: https://github.com/strimzi/strimzi-kafka-operator/tree/master/examples
+
 [^5]: https://strimzi.io/docs/operators/latest/deploying.html
 
 ### Kafka Cluster
@@ -61,7 +64,7 @@ spec:
           type: tls
     template:
       pod:
-        securityContext:  # strimzi/strimzi-kafka-operator#1720
+        securityContext: # strimzi/strimzi-kafka-operator#1720
           runAsUser: 0
           fsGroup: 0
     config:
@@ -72,11 +75,11 @@ spec:
     storage:
       type: jbod
       volumes:
-      - id: 0
-        type: persistent-claim
-        size: 8Gi
-        deleteClaim: false
-        class: nfs-storage
+        - id: 0
+          type: persistent-claim
+          size: 8Gi
+          deleteClaim: false
+          class: nfs-storage
   zookeeper:
     template:
       pod:

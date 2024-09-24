@@ -85,9 +85,15 @@ categories:
 最后来进行一个简单的展望吧，大一点的话就是希望疫情尽早得到控制，小一点的话大概就是顺利找到实习并且顺利完成毕业论文的撰写，虽然现在具体的方案还八字没有一撇，「なんとかなる」。
 
 [^1]: H-Store: A High-Performance, Distributed Main Memory Transaction Processing System, VLDB ’08.
+
 [^2]: TicToc: Time Traveling Optimistic Concurrency Control, SIGMOD ’16.
+
 [^3]: Sundial: Harmonizing Concurrency Control and Caching in a Distributed OLTP Database Management System, VLDB ’18.
+
 [^4]: LSM-based storage techniques: a survey, VLDBJ, 2020.
+
 [^5]: Rosetta: A Robust Space-Time Optimized Range Filter for Key-Value Stores, SIGMOD ’20.
+
 [^6]: ElasticBF: Elastic Bloom Filter with Hotness Awareness for Boosting Read Performance in Large Key-Value Stores, USENIX ATC ’19.
+
 [^7]: EvenDB: Optimizing Key-Value Storage for Spatial Locality, EuroSys ’20.

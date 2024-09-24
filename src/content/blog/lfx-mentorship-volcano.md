@@ -69,7 +69,7 @@ Here are some lessons I have learned during the process of the program:
 
 ## Outside the Ivory Tower: It's Not the End
 
-We often say that there is a gap between *academia* and *industry* because of various scenarios. In terms of academia, researchers tend to gain better performance in certain metrics such as latency and throughput, while lacking the consideration of stability. On the other hand, developers consider stability as first-class citizens since they have to meet the requirements of service level objectives, or SLOs. In summary, implementing cutting-edge research from academia into the industry is quite challenging.
+We often say that there is a gap between _academia_ and _industry_ because of various scenarios. In terms of academia, researchers tend to gain better performance in certain metrics such as latency and throughput, while lacking the consideration of stability. On the other hand, developers consider stability as first-class citizens since they have to meet the requirements of service level objectives, or SLOs. In summary, implementing cutting-edge research from academia into the industry is quite challenging.
 
 I believe it is worth my attempt to bridge such a gap via the LFX mentorship program. I have been working closely with the community and gain valuable experience from the operation and communication with community members outside the ivory tower. This experience would also encourage me to continuously explore the world of cloud-native, and contribute to open-source projects.
 

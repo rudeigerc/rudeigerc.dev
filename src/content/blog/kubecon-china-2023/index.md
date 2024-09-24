@@ -59,7 +59,6 @@ JuiceFS 官方也有博客介绍其它采用 Fluid 与 JuiceFS 的解决方案�
 
 - Rong Gu, Kai Zhang, Zhihao Xu, Yang Che, Bin Fan, Haojun Hou, Haipeng Dai, Li Yi, Yu Ding, Guihai Chen, and Yihua Huang. 2022. Fluid: Dataset Abstraction and Elastic Acceleration for Cloud-native Deep Learning Training Jobs. In 2022 IEEE 38th International Conference on Data Engineering (ICDE), IEEE, Kuala Lumpur, Malaysia, 2182–2195. DOI:https://doi.org/10.1109/ICDE53745.2022.00209
 
-
 ---
 
 [在k8s上使用Ray对异构AI加速器进行ML增强 | Boost ML on Heterogeneous AI Accelerator with Ray on K8s - Tiejun Chen, VMware](https://kccncosschn2023.sched.com/event/1PTF9/nanok8szhi-rayai-fu-jmao-chan-ml-boost-ml-on-heterogeneous-ai-accelerator-with-ray-on-k8s-tiejun-chen-vmware?iframe=yes&w=100%&sidebar=yes&bg=no)
@@ -168,4 +167,5 @@ LLM 与其它领域的结合一直是近期的热点，实际上在 KubeCon 一�
 - [如何在大型集群中加速 Pod 的启动？ | How Can Pod Start-up Be Accelerated on Nodes in Large Clusters? - Paco Xu, DaoCloud & Byron Wang, Birentech](https://kccncosschn2023.sched.com/event/1PTFR/nanonfzhong-shi-fu-pod-zha-dyags-how-can-pod-start-up-be-accelerated-on-nodes-in-large-clusters-paco-xu-daocloud-byron-wang-birentech?iframe=yes&w=100%&sidebar=yes&bg=no)
 
 [^serviceweaver]: Sanjay Ghemawat, Robert Grandl, Srdjan Petrovic, Michael Whittaker, Parveen Patel, Ivan Posva, and Amin Vahdat. 2023. Towards Modern Development of Cloud Applications. In Proceedings of the 19th Workshop on Hot Topics in Operating Systems (HOTOS '23). Association for Computing Machinery, New York, NY, USA, 110–117. https://doi.org/10.1145/3593856.3595909
+
 [^faasm]: Shillaker, S. and Pietzuch, P. 2020. Faasm: Lightweight isolation for efficient stateful serverless computing. 2020 USENIX annual technical conference (USENIX ATC 20) (Jul. 2020), 419–433.

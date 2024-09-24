@@ -29,12 +29,11 @@ const {
 <BaseLayout
   title={title}
   description={description}
-  class={
-    cn(
-      "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
-      headings && "lg:grid-cols-[1fr_300px]"
-    )
-  }>
+  class={cn(
+    "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
+    headings && "lg:grid-cols-[1fr_300px]",
+  )}
+>
   <div class="mx-auto w-full min-w-0">
     <article data-pagefind-body>
       <div class="prose">
@@ -52,16 +51,20 @@ const {
           </div>
           {draft && <Badge>DRAFT</Badge>}
           {
-            categories?.map(category => (
+            categories?.map((category) => (
               <>
-                <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
+                <Badge variant="secondary" data-pagefind-filter="category">
+                  {category}
+                </Badge>
               </>
             ))
           }
           {
-            tags?.map(tag => (
+            tags?.map((tag) => (
               <>
-                <Badge variant="outline" data-pagefind-filter="tag">#{tag}</Badge>
+                <Badge variant="outline" data-pagefind-filter="tag">
+                  #{tag}
+                </Badge>
               </>
             ))
           }

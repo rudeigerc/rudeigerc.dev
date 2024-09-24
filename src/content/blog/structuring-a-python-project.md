@@ -3,13 +3,13 @@ title: Structuring a Python Project with PDM
 description: This tutorial shows you how to structure a Python project with PDM, a modern Python package and dependency manager supporting the latest PEP standards.
 pubDate: 2023-11-12T22:16:39+08:00
 categories:
-- tutorial
-- python
+  - tutorial
+  - python
 tags:
-- python
-- pdm
+  - python
+  - pdm
 series:
-- tutorial
+  - tutorial
 ---
 
 This tutorial shows you how to structure a Python project with [PDM](https://pdm-project.org/latest/), a modern Python package and dependency manager supporting the latest PEP standards.
@@ -168,7 +168,7 @@ Here are some recommended extensions for Visual Studio Code:
     "ms-python.vscode-pylance",
     "njpwerner.autodocstring",
     "redhat.vscode-yaml",
-    "tamasfe.even-better-toml",
+    "tamasfe.even-better-toml"
   ]
 }
 ```
@@ -182,13 +182,9 @@ Configure Python language support in `.vscode/settings.json`:
 ```json
 {
   "python.analysis.autoImportCompletions": true,
-  "python.analysis.extraPaths": [
-    ".venv/lib/python3.11/site-packages"
-  ],
-  "python.analysis.fixAll": [
-    "source.unusedImports"
-  ],
-  "python.languageServer": "Pylance",
+  "python.analysis.extraPaths": [".venv/lib/python3.11/site-packages"],
+  "python.analysis.fixAll": ["source.unusedImports"],
+  "python.languageServer": "Pylance"
 }
 ```
 
@@ -232,7 +228,7 @@ In this section, the tutorial will cover the following topics:
 
 `ruff` is an extremely fast Python linter and code formatter, written in Rust.
 
-Since v0.1.2, `ruff` supports both *linting* and *formatting* with outstanding performance compared to existing tools. As a result, `ruff` is recommended as the default linter and formatter for Python projects in this tutorial.
+Since v0.1.2, `ruff` supports both _linting_ and _formatting_ with outstanding performance compared to existing tools. As a result, `ruff` is recommended as the default linter and formatter for Python projects in this tutorial.
 
 Add `ruff` as a development dependency in group `lint`:
 
@@ -274,10 +270,8 @@ Configure `ruff` in `.vscode/settings.json`:
     },
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
-    "editor.rulers": [
-      88
-    ]
-  },
+    "editor.rulers": [88]
+  }
 }
 ```
 
@@ -317,9 +311,7 @@ Configure `mypy` in `.vscode/settings.json`:
 
 ```json
 {
-  "mypy-type-checker.path": [
-    ".venv/bin/mypy"
-  ],
+  "mypy-type-checker.path": [".venv/bin/mypy"]
 }
 ```
 
@@ -412,12 +404,10 @@ Configure testing support in `.vscode/settings.json`:
 
 ```json
 {
-  "python.testing.pytestArgs": [
-    "tests"
-  ],
+  "python.testing.pytestArgs": ["tests"],
   "python.testing.pytestEnabled": true,
   "python.testing.pytestPath": ".venv/bin/pytest",
-  "python.testing.unittestEnabled": false,
+  "python.testing.unittestEnabled": false
 }
 ```
 

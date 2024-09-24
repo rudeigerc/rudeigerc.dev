@@ -24,21 +24,22 @@ const posts = (
                 </p>
                 <div>
                   {post.data.draft && <Badge>DRAFT</Badge>}
-                  {
-                    post.data.categories?.map(category => (
-                      <>
-                        <Badge variant="secondary" data-pagefind-filter="category">{category}</Badge>
-                      </>
-                    ))
-                  }
+                  {post.data.categories?.map((category) => (
+                    <>
+                      <Badge
+                        variant="secondary"
+                        data-pagefind-filter="category"
+                      >
+                        {category}
+                      </Badge>
+                    </>
+                  ))}
                 </div>
               </div>
               <a href={`/posts/${post.slug}/`}>
                 <h4 class="title">{post.data.title}</h4>
               </a>
-              <p class="description">
-                {post.data.description ?? ""}
-              </p>
+              <p class="description">{post.data.description ?? ""}</p>
             </li>
           ))
         }

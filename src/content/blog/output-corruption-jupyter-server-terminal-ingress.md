@@ -3,11 +3,11 @@ title: 排查通过 Ingress 暴露的 Jupyter Lab 的伪终端间歇性输出字
 description: 本文介绍了排查通过 Ingress 暴露的 Jupyter Lab 的伪终端间歇性输出字符问题的症状、原因以及解决方案。
 pubDate: 2023-11-27T21:50:10+08:00
 categories:
-- Troubleshooting
+  - Troubleshooting
 tags:
-- Kubernetes
-- Jupyter
-- Ingress
+  - Kubernetes
+  - Jupyter
+  - Ingress
 ---
 
 ## 背景
@@ -107,7 +107,7 @@ STDIN \u001b[?12;2$y
 
 `\u001b` 是 `ESC` 的 Unicode 编码，`\u001b[` 代表控制序列导入器（Control Sequence Introducer，**CSI**），`\u001b]` 代表操作系统命令（Operating System Command，**OSC**），`\u001b\` 代表字符串终止（String Terminator，**ST**）。
 
-```text
+````text
 
 ```text
 CSI P s n
@@ -117,7 +117,7 @@ Device Status Report (DSR)
 P s = 5 → Status Report CSI 0 n (‘‘OK’’)
 P s = 6 → Report Cursor Position (CPR) [row;column] as
 CSI r ; c R
-```
+````
 
 `\u001b[2;2R` 即 `CSI 2 ; 2 R`，表示光标的位置是第 2 行第 2 列，该序列是状态控制报告（Device Status Report，DSR）。
 
@@ -204,7 +204,6 @@ CSI ? Ps $ p
 
 - [Xterm Control Sequences](https://www.xfree86.org/current/ctlseqs.html)
 - [ctlseqs(ms)](https://invisible-island.net/xterm/ctlseqs/ctlseqs.html)
-
 
 相关 Issue：
 

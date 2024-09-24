@@ -47,13 +47,13 @@ Expect(err).NotTo(HaveOccurred(), "Failed to create %d foobars, only created %d"
 在运行 e2e 测试的时候，为了减小端到端的言辞以及提高资源利用率，我们尽可能地尝试在相同的测试集群之中并行运行大量的测试，这意味着：
 
 1. 你应该避免做出任何你的测试是唯一在集群之上运行的东西的假设（无论是隐式的还是显式的）。
-举例来说，做出你的测试可以在集群当中的每一个节点上运行一个 pod 的假设并不是安全的，因为一些和你的测试同时运行的其它的测试可能已经使得集群中的一个或者多个节点饱和。
-例如，在系统 namespace 当中运行一个 pod，并且假设其会使得系统 namespace 当中的 pod 的数量会增加一个也是不安全的，因为一些其它的测试可能会与你的测试同时在系统 namespace 中创建或删除 pod。如果你确实合理地需要像那样编写一个测试，确保给它打上了“[[Serial]”](https://github.com/kubernetes/community/blob/978aa3fb5b5593aed4b11ee0cc45ab9dcd16e5e8/contributors/devel/sig-testing/e2e-tests.md#kinds-of-tests)的标签，这样便于识别，并且不会和任何其它的测试并行运行。
+   举例来说，做出你的测试可以在集群当中的每一个节点上运行一个 pod 的假设并不是安全的，因为一些和你的测试同时运行的其它的测试可能已经使得集群中的一个或者多个节点饱和。
+   例如，在系统 namespace 当中运行一个 pod，并且假设其会使得系统 namespace 当中的 pod 的数量会增加一个也是不安全的，因为一些其它的测试可能会与你的测试同时在系统 namespace 中创建或删除 pod。如果你确实合理地需要像那样编写一个测试，确保给它打上了“[[Serial]”](https://github.com/kubernetes/community/blob/978aa3fb5b5593aed4b11ee0cc45ab9dcd16e5e8/contributors/devel/sig-testing/e2e-tests.md#kinds-of-tests)的标签，这样便于识别，并且不会和任何其它的测试并行运行。
 2. 你应该避免在同一时间对集群做一些让其它测试难以可靠地做它们要做的事情。
-例如，重启节点、断开网络接口或者升级集群软件作为测试的一部分，这些很可能会违反其它测试对合理稳定的集群环境可能做出的假设。
-如果你需要编写这样的测试，请为其打上[“[Disruptive]”](https://github.com/kubernetes/community/blob/978aa3fb5b5593aed4b11ee0cc45ab9dcd16e5e8/contributors/devel/sig-testing/e2e-tests.md#kinds-of-tests)的标签，这样便于识别，并且不会和任何其它的测试并行运行。
+   例如，重启节点、断开网络接口或者升级集群软件作为测试的一部分，这些很可能会违反其它测试对合理稳定的集群环境可能做出的假设。
+   如果你需要编写这样的测试，请为其打上[“[Disruptive]”](https://github.com/kubernetes/community/blob/978aa3fb5b5593aed4b11ee0cc45ab9dcd16e5e8/contributors/devel/sig-testing/e2e-tests.md#kinds-of-tests)的标签，这样便于识别，并且不会和任何其它的测试并行运行。
 3. 你应该避免对 Kubernetes API 做出不属于 API 规范的假设，因为一旦这些假设失效，你的测试就会崩溃。
-例如，依赖特定的 Event、Event reason 或者 Event 消息会让你的测试变得非常脆弱。
+   例如，依赖特定的 Event、Event reason 或者 Event 消息会让你的测试变得非常脆弱。
 
 #### 执行速度
 
@@ -90,29 +90,29 @@ Expect(err).NotTo(HaveOccurred(), "Failed to create %d foobars, only created %d"
 这里有几个要点：
 
 - [e2e 框架](https://git.k8s.io/kubernetes/test/e2e/framework/framework.go)：
-使你自己熟悉这个测试框架以及如何使用它。
-其中，它可以自动创建唯一命名的 namespace 使你的测试能够在其中运行以避免命名冲突，并且在测试完成之后可靠地自动清理混乱（它只是删除了 namespace 中的所有东西）。
-这有助于确保测试不会泄漏资源。
-需要注意的是，删除一个 namespace（也意味着其中的一切）目前是一个昂贵的操作。
-因此，你创建的资源越少，框架所需要做的清理工作越少，你的测试（以及与你的测试并发运行的其它测试）完成得越快。
-你的测试应该始终使用这个框架。
-事实证明尝试其它自创的方法来避免命名冲突和资源泄漏是一个非常糟糕的主意。
+  使你自己熟悉这个测试框架以及如何使用它。
+  其中，它可以自动创建唯一命名的 namespace 使你的测试能够在其中运行以避免命名冲突，并且在测试完成之后可靠地自动清理混乱（它只是删除了 namespace 中的所有东西）。
+  这有助于确保测试不会泄漏资源。
+  需要注意的是，删除一个 namespace（也意味着其中的一切）目前是一个昂贵的操作。
+  因此，你创建的资源越少，框架所需要做的清理工作越少，你的测试（以及与你的测试并发运行的其它测试）完成得越快。
+  你的测试应该始终使用这个框架。
+  事实证明尝试其它自创的方法来避免命名冲突和资源泄漏是一个非常糟糕的主意。
 
 - [e2e 工具库](https://git.k8s.io/kubernetes/test/e2e/framework/util.go)：
-这个方便的库提供了大量的可重用的代码，用于许多需要的常用测试功能，包括等待资源进行指定的状态，安全且一致地重试失败的操作，有效地报告错误等。
-确保你熟悉了那里可用的内容并使用它。
-同样，如果你遇到了一个普遍有用的机制，而那里还未实现，你可以将其加入库中这样其他人就能从你的智慧中受益。
-尤其要注意文件顶部中德各种超时和重试相关的常量。
-一定要尽量重用这些常量而不是自行定义。
-即使这些值可能并不是你想要使用的（超时时间、重试次数等），但是在整个测试套件中保证其一致并且中心化配置的好处通常会超过你的个人偏好设置。
+  这个方便的库提供了大量的可重用的代码，用于许多需要的常用测试功能，包括等待资源进行指定的状态，安全且一致地重试失败的操作，有效地报告错误等。
+  确保你熟悉了那里可用的内容并使用它。
+  同样，如果你遇到了一个普遍有用的机制，而那里还未实现，你可以将其加入库中这样其他人就能从你的智慧中受益。
+  尤其要注意文件顶部中德各种超时和重试相关的常量。
+  一定要尽量重用这些常量而不是自行定义。
+  即使这些值可能并不是你想要使用的（超时时间、重试次数等），但是在整个测试套件中保证其一致并且中心化配置的好处通常会超过你的个人偏好设置。
 
 - **遵循稳定的且编写良好的测试用例：**
-我们现有的一些端到端测试比其它测试写得更好更可靠。
-编写良好的测试的几个例子包括：[Replication Controllers](https://git.k8s.io/kubernetes/test/e2e/apps/rc.go)、[Services](https://git.k8s.io/kubernetes/test/e2e/network/service.go) 与 [Reboot](https://git.k8s.io/kubernetes/test/e2e/cloud/gcp/reboot.go)。
+  我们现有的一些端到端测试比其它测试写得更好更可靠。
+  编写良好的测试的几个例子包括：[Replication Controllers](https://git.k8s.io/kubernetes/test/e2e/apps/rc.go)、[Services](https://git.k8s.io/kubernetes/test/e2e/network/service.go) 与 [Reboot](https://git.k8s.io/kubernetes/test/e2e/cloud/gcp/reboot.go)。
 - [Ginkgo 测试框架](https://github.com/onsi/ginkgo)：
-这是我们的 e2e 测试基于的测试库与运行器。
-在你编写或重构一个测试之前，请阅读文档并确保你了解它是如何工作的。
-尤其需要注意的是每个测试都是由 `Describe` 子句和嵌套的 `It` 子句组合而成的，这是唯一的标识和描述（例如，在测试报告中）。所以例如，`Describe("Pods",...).... It(""should be scheduled with cpu and memory limits")` 会产生一个正常的测试标识符和描述符 `Pods should be scheduled with cpu and memory limits`，这明确了正在被测试的是什么，以及如果因此失败的话什么是不工作的。其它好的例子包括：
+  这是我们的 e2e 测试基于的测试库与运行器。
+  在你编写或重构一个测试之前，请阅读文档并确保你了解它是如何工作的。
+  尤其需要注意的是每个测试都是由 `Describe` 子句和嵌套的 `It` 子句组合而成的，这是唯一的标识和描述（例如，在测试报告中）。所以例如，`Describe("Pods",...).... It(""should be scheduled with cpu and memory limits")` 会产生一个正常的测试标识符和描述符 `Pods should be scheduled with cpu and memory limits`，这明确了正在被测试的是什么，以及如果因此失败的话什么是不工作的。其它好的例子包括：
 
 ```text
    CAdvisor should be healthy on every node
@@ -162,7 +162,7 @@ Unreachable nodes are evacuated and then repopulated upon rejoining [Disruptive]
 
 1. 只使用适合 `test/e2e/<AREA>/<SPECIFIC_AREA>` 的资源类型
 2. 资源类型 `ConfigMap` 是低开销、通用和无状态的。
-它应该被用于获取已创建的资源
+   它应该被用于获取已创建的资源
 3. 虽然用于测试的集群一般都很强大，但是不应该创建过多的资源，因为是不必要的
 4. 使用 `afterEach`，确保你的测试销毁了测试当中遗留的任何资源
 

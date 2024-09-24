@@ -33,7 +33,7 @@ Prometheus provides a UI at `:9090` by default.
 
 ### Node Exporter
 
-[**Node Exporter**](https://github.com/prometheus/node_exporter) is designed ad a Prometheus exporter for hardware and OS metrics exposed by *NIX kernels.
+[**Node Exporter**](https://github.com/prometheus/node_exporter) is designed ad a Prometheus exporter for hardware and OS metrics exposed by \*NIX kernels.
 
 According to the documentation, it's not recommended to deploy it as a Docker container because it requires access to the host system, so you could just download the binary release version.
 
@@ -92,19 +92,19 @@ global:
 
 scrape_configs:
   # Self-monitoring
-  - job_name: 'prometheus'
+  - job_name: "prometheus"
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ["localhost:9090"]
       - labels:
           instance: prometheus
   # Without service discovery
-  - job_name: 'node_exporter'
+  - job_name: "node_exporter"
     static_configs:
-      - targets: ['$PRIVATE_IP_ADDRESS:9100']
+      - targets: ["$PRIVATE_IP_ADDRESS:9100"]
       - labels:
           instance: node_exporter
   # With service discovery, discard the job above
-  - job_name: 'node_exporter'
+  - job_name: "node_exporter"
     consul_sd_configs:
       - server: $PRIVATE_IP_ADDRESS:8500
         services:

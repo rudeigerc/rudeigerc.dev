@@ -97,8 +97,13 @@ jobs:
 通过 `::set-output` 与 `fromJson` 的结合，我们就可以动态地为包括 Matrix 在内的 Workflow 中的值进行动态赋值，使得 GitHub Actions 的使用更加具有扩展性。
 
 [^1]: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+
 [^2]: Dynamic Matrices in GitHub Actions. https://thekevinwang.com/2021/09/19/github-actions-dynamic-matrix/
+
 [^3]: GitHubActionsでmatrixの値を動的に扱う. https://swfz.hatenablog.com/entry/2021/06/29/195359
+
 [^4]: How to make a Dynamic Matrix in GitHub Actions | Tomas Votruba. https://tomasvotruba.com/blog/2020/11/16/how-to-make-dynamic-matrix-in-github-actions/
+
 [^5]: https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
+
 [^6]: https://docs.github.com/cn/actions/learn-github-actions/expressions#fromjson

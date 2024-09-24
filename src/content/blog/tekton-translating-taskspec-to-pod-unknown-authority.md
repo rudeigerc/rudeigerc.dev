@@ -3,10 +3,10 @@ title: 排查在 Tekton 中使用来自自签名私有镜像仓库的镜像时�
 description: 本文介绍了排查在 Tekton 中使用来自自签名私有镜像仓库的镜像时的证书问题的症状、原因以及解决方案。
 pubDate: 2024-09-09T16:56:35+08:00
 categories:
-- Troubleshooting
+  - Troubleshooting
 tags:
-- Kubernetes
-- Tekton
+  - Kubernetes
+  - Tekton
 ---
 
 ## 背景
@@ -33,7 +33,7 @@ failed to create task run pod "task-run": translating TaskSpec to Pod: error get
 由于先前在使用其它 Task 的时候没有触发过相关问题，仅在 `kaniko` 中会出现，所以起初以为是 `kaniko` 的 Task 本身的问题，尝试了一些修改 `kaniko` 运行参数的方法都没办法解决。
 后来通过在 [tektoncd/pipeline](https://github.com/tektoncd/pipeline) 中搜索相关的 Issue 发现，在 [tektoncd/pipeline#3105](https://github.com/tektoncd/pipeline/issues/3105) 中，Tekton 的维护者 [@vdemeester](https://github.com/vdemeester) 在评论中提到：
 
-> It is correct *in a way*. This error happens **before** pulling the image. Tekton is doing some entrypoint magic (cc @bobcatfish @imjasonh for their talk link 😁) : in case no `command` is specified, the controller will try to fetch the image configuration to get the command (`entrypoint` is the "docker" sense)… And this is where it fails, because the tekton controller might not have the certificates available.
+> It is correct _in a way_. This error happens **before** pulling the image. Tekton is doing some entrypoint magic (cc @bobcatfish @imjasonh for their talk link 😁) : in case no `command` is specified, the controller will try to fetch the image configuration to get the command (`entrypoint` is the "docker" sense)… And this is where it fails, because the tekton controller might not have the certificates available.
 
 前述错误的根本原因在于，Tekton 会对 entrypoint 进行一些 hacking，因此当 Task 中未指定 `command` 的时候，Controller 会尝试访问镜像元数据获取镜像配置中设置的 `entrypoint`，当没有对应的 CA 证书的时候就会报错。
 

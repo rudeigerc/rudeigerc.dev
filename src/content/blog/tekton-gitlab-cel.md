@@ -26,25 +26,25 @@ triggers:
           name: gitlab
           kind: ClusterInterceptor
         params:
-        - name: secretRef
-          value:
-            secretName: gitlab-secret
-            secretKey: secretToken
-        - name: eventTypes
-          value:
-            - Push Hook
+          - name: secretRef
+            value:
+              secretName: gitlab-secret
+              secretKey: secretToken
+          - name: eventTypes
+            value:
+              - Push Hook
       - ref:
           name: cel
           kind: ClusterInterceptor
         params:
-        - name: filter
-          value: body.commits.map(commit, commit.added + commit.modified + commit.removed).exists(files, true in files.map(file, matches(file, "^(src|tests)|^pyproject.toml$")))
-        - name: overlays
-          value:
-          - key: truncated_sha
-            expression: body.pull_request.head.sha.truncate(7)
-          - key: branch_name
-            expression: body.ref.split("/")[2]
+          - name: filter
+            value: body.commits.map(commit, commit.added + commit.modified + commit.removed).exists(files, true in files.map(file, matches(file, "^(src|tests)|^pyproject.toml$")))
+          - name: overlays
+            value:
+              - key: truncated_sha
+                expression: body.pull_request.head.sha.truncate(7)
+              - key: branch_name
+                expression: body.ref.split("/")[2]
 ```
 
 ## 背景
@@ -57,7 +57,7 @@ triggers:
 on:
   push:
     paths:
-    - '**.js'
+      - "**.js"
 ```
 
 ### Tekton Triggers
@@ -86,13 +86,13 @@ Tekton Triggers 的 Interceptor 是一种事件处理器，它会在 TriggerBind
 
 ```yaml
 triggers:
-    - name: github-listener
-      interceptors:
-        - ref:
-            name: "github"
-            kind: ClusterInterceptor
-            apiVersion: triggers.tekton.dev
-          params:
+  - name: github-listener
+    interceptors:
+      - ref:
+          name: "github"
+          kind: ClusterInterceptor
+          apiVersion: triggers.tekton.dev
+        params:
           - name: "secretRef"
             value:
               secretName: github-secret
@@ -102,9 +102,9 @@ triggers:
           - name: "addChangedFiles"
             value:
               enabled: true
-        - ref:
-            name: cel
-          params:
+      - ref:
+          name: cel
+        params:
           - name: filter
             # execute only when a file within the controllers directory has changed
             value: extensions.changed_files.matches('controllers/')
@@ -131,31 +131,31 @@ GitLab Webhook 的文档[^gitlab-webhook-push-events]给出了 Push Event 被触
   "user_email": "john@example.com",
   "user_avatar": "https://s.gravatar.com/avatar/d4c74594d841139328695756648b6bd6?s=8://s.gravatar.com/avatar/d4c74594d841139328695756648b6bd6?s=80",
   "project_id": 15,
-  "project":{
+  "project": {
     "id": 15,
-    "name":"Diaspora",
-    "description":"",
-    "web_url":"http://example.com/mike/diaspora",
-    "avatar_url":null,
-    "git_ssh_url":"git@example.com:mike/diaspora.git",
-    "git_http_url":"http://example.com/mike/diaspora.git",
-    "namespace":"Mike",
-    "visibility_level":0,
-    "path_with_namespace":"mike/diaspora",
-    "default_branch":"master",
-    "homepage":"http://example.com/mike/diaspora",
-    "url":"git@example.com:mike/diaspora.git",
-    "ssh_url":"git@example.com:mike/diaspora.git",
-    "http_url":"http://example.com/mike/diaspora.git"
+    "name": "Diaspora",
+    "description": "",
+    "web_url": "http://example.com/mike/diaspora",
+    "avatar_url": null,
+    "git_ssh_url": "git@example.com:mike/diaspora.git",
+    "git_http_url": "http://example.com/mike/diaspora.git",
+    "namespace": "Mike",
+    "visibility_level": 0,
+    "path_with_namespace": "mike/diaspora",
+    "default_branch": "master",
+    "homepage": "http://example.com/mike/diaspora",
+    "url": "git@example.com:mike/diaspora.git",
+    "ssh_url": "git@example.com:mike/diaspora.git",
+    "http_url": "http://example.com/mike/diaspora.git"
   },
-  "repository":{
+  "repository": {
     "name": "Diaspora",
     "url": "git@example.com:mike/diaspora.git",
     "description": "",
     "homepage": "http://example.com/mike/diaspora",
-    "git_http_url":"http://example.com/mike/diaspora.git",
-    "git_ssh_url":"git@example.com:mike/diaspora.git",
-    "visibility_level":0
+    "git_http_url": "http://example.com/mike/diaspora.git",
+    "git_ssh_url": "git@example.com:mike/diaspora.git",
+    "visibility_level": 0
   },
   "commits": [
     {
@@ -197,8 +197,8 @@ GitLab Webhook 的文档[^gitlab-webhook-push-events]给出了 Push Event 被触
 
 ```javascript
 body.commits
-  .flatMap(commit => commit.added.concat(commit.modified, commit.removed))
-  .filter((item, index, array) => array.indexOf(item) === index)
+  .flatMap((commit) => commit.added.concat(commit.modified, commit.removed))
+  .filter((item, index, array) => array.indexOf(item) === index);
 ```
 
 但是由于 CEL 表达式不支持类似 `flatten()` 或是 `reduce()` 之类的降维操作，需要采用一点迂回的方法才能实现相同的效果：
@@ -265,10 +265,17 @@ true
 当然，如果能够在和 GitHub Interceptor 一样在 Tekton Triggers 的代码中直接在 GitLab Interceptor 中集成 `addChangedFiles` 参数的话会更为理想，这样就可以通过在 CEL Interceptor 中使用 `extensions.changed_files.matches('^(app|tests)|^Gemfile$')` 来实现和本文介绍的内容相同的效果。
 
 [^kubernetes-cel]: [Kubernetes 中的通用表达式语言 | Kubernetes](https://kubernetes.io/zh-cn/docs/reference/using-api/cel/)
+
 [^kubernetes-crd-validation-using-cel]: [Kubernetes CRD Validation Using CEL | Google Open Source Blog](https://opensource.googleblog.com/2023/11/kubernetes-crd-validation-using-cel.html)
+
 [^secure-web-proxy-cel]: [CEL matcher language reference | Secure Web Proxy | Google Cloud](https://cloud.google.com/secure-web-proxy/docs/cel-matcher-language-reference)
+
 [^tekton-interceptor-adding-changed-files]: [Tekton](https://tekton.dev/docs/triggers/interceptors/#adding-changed-files)
+
 [^tekton-triggers-interceptors-gitlab]: https://github.com/tektoncd/triggers/blob/main/pkg/interceptors/gitlab/gitlab.go
+
 [^tekton-triggers-interceptors-bitbucket]: https://github.com/tektoncd/triggers/blob/main/pkg/interceptors/bitbucket/bitbucket.go
+
 [^cel]: [google/cel-spec: Common Expression Language](https://github.com/google/cel-spec)
+
 [^gitlab-webhook-push-events]: [Webhook events | GitLab](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html#push-events)

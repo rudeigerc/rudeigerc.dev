@@ -13,10 +13,10 @@ const { title, description, class: className } = Astro.props;
 ---
 
 <html lang="zh-Hans">
-	<head>
-		<BaseHead title={title} description={description} />
-	</head>
-	<body class="min-h-screen bg-background">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="min-h-screen bg-background">
     <div class="relative flex min-h-screen flex-col bg-background">
       <Header />
       <div class="container flex-1">
@@ -28,5 +28,5 @@ const { title, description, class: className } = Astro.props;
       </div>
       <Footer />
     </div>
-	</body>
+  </body>
 </html>
