@@ -1,27 +1,31 @@
 ---
+import { cn } from "@/lib/utils";
 import type { MarkdownHeading } from "astro";
+import type { TocItem } from "../lib/toc";
+import { generateToC } from "../lib/toc";
 
 interface Props {
-  headings: MarkdownHeading[];
+  toc: TocItem[];
+  depth?: number;
 }
 
-const { headings } = Astro.props;
+const { toc, depth = 0 } = Astro.props;
 ---
 
-<nav class="space-y-2">
-  <p class="font-medium">On This Page</p>
-  <ul class="m-0 list-none">
-    {
-      headings.map((heading) => (
-        <li class="mt-0 pt-2">
-          <a
-            href={`#${heading.slug}`}
-            class="inline-block no-underline transition-colors hover:text-foreground text-muted-foreground"
-          >
-            {heading.text}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+<ul class={cn("m-0 list-none", { "pl-4": depth !== 0 })}>
+  {
+    toc.map((heading) => (
+      <li class="mt-0 pt-2">
+        <a
+          href={`#${heading.slug}`}
+          class="inline-block no-underline transition-colors hover:text-foreground text-muted-foreground"
+        >
+          <span>{heading.text}</span>
+        </a>
+        {heading.children.length > 0 && (
+          <Astro.self toc={heading.children} depth={depth + 1} />
+        )}
+      </li>
+    ))
+  }
+</ul>

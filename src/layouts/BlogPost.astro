@@ -8,6 +8,7 @@ import TableOfContents from "@/components/TableOfContents.astro";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { generateToC } from "../lib/toc";
 import BaseLayout from "./BaseLayout.astro";
 
 import "../../node_modules/katex/dist/katex.min.css";
@@ -24,6 +25,11 @@ const {
   tags,
   headings,
 } = Astro.props;
+
+const toc = generateToC(headings ?? [], {
+  minHeadingLevel: 1,
+  maxHeadingLevel: 3,
+});
 ---
 
 <BaseLayout
@@ -31,7 +37,7 @@ const {
   description={description}
   class={cn(
     "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
-    headings && "lg:grid-cols-[1fr_300px]",
+    headings && "lg:grid-cols-[1fr_300px]"
   )}
 >
   <div class="mx-auto w-full min-w-0">
@@ -79,7 +85,10 @@ const {
       <div class="hidden text-sm xl:block">
         <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-16">
           <ScrollArea className="h-full pb-10">
-            <TableOfContents headings={headings} />
+            <nav class="space-y-2">
+              <p class="font-medium">On This Page</p>
+              <TableOfContents toc={toc} />
+            </nav>
           </ScrollArea>
         </div>
       </div>
