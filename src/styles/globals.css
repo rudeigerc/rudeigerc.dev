@@ -71,6 +71,8 @@
 
 @layer base {
   .prose {
+    @apply m-auto p-8 max-w-prose;
+
     h1 {
       @apply mt-2 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
     }
