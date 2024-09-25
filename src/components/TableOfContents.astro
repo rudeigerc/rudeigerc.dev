@@ -1,8 +1,6 @@
 ---
+import type { TocItem } from "@/lib/toc";
 import { cn } from "@/lib/utils";
-import type { MarkdownHeading } from "astro";
-import type { TocItem } from "../lib/toc";
-import { generateToC } from "../lib/toc";
 
 interface Props {
   toc: TocItem[];
