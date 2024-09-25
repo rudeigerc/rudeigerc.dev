@@ -4,10 +4,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
-<BaseLayout
-  title={`Search | ${SITE_TITLE}`}
-  description={SITE_DESCRIPTION}
-  class="pt-8"
->
+<BaseLayout title="Search" description={SITE_DESCRIPTION} class="pt-8">
   <Pagefind class="m-auto max-w-prose" />
 </BaseLayout>
