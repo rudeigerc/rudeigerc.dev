@@ -40,7 +40,7 @@
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
     "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "source.organizeImports.biome": "never"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
 }

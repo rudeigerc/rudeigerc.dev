@@ -2,7 +2,7 @@
 import "@/styles/globals.css";
 import "@/styles/code.css";
 
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import GTag from "./GTag.astro";
 
 interface Props {
@@ -53,3 +53,5 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 
 <!-- Google Analytics -->
 {import.meta.env.PROD && <GTag />}
+
+<slot name="head" />

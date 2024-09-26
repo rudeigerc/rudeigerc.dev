@@ -16,6 +16,7 @@ const { title, description, class: className } = Astro.props;
 <html lang="zh-Hans">
   <head>
     <BaseHead title={title} description={description} />
+    <slot name="head" slot="head" />
   </head>
   <body class="min-h-screen bg-background">
     <div class="relative flex min-h-screen flex-col bg-background">

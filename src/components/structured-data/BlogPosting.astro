@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { BlogPosting, WithContext } from "schema-dts";
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, tags } = Astro.props;
+
+const structuredData: WithContext<BlogPosting> = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  name: title,
+  headline: title,
+  inLanguage: "zh-Hans",
+  isFamilyFriendly: true,
+  url: pageUrl.toString(),
+  description: description,
+  thumbnailUrl: new URL("favicon.svg", Astro.site).toString(),
+  license: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": Astro.site?.toString(),
+  },
+  author: {
+    "@type": "Person",
+    name: "Yuchen Cheng",
+    url: Astro.site?.toString(),
+  },
+  creator: {
+    "@type": "Person",
+    name: "Yuchen Cheng",
+  },
+  copyrightHolder: {
+    "@type": "Person",
+    name: "Yuchen Cheng",
+  },
+  image: {
+    "@type": "ImageObject",
+    url: new URL("og.png", pageUrl).toString(),
+    width: "1200",
+    height: "630",
+    caption: title,
+  },
+  copyrightYear: new Date().getFullYear(),
+  dateCreated: pubDate.toISOString(),
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+  keywords: tags?.join(", "),
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(structuredData)}
+/>

@@ -7,8 +7,8 @@ import Giscus from "@/components/Giscus.astro";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { generateToC } from "@/lib/toc";
 import { cn } from "@/lib/utils";
-import { generateToC } from "../lib/toc";
 import BaseLayout from "./BaseLayout.astro";
 
 import "../../node_modules/katex/dist/katex.min.css";
@@ -33,6 +33,7 @@ const toc = generateToC(headings ?? [], {
 ---
 
 <BaseLayout title={title} description={description}>
+  <slot name="head" slot="head" />
   <div class="mx-auto max-w-6xl">
     <main
       class={cn(

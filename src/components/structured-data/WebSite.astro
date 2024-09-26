@@ -1,0 +1,23 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import type { WebSite, WithContext } from "schema-dts";
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData: WithContext<WebSite> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_TITLE,
+  url: pageUrl.toString(),
+  description: SITE_DESCRIPTION,
+  inLanguage: "zh-Hans",
+  thumbnailUrl: new URL("favicon.svg", Astro.site).toString(),
+  license: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(structuredData)}
+/>
