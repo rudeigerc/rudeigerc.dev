@@ -18,6 +18,7 @@ export function generateToC(
   headings: MarkdownHeading[],
   { minHeadingLevel, maxHeadingLevel }: TocOpts,
 ) {
+  // biome-ignore lint/style/noParameterAssign: third-party
   headings = headings.filter(
     ({ depth }) => depth >= minHeadingLevel && depth <= maxHeadingLevel,
   );
@@ -35,6 +36,7 @@ function injectChild(items: TocItem[], item: TocItem): void {
       items.push(item);
     }
   } else {
+    // biome-ignore lint/correctness/noVoidTypeReturn: third-party
     return injectChild(lastItem.children, item);
   }
 }

@@ -7,6 +7,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
+import { rehypeShiki } from "@astrojs/markdown-remark";
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import remarkMath from "remark-math";
@@ -29,6 +30,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, rehypeMermaid],
+    rehypePlugins: [rehypeKatex, rehypeMermaid, rehypeShiki],
+    syntaxHighlight: false,
   },
 });
