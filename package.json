@@ -12,6 +12,7 @@
     "astro": "astro",
     "check": "biome check",
     "format": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache && biome check --formatter-enabled=false --write",
+    "playwright": "pnpx playwright-core install chromium",
     "postbuild": "pnpx pagefind"
   },
   "dependencies": {

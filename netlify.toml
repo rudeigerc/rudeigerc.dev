@@ -1,3 +1,3 @@
 [build]
 publish = "dist"
-command = "pnpm build"
+command = "pnpm playwright && pnpm build"
