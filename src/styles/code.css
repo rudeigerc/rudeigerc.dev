@@ -24,3 +24,13 @@
 .astro-code .word--highlighted {
   @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
 }
+
+.shiki-code-block-title {
+  @apply mt-4 px-4 py-2 text-sm font-medium;
+}
+
+.shiki-code-block {
+  pre {
+    @apply mt-0;
+  }
+}

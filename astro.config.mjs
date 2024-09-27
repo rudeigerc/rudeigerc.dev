@@ -12,6 +12,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import remarkMath from "remark-math";
 import remarkGithubAlerts from "remark-github-alerts";
+import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,6 +39,7 @@ export default defineConfig({
         rehypeShiki,
         {
           theme: "github-dark",
+          transformers: [transformerTitle()],
         },
       ],
     ],

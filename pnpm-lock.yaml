@@ -44,6 +44,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.7)(react@18.3.1)
+      '@rudeigerc/shiki-transformer-title':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@shikijs/transformers':
         specifier: ^1.20.0
         version: 1.20.0
@@ -902,6 +905,9 @@ packages:
     resolution: {integrity: sha512-fOvu7PCQjAj4eWDEuD8Xz5gpzFqXzGlxHZozHP4b9Jxv9APtdxL6STqztDzMLuRXEc4UpXGGhx029Xgm91QBeA==}
     cpu: [x64]
     os: [win32]
+
+  '@rudeigerc/shiki-transformer-title@0.1.0':
+    resolution: {integrity: sha512-/jrV/dibtG3dahz9Obp6FUb29rtaUadrD0rX3eRrQGNX6ETTvH5UARE1BihTGbmTVoxTHDi/SERwAgTdlIYBng==}
 
   '@shikijs/core@1.17.7':
     resolution: {integrity: sha512-ZnIDxFu/yvje3Q8owSHaEHd+bu/jdWhHAaJ17ggjXofHx5rc4bhpCSW+OjC6smUBi5s5dd023jWtZ1gzMu/yrw==}
@@ -3859,6 +3865,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.21.3':
     optional: true
+
+  '@rudeigerc/shiki-transformer-title@0.1.0':
+    dependencies:
+      '@shikijs/types': 1.20.0
 
   '@shikijs/core@1.17.7':
     dependencies:
