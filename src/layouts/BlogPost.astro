@@ -11,7 +11,10 @@ import { generateToC } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./BaseLayout.astro";
 
-import "../../node_modules/katex/dist/katex.min.css";
+import "katex/dist/katex.min.css";
+import "remark-github-alerts/styles/github-colors-light.css";
+import "remark-github-alerts/styles/github-colors-dark-class.css";
+import "remark-github-alerts/styles/github-base.css";
 
 type Props = CollectionEntry<"blog">["data"] & { headings?: MarkdownHeading[] };
 

@@ -11,6 +11,7 @@ import { rehypeShiki } from "@astrojs/markdown-remark";
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import remarkMath from "remark-math";
+import remarkGithubAlerts from "remark-github-alerts";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,8 +30,17 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, rehypeMermaid, rehypeShiki],
+    remarkPlugins: [remarkMath, remarkGithubAlerts],
+    rehypePlugins: [
+      rehypeKatex,
+      rehypeMermaid,
+      [
+        rehypeShiki,
+        {
+          theme: "github-dark",
+        },
+      ],
+    ],
     syntaxHighlight: false,
   },
 });
