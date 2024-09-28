@@ -97,7 +97,7 @@
     }
 
     a {
-      @apply font-medium hover:text-cyan-800;
+      @apply font-medium hover:underline hover:underline-offset-4 hover:transition;
     }
 
     p {

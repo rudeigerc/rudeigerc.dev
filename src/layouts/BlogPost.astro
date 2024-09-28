@@ -27,6 +27,7 @@ const {
   categories,
   tags,
   headings,
+  heroImage,
 } = Astro.props;
 
 const toc = generateToC(headings ?? [], {
@@ -49,8 +50,11 @@ const toc = generateToC(headings ?? [], {
           <div class="prose">
             <div class="title">
               <h1 data-pagefind-meta="title">{title}</h1>
-              <div class="text-muted-foreground text-sm mb-1">
-                <FormattedDate date={pubDate} data-pagefind-meta="date" />
+              <div class="text-muted-foreground text-sm mb-2">
+                Published on <FormattedDate
+                  date={pubDate}
+                  data-pagefind-meta="date"
+                />
                 {
                   updatedDate && (
                     <>
@@ -79,6 +83,15 @@ const toc = generateToC(headings ?? [], {
                 ))
               }
             </div>
+            {
+              heroImage && (
+                <img
+                  src={new URL(heroImage, Astro.url.origin).toString()}
+                  alt=""
+                  class="mt-6"
+                />
+              )
+            }
             <slot />
             <Giscus />
           </div>
