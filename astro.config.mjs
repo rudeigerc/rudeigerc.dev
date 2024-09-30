@@ -1,13 +1,11 @@
-// @ts-check
 import { defineConfig } from "astro/config";
-
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-
 import { rehypeShiki } from "@astrojs/markdown-remark";
+
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import rehypeSlug from "rehype-slug";
