@@ -7,11 +7,12 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".vscode", ".astro", "node_modules"]
+    "ignore": [".vscode", "node_modules"]
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "ignore": [".astro", "pnpm-lock.yaml"]
   },
   "organizeImports": {
     "enabled": true
@@ -25,7 +26,8 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
-      "trailingCommas": "all"
+      "trailingCommas": "all",
+      "semicolons": "always"
     }
   },
   "json": {
