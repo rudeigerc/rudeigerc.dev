@@ -12,7 +12,7 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "ignore": [".astro", "pnpm-lock.yaml"]
+    "ignore": ["*.astro", "pnpm-lock.yaml"]
   },
   "organizeImports": {
     "enabled": true
