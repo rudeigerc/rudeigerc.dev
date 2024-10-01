@@ -2,8 +2,6 @@
 title: "Cloud Native Infrastructure: Part 1 Service Discovery"
 description: Service discovery components maintain a list of service instances that are available for work within a microservice domain. The post introduces the basic usage of Consul.
 pubDate: 2019-05-27T22:23:43+08:00
-categories: ["cloud-native"]
-tags: ["cloud-native", "microservices", "service-discovery"]
 ---
 
 ## Introduction

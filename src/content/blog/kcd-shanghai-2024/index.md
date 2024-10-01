@@ -3,9 +3,9 @@ title: Kubernetes Community Days Shanghai 2024 Recap
 pubDate: 2024-04-28T00:05:28+08:00
 description: 2024 年 4 月 20 日，Kubernetes Community Days Shanghai 2024 在上海举行。本文将会对一些我现场观看的议题进行简单的介绍与梳理。
 categories:
-  - event
+  - Event
 tags:
-  - kubernetes
+  - Kubernetes
 heroImage: images/kcd-shanghai-2024.png
 ---
 

@@ -3,9 +3,9 @@ title: Working as a Mentee of LFX Mentorship Program with Volcano Community
 description: The LFX Mentorship program is a program designed to provide an opportunity for mentees to gain exposure to the development of open-source projects. I was honored to have the opportunity to work closely with the Volcano community, a sandbox project of CNCF, for the system stability enhancement task. In this post, I would like to share my experience and lessons learned during the project as a mentee of the Volcano project.
 pubDate: 2021-06-13T16:53:30+08:00
 tags:
-  - volcano
-  - kubernetes
-  - lfx-mentorship
+  - Volcano
+  - Kubernetes
+  - LFX Mentorship
 ---
 
 The [LFX Mentorship](https://lfx.linuxfoundation.org/tools/mentorship/) program is a program designed to provide an opportunity for mentees to gain exposure to the development of open-source projects. Cloud Native Computing Foundation, or CNCF, is actively using it as the mentorship platform across the CNCF projects. In spring 2021, I was honored to have the opportunity to work closely with the [Volcano](https://github.com/volcano-sh/volcano) community, a sandbox project of CNCF, for the [System Stability Enhancement](https://github.com/cncf/mentoring/tree/master/lfx-mentorship/2021/01-Spring#system-stability-enhancement) task. In this post, I would like to share my experience and lessons learned during the project as a mentee of the Volcano project.

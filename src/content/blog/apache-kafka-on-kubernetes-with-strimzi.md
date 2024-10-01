@@ -3,10 +3,11 @@ title: Getting Started with Apache Kafka on Kubernetes with Strimzi
 pubDate: 2020-09-01T21:50:16+08:00
 description: 本文为在 Kubernetes 集群中使用 Strimzi 部署 Apache Kafka 的笔记。
 categories:
-  - kubernetes
+  - Kubernetes
 tags:
-  - kubernetes
-  - kafka
+  - Kubernetes
+  - Kafka
+  - Strimzi
 ---
 
 ## 背景

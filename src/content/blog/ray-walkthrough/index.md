@@ -3,9 +3,9 @@ title: 翻译 | Ray Walkthrough
 description: 本文翻译自 Ray v2 Architecture 的 Appendix 部分，便于梳理 Ray 的调度与对象存储的流程。
 pubDate: 2023-06-20T14:03:10+08:00
 categories:
-  - translation
+  - Translation
 tags:
-  - ray
+  - Ray
 ---
 
 > 本文翻译自 [Ray v2 Architecture](https://docs.google.com/document/d/1tBw9A4j62ruI5omIJbMxly-la5w4q_TjyJgJL_jN2fI/preview) 的 [Appendix](https://docs.google.com/document/d/1tBw9A4j62ruI5omIJbMxly-la5w4q_TjyJgJL_jN2fI/preview#heading=h.kw4bvjvijs8h) 部分，便于梳理 Ray 的调度与对象存储的流程。译文如有错漏还望各位读者斧正。

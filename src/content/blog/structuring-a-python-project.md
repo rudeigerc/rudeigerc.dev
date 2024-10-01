@@ -3,13 +3,13 @@ title: Structuring a Python Project with PDM
 description: This tutorial shows you how to structure a Python project with PDM, a modern Python package and dependency manager supporting the latest PEP standards.
 pubDate: 2023-11-12T22:16:39+08:00
 categories:
-  - tutorial
-  - python
+  - Tutorial
+  - Python
 tags:
-  - python
-  - pdm
+  - Python
+  - PDM
 series:
-  - tutorial
+  - Tutorial
 ---
 
 This tutorial shows you how to structure a Python project with [PDM](https://pdm-project.org/latest/), a modern Python package and dependency manager supporting the latest PEP standards.

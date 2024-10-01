@@ -3,10 +3,10 @@ title: 翻译 | 为 Kubernetes 编写良好的 e2e 测试
 description: 本文为 Writing good e2e tests for Kubernetes 的译文，其主要目的在于介绍如何为 Kubernetes 编写良好的 e2e 测试。
 pubDate: 2021-04-10T22:28:26+08:00
 categories:
-  - translation
+  - Translation
 tags:
-  - kubernetes
-  - e2e
+  - Kubernetes
+  - Testing
 ---
 
 > 本文为 [Writing good e2e tests for Kubernetes (978aa3fb5b)](https://github.com/kubernetes/community/blob/978aa3fb5b/contributors/devel/sig-testing/writing-good-e2e-tests.md) 的译文。

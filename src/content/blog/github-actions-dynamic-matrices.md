@@ -3,10 +3,9 @@ title: 在 Github Actions 中动态地为 Matrix 赋值
 description: 本文介绍了如何在 GitHub Actions 中动态地为 Matrix 赋值，以实现在不同的 Event 下运行不同的 Job。
 pubDate: 2022-06-13T00:02:32+08:00
 categories:
-  - CI/CD
+  - DevOps
 tags:
-  - github-actions
-  - continuous-integration
+  - DevOps
 ---
 
 最近在参与开源项目 [tensorchord/envd](https://github.com/tensorchord/envd) 的时候，我们遇到了需要动态处理 GitHub Actions 中的 Matrix 的场景，因而撰写本文希望给遇到类似问题的朋友一些参考。

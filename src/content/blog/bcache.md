@@ -3,9 +3,9 @@ title: 使用 Bcache 将 HDD 与 SSD 作为缓存的混合存储
 description: 本文为使用 Bcache 将 HDD 与 SSD 作为缓存的混合存储时的笔记。
 pubDate: 2020-10-10T00:12:21+08:00
 categories:
-  - storage
+  - Storage
 tags:
-  - cache
+  - Storage
 ---
 
 ## 引言

@@ -2,8 +2,12 @@
 title: "Naive Networking with Combine in Swift"
 description: Combine 是苹果在 WWDC 提出的两大开发框架之一，该框架提供了一个声明式的 Swift API 去处理异步的事件。本文主要结合基于 Moya 并结合 Combine 自定义了一个简单的网络抽象层，在结合响应式编程的同时又能优雅地对网络请求的数据流进行处理。
 pubDate: 2019-12-28T21:22:51+08:00
-categories: ["ios"]
-tags: ["ios", "swift", "combine"]
+categories:
+  - iOS
+tags:
+  - iOS
+  - Swift
+  - Combine
 ---
 
 ## Introduction
