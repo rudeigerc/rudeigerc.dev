@@ -8,7 +8,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div id="search" class:list={[className]}></div>
+<div id="search" class={className}></div>
 
 <script>
   import { PagefindUI } from "@pagefind/default-ui";

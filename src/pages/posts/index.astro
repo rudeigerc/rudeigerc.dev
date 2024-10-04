@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+
+import FormattedDate from "@/components/FormattedDate.astro";
+import Website from "@/components/structured-data/WebSite.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { cn } from "@/lib/utils";
+
+const posts = (
+  await getCollection("blog", ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const years = [
+  ...new Set(posts.map((post) => post.data.pubDate.getFullYear())),
+];
+---
+
+<BaseLayout title="Blog">
+  <Website slot="head" />
+  <div class="prose py-6">
+    <h1>Blog</h1>
+    <section class="space-y-10">
+      {
+        years.map((year) => (
+          <ul class="space-y-6">
+            <h2>{year}</h2>
+            {posts
+              .filter((post) => post.data.pubDate.getFullYear() === year)
+              .map((post) => (
+                <a href={`/posts/${post.slug}/`}>
+                  <li class="no-underline block gap-2 md:flex md:flex-row">
+                    <span
+                      class={cn(
+                        "text-base hover:opacity-100",
+                        post.data.draft ? "opacity-30" : "opacity-80"
+                      )}
+                    >
+                      {post.data.title}
+                    </span>
+                    <div class="min-w-fit">
+                      <FormattedDate
+                        date={post.data.pubDate}
+                        class="text-sm text-muted-foreground md:inline opacity-50"
+                      />
+                    </div>
+                  </li>
+                </a>
+              ))}
+          </ul>
+        ))
+      }
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  ul {
+    @apply list-none ml-0 !important;
+  }
+
+  a {
+    @apply no-underline font-normal !important;
+  }
+
+  .title {
+    @apply mt-0 no-underline !important;
+  }
+
+  .description {
+    @apply mt-2 line-clamp-4 text-base text-muted-foreground !important;
+  }
+</style>
