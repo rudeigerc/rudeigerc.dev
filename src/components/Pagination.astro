@@ -17,7 +17,6 @@ const { pagination } = Astro.props;
 const { prev, next } = pagination;
 ---
 
-<!-- <div class="block md:flex md:flex-row md:items-center md:justify-between my-10"> -->
 <div class="grid md:grid-cols-2 gap-2 my-10">
   {
     prev && (
@@ -46,6 +45,6 @@ const { prev, next } = pagination;
 
 <style>
   a {
-    @apply no-underline !important;
+    @apply no-underline opacity-80 hover:opacity-100 hover:transition !important;
   }
 </style>
