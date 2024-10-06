@@ -46,8 +46,8 @@ const toc = generateToC(headings ?? [], {
       )}
     >
       <div class="mx-auto w-full min-w-0">
-        <article data-pagefind-body>
-          <div class="prose">
+        <div class="prose">
+          <article data-pagefind-body>
             <div class="title">
               <h1 data-pagefind-meta="title">{title}</h1>
               <div class="text-muted-foreground text-sm mb-2">
@@ -93,9 +93,10 @@ const toc = generateToC(headings ?? [], {
               )
             }
             <slot />
-            <Giscus />
-          </div>
-        </article>
+          </article>
+          <slot name="foot" slot="foot" />
+          <Giscus />
+        </div>
       </div>
       {
         headings && (

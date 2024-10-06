@@ -4,6 +4,7 @@ import type { GetStaticPaths } from "astro";
 
 import BlogPosting from "@/components/structured-data/BlogPosting.astro";
 import BlogPost from "@/layouts/BlogPost.astro";
+import Pagination from "@/components/Pagination.astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
@@ -12,18 +13,42 @@ export const getStaticPaths: GetStaticPaths = async () => {
     )
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
+  return posts.map((post, index) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: {
+      prev:
+        index > 0
+          ? {
+              href: `/posts/${posts[index - 1].slug}`,
+              label: posts[index - 1].data.title,
+            }
+          : {},
+      next:
+        index < posts.length - 1
+          ? {
+              href: `/posts/${posts[index + 1].slug}`,
+              label: posts[index + 1].data.title,
+            }
+          : {},
+      ...post,
+    },
   }));
 };
-type Props = CollectionEntry<"blog">;
+
+type Props = CollectionEntry<"blog"> & {
+  prev: { href: string; label: string };
+  next: { href: string; label: string };
+};
 
 const post = Astro.props;
+
 const { Content, headings } = await post.render();
 ---
 
 <BlogPost {...post.data} headings={headings}>
   <BlogPosting slot="head" {...post.data} />
   <Content />
+  <Pagination slot="foot" pagination={{ prev: post.prev, next: post.next }} />
 </BlogPost>

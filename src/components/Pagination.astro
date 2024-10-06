@@ -1,0 +1,51 @@
+---
+interface PrevNextLink {
+  href: string;
+  label: string;
+}
+
+interface Pagination {
+  prev?: PrevNextLink;
+  next?: PrevNextLink;
+}
+
+interface Props {
+  pagination: Pagination;
+}
+
+const { pagination } = Astro.props;
+const { prev, next } = pagination;
+---
+
+<!-- <div class="block md:flex md:flex-row md:items-center md:justify-between my-10"> -->
+<div class="grid md:grid-cols-2 gap-2 my-10">
+  {
+    prev && (
+      <a href={prev.href} rel="prev" class="flex flex-col gap-1">
+        {prev.label && (
+          <span class="text-start font-light text-muted-foreground">
+            ← Previous
+          </span>
+          <span class="text-start">{prev.label}</span>
+        )
+      }
+      </a>
+    )
+  }
+  {
+    next && (
+      <a href={next.href} rel="next" class="flex flex-col gap-1">
+        {next.label && (
+          <span class="text-end font-light text-muted-foreground">Next →</span>
+          <span class="text-end">{next.label}</span>
+        )}
+      </a>
+    )
+  }
+</div>
+
+<style>
+  a {
+    @apply no-underline !important;
+  }
+</style>
