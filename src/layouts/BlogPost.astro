@@ -48,6 +48,15 @@ const toc = generateToC(headings ?? [], {
       <div class="mx-auto w-full min-w-0">
         <div class="prose">
           <article data-pagefind-body>
+            {
+              heroImage && (
+                <img
+                  src={new URL(heroImage, Astro.url.origin).toString()}
+                  alt=""
+                  class="mb-6"
+                />
+              )
+            }
             <div class="title">
               <h1 data-pagefind-meta="title">{title}</h1>
               <div class="text-muted-foreground text-sm mb-2">
@@ -83,15 +92,6 @@ const toc = generateToC(headings ?? [], {
                 ))
               }
             </div>
-            {
-              heroImage && (
-                <img
-                  src={new URL(heroImage, Astro.url.origin).toString()}
-                  alt=""
-                  class="mt-6"
-                />
-              )
-            }
             <slot />
           </article>
           <slot name="foot" slot="foot" />
