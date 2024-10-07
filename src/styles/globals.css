@@ -151,5 +151,9 @@
     .footnotes {
       @apply font-normal text-sm text-muted-foreground;
     }
+
+    a.anchor {
+      @apply float-left mt-[.25em] ml-[-1.5em] pr-[.15em] text-[.85em] opacity-0 hover:opacity-100 transition;
+    }
   }
 }
