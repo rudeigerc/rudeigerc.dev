@@ -12,7 +12,7 @@
     "astro": "astro",
     "check": "biome check",
     "format": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache && biome check --formatter-enabled=false --write",
-    "playwright": "pnpx playwright-core install chromium",
+    "playwright": "pnpx playwright-core@1.47.2 install chromium",
     "postbuild": "pnpx pagefind"
   },
   "dependencies": {
@@ -60,7 +60,7 @@
     "schema-dts": "^1.1.2",
     "typescript": "^5.6.2"
   },
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@10.4.0",
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
   }
