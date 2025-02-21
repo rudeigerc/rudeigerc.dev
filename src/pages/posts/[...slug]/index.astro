@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
 import BlogPosting from "@/components/structured-data/BlogPosting.astro";
@@ -15,20 +15,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return posts.map((post, index) => ({
     params: {
-      slug: post.slug,
+      slug: post.id,
     },
     props: {
       prev:
         index > 0
           ? {
-              href: `/posts/${posts[index - 1].slug}`,
+              href: `/posts/${posts[index - 1].id}`,
               label: posts[index - 1].data.title,
             }
           : {},
       next:
         index < posts.length - 1
           ? {
-              href: `/posts/${posts[index + 1].slug}`,
+              href: `/posts/${posts[index + 1].id}`,
               label: posts[index + 1].data.title,
             }
           : {},
@@ -44,7 +44,7 @@ type Props = CollectionEntry<"blog"> & {
 
 const post = Astro.props;
 
-const { Content, headings } = await post.render();
+const { Content, headings } = await render(post);
 ---
 
 <BlogPost {...post.data} headings={headings}>

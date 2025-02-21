@@ -11,7 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 };

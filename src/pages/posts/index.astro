@@ -29,7 +29,7 @@ const years = [
             {posts
               .filter((post) => post.data.pubDate.getFullYear() === year)
               .map((post) => (
-                <a href={`/posts/${post.slug}/`}>
+                <a href={`/posts/${post.id}/`}>
                   <li class="no-underline block gap-2 md:flex md:flex-row">
                     <span
                       class={cn(
