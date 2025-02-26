@@ -51,6 +51,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+
 <!-- Google Analytics -->
 {import.meta.env.PROD && <GTag />}
 
