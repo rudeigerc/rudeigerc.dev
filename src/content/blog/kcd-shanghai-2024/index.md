@@ -6,7 +6,7 @@ categories:
   - Event
 tags:
   - Kubernetes
-heroImage: images/kcd-shanghai-2024.png
+cover: images/cover.png
 ---
 
 2024 年 4 月 20 日，Kubernetes Community Days Shanghai 2024 在上海举行。由于今年的 KubeCon China 会在 7 月份于香港举行，因此这次的活动某种意义上算是今年 KubeCon China 无法在上海举办的替代。在下文中，我将会对一些我现场观看的议题进行简单的介绍与梳理，主要包括 Kubernetes 调度与资源管理以及 LLM 相关的议题。

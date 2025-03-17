@@ -6,7 +6,7 @@ categories:
   - Event
 tags:
   - Kubernetes
-heroImage: images/kubecon-china-2023.png
+cover: images/cover.png
 ---
 
 2023 年 9 月 26 日至 9 月 28 日，KubeCon + CloudNativeCon + Open Source Summit China 2023 时隔四年在上海线下召开。

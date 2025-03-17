@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import type { MarkdownHeading } from "astro";
 
@@ -27,7 +28,7 @@ const {
   categories,
   tags,
   headings,
-  heroImage,
+  cover,
 } = Astro.props;
 
 const toc = generateToC(headings ?? [], {
@@ -48,15 +49,7 @@ const toc = generateToC(headings ?? [], {
       <div class="mx-auto w-full min-w-0">
         <div class="prose">
           <article data-pagefind-body>
-            {
-              heroImage && (
-                <img
-                  src={new URL(heroImage, Astro.url.origin).toString()}
-                  alt=""
-                  class="mb-6"
-                />
-              )
-            }
+            {cover && <Image src={cover} alt="cover" class="mb-6" />}
             <div class="title">
               <h1 data-pagefind-meta="title">{title}</h1>
               <div class="text-muted-foreground text-sm mb-2">

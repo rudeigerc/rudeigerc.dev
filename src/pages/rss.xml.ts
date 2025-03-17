@@ -25,7 +25,7 @@ export const GET: APIRoute = async (context) => {
       <language>zh-Hans</language>
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
       <generator>@astrojs/rss</generator>
-      <copyright>© 2025 Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license.</copyright>
+      <copyright>© ${new Date().getFullYear()} Yuchen Cheng. This site is licensed under a Creative Commons Attribution 4.0 International license.</copyright>
       <follow_challenge>
         <feedId>117292072638883840</feedId>
         <userId>55130729149045760</userId>
