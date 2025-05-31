@@ -21,11 +21,11 @@ const years = [
   <Website slot="head" />
   <div class="prose py-6">
     <h1>Blog</h1>
-    <section class="space-y-10">
+    <section class="space-y-10 mt-6">
       {
         years.map((year) => (
-          <ul class="space-y-6">
-            <h2>{year}</h2>
+          <ul class="space-y-6 list-none ml-0">
+            <h2 class="mb-0 pb-2">{year}</h2>
             {posts
               .filter((post) => post.data.pubDate.getFullYear() === year)
               .map((post) => (
@@ -56,19 +56,17 @@ const years = [
 </BaseLayout>
 
 <style>
-  ul {
-    @apply list-none ml-0 !important;
-  }
+  @reference "@/styles/global.css";
 
   a {
-    @apply no-underline font-normal !important;
+    @apply no-underline! font-normal!;
   }
 
   .title {
-    @apply mt-0 no-underline !important;
+    @apply mt-0! no-underline!;
   }
 
   .description {
-    @apply mt-2 line-clamp-4 text-base text-muted-foreground !important;
+    @apply mt-2! line-clamp-4! text-base! text-muted-foreground!;
   }
 </style>

@@ -13,9 +13,9 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur"
+  class="sticky top-0 z-50 w-full border-border/40 bg-background/95 backdrop-blur-sm"
 >
-  <div class="container flex h-14 max-w-screen-2xl items-center">
+  <div class="container flex h-14 max-w-(--breakpoint-2xl) items-center">
     <div class="mr-4 md:flex">
       <a href="/" class="md:mr-4 flex items-center space-x-2 lg:mr-6">
         <Image src={Logo} alt="logo" class="h-6 w-6" />

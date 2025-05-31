@@ -15,7 +15,9 @@ const isActive = href === pathname || href === `/${subpath?.[0]}`;
 </a>
 
 <style>
+  @reference "@/styles/global.css";
+
   a {
-    @apply opacity-80 hover:opacity-100 hover:transition !important;
+    @apply opacity-80! hover:opacity-100! hover:transition!;
   }
 </style>

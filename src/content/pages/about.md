@@ -6,7 +6,7 @@ pubDate: 2021-04-11T00:00:00+08:00
 
 ![IamProgrammer](../../assets/IamProgrammer!.png)
 
-(Source: [SAWARATSUKI/KawaiiLogos](https://github.com/SAWARATSUKI/KawaiiLogos/blob/main/IamSeries/IamProgrammer!.png))
+<small>(Source: [SAWARATSUKI/KawaiiLogos](https://github.com/SAWARATSUKI/KawaiiLogos/blob/main/IamSeries/IamProgrammer!.png))</small>
 
 Software Engineer at Heywhale / #Kubernetes #MLSys / ex-WizardQuant & Ant Group / M.Eng. in Software Engineering at Shanghai Jiao Tong University
 

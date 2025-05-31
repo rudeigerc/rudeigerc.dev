@@ -42,7 +42,7 @@ const toc = generateToC(headings ?? [], {
   <div class="mx-auto max-w-6xl">
     <main
       class={cn(
-        "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-[100vw]",
+        "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-screen",
         headings && "lg:grid-cols-[1fr_300px]"
       )}
     >
@@ -51,7 +51,12 @@ const toc = generateToC(headings ?? [], {
           <article data-pagefind-body>
             {cover && <Image src={cover} alt="cover" class="mb-6" />}
             <div class="title">
-              <h1 data-pagefind-meta="title">{title}</h1>
+              <h1
+                data-pagefind-meta="title"
+                class="mt-0 mb-4 leading-none text-4xl"
+              >
+                {title}
+              </h1>
               <div class="text-muted-foreground text-sm mb-2">
                 Published on <FormattedDate
                   date={pubDate}
@@ -108,11 +113,3 @@ const toc = generateToC(headings ?? [], {
     </main>
   </div>
 </BaseLayout>
-
-<style>
-  .prose h1 {
-    @apply mt-0 mb-4 leading-none;
-
-    font-size: 2.25em;
-  }
-</style>

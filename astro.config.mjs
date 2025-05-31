@@ -3,8 +3,9 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 import { rehypeShiki } from "@astrojs/markdown-remark";
+
+import tailwindcss from "@tailwindcss/vite";
 
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
@@ -21,9 +22,6 @@ export default defineConfig({
   site: "https://rudeigerc.dev",
   integrations: [
     react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     mdx(),
     sitemap(),
     partytown({
@@ -69,5 +67,8 @@ export default defineConfig({
       ],
     ],
     syntaxHighlight: false,
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

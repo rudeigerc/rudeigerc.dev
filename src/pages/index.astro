@@ -16,7 +16,7 @@ const posts = (
   <Website slot="head" />
   <div class="prose py-6">
     <section>
-      <ul class="space-y-10">
+      <ul class="space-y-10 list-none m-0">
         {
           posts.map((post) => (
             <li>
@@ -51,19 +51,17 @@ const posts = (
 </BaseLayout>
 
 <style>
-  ul {
-    @apply list-none m-0 !important;
-  }
+  @reference "@/styles/global.css";
 
   a {
-    @apply no-underline opacity-80 hover:opacity-100 hover:transition !important;
+    @apply no-underline! opacity-80! hover:opacity-100! hover:transition!;
   }
 
   .title {
-    @apply mt-0 no-underline !important;
+    @apply mt-0! no-underline!;
   }
 
   .description {
-    @apply mt-2 line-clamp-4 text-base text-muted-foreground !important;
+    @apply mt-2! line-clamp-4! text-base! text-muted-foreground!;
   }
 </style>
