@@ -4,7 +4,7 @@ import type { GetStaticPaths } from "astro";
 
 import BlogPosting from "@/components/structured-data/BlogPosting.astro";
 import BlogPost from "@/layouts/BlogPost.astro";
-import Pagination from "@/components/Pagination.astro";
+import PostPagination from "@/components/PostPagination.astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
@@ -50,5 +50,8 @@ const { Content, headings } = await render(post);
 <BlogPost {...post.data} headings={headings}>
   <BlogPosting slot="head" {...post.data} />
   <Content />
-  <Pagination slot="foot" pagination={{ prev: post.prev, next: post.next }} />
+  <PostPagination
+    slot="foot"
+    pagination={{ prev: post.prev, next: post.next }}
+  />
 </BlogPost>

@@ -1,0 +1,103 @@
+---
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+interface Props {
+  page: Page<CollectionEntry<"blog">>;
+}
+
+const { page } = Astro.props;
+
+const getPageNumbers = () => {
+  const currentPage = page.currentPage;
+  const totalPages = page.lastPage;
+
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+
+  if (currentPage <= 3) {
+    return [1, 2, 3, 4, "ellipsis", totalPages];
+  }
+
+  if (currentPage >= totalPages - 2) {
+    return [
+      1,
+      "ellipsis",
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ];
+  }
+
+  return [
+    1,
+    "ellipsis",
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    "ellipsis",
+    totalPages,
+  ];
+};
+
+console.log(page.currentPage);
+
+const pageNumbers = getPageNumbers();
+---
+
+<Pagination>
+  <PaginationContent>
+    {
+      page.url.prev ? (
+        <PaginationItem>
+          <PaginationPrevious
+            href={page.currentPage === 2 ? "/" : page.url.prev}
+          />
+        </PaginationItem>
+      ) : null
+    }
+
+    {
+      pageNumbers.map((pageNumber) => {
+        return pageNumber === "ellipsis" ? (
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+        ) : (
+          <PaginationItem>
+            <PaginationLink
+              href={
+                pageNumber === 1
+                  ? "/"
+                  : `${page.url.current.replace(/\/\d+\/?$/, "")}/${pageNumber}`
+              }
+              isActive={pageNumber === page.currentPage}
+            >
+              {pageNumber}
+            </PaginationLink>
+          </PaginationItem>
+        );
+      })
+    }
+
+    {
+      page.url.next ? (
+        <PaginationItem>
+          <PaginationNext href={page.url.next} />
+        </PaginationItem>
+      ) : null
+    }
+  </PaginationContent>
+</Pagination>
