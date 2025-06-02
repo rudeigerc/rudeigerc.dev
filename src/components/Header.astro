@@ -1,7 +1,5 @@
 ---
 import { Image } from "astro:assets";
-
-import { GitHubLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { Mail, Rss } from "lucide-react";
 
 import Logo from "@/assets/logo.svg";
@@ -10,6 +8,7 @@ import { SITE_TITLE } from "@/consts";
 import { cn } from "@/lib/utils";
 import CommandMenu from "./CommandMenu.astro";
 import HeaderLink from "./HeaderLink.astro";
+import { Icons } from "./Icons";
 ---
 
 <header
@@ -49,7 +48,7 @@ import HeaderLink from "./HeaderLink.astro";
             )}
           >
             <span class="sr-only">GitHub</span>
-            <GitHubLogoIcon className="h-4 w-4" />
+            <Icons.github className="h-4 w-4" />
           </div>
         </a>
         <a href="https://x.com/yuchenrcheng" target="_blank" rel="noreferrer">
@@ -62,7 +61,7 @@ import HeaderLink from "./HeaderLink.astro";
             )}
           >
             <span class="sr-only">X</span>
-            <TwitterLogoIcon className="h-4 w-4" />
+            <Icons.x className="h-4 w-4" />
           </div>
         </a>
         <a href="mailto:rudeigerc@gmail.com" target="_blank" rel="noreferrer">
