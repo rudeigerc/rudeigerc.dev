@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import { rehypeShiki } from "@astrojs/markdown-remark";
 
 import tailwindcss from "@tailwindcss/vite";
+import devtoolsJson from "vite-plugin-devtools-json";
 
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
@@ -69,6 +70,6 @@ export default defineConfig({
     syntaxHighlight: false,
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [devtoolsJson(), tailwindcss()],
   },
 });
