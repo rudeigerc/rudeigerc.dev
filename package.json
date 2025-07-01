@@ -12,7 +12,7 @@
     "astro": "astro",
     "check": "biome check",
     "format": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache && biome check --formatter-enabled=false --write",
-    "playwright": "pnpx playwright-core install chromium",
+    "playwright": "playwright install chromium",
     "postbuild": "pnpx pagefind"
   },
   "dependencies": {
@@ -27,7 +27,7 @@
     "@rudeigerc/shiki-transformer-title": "^0.1.0",
     "@shikijs/transformers": "^3.2.1",
     "@vercel/og": "^0.6.8",
-    "astro": "^5.9.2",
+    "astro": "^5.10.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "hast-util-from-html-isomorphic": "^2.0.0",
@@ -56,22 +56,15 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@types/sanitize-html": "^2.13.0",
+    "playwright": "^1.51.1",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "schema-dts": "^1.1.2",
     "typescript": "^5.8.3",
-    "vite-plugin-devtools-json": "^0.1.1"
+    "vite-plugin-devtools-json": "^0.2.1"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
-  },
-  "peerDependencies": {
-    "playwright": "1"
-  },
-  "peerDependenciesMeta": {
-    "playwright": {
-      "optional": true
-    }
   }
 }
