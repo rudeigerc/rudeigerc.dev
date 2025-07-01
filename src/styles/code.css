@@ -25,7 +25,7 @@
   color: gray;
 }
 .astro-code .line.highlighted {
-  @apply bg-slate-300 bg-black/10;
+  @apply bg-slate-200/50 dark:bg-slate-700/50 border-l-2 border-l-blue-400;
 }
 .astro-code .line.highlighted span {
   @apply relative;
