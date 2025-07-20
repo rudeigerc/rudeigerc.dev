@@ -15,6 +15,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkMath from "remark-math";
 import remarkGithubAlerts from "remark-github-alerts";
 import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
+import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button";
 import { transformerMetaHighlight } from "@shikijs/transformers";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 
@@ -47,8 +48,9 @@ export default defineConfig({
                 return code.endsWith("\n") ? code.slice(0, -1) : code;
               },
             },
-            transformerTitle(),
+            transformerCopyButton(),
             transformerMetaHighlight(),
+            transformerTitle(),
           ],
         },
       ],

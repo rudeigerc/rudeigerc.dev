@@ -70,25 +70,30 @@ const toc = generateToC(headings ?? [], {
                   )
                 }
               </div>
-              {draft && <Badge>DRAFT</Badge>}
-              {
-                categories?.map((category) => (
-                  <>
-                    <Badge variant="secondary" data-pagefind-filter="category">
-                      {category}
-                    </Badge>
-                  </>
-                ))
-              }
-              {
-                tags?.map((tag) => (
-                  <>
-                    <Badge variant="outline" data-pagefind-filter="tag">
-                      #{tag}
-                    </Badge>
-                  </>
-                ))
-              }
+              <div class="mb-4">
+                {draft && <Badge>DRAFT</Badge>}
+                {
+                  categories?.map((category) => (
+                    <>
+                      <Badge
+                        variant="secondary"
+                        data-pagefind-filter="category"
+                      >
+                        {category}
+                      </Badge>
+                    </>
+                  ))
+                }
+                {
+                  tags?.map((tag) => (
+                    <>
+                      <Badge variant="outline" data-pagefind-filter="tag">
+                        #{tag}
+                      </Badge>
+                    </>
+                  ))
+                }
+              </div>
             </div>
             <slot />
           </article>

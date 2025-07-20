@@ -43,3 +43,33 @@
     @apply mt-0;
   }
 }
+
+.shiki-code-block-btn-clipboard {
+  @apply absolute top-2 right-2 p-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-all duration-200 z-10 opacity-0;
+
+  &:hover {
+    @apply opacity-100;
+  }
+
+  svg {
+    @apply w-4 h-4;
+
+    &.icon-check {
+      @apply hidden;
+    }
+  }
+
+  &.copied {
+    @apply bg-green-600 text-white opacity-100;
+
+    svg {
+      &.icon-clipboard {
+        @apply hidden;
+      }
+
+      &.icon-check {
+        @apply block;
+      }
+    }
+  }
+}
