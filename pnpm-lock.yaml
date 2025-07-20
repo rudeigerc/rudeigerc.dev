@@ -33,8 +33,8 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0
       '@rudeigerc/shiki-transformer-copy-button':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       '@rudeigerc/shiki-transformer-title':
         specifier: ^0.2.1
         version: 0.2.1
@@ -1699,8 +1699,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rudeigerc/shiki-transformer-copy-button@0.1.0':
-    resolution: {integrity: sha512-bWW7e5JXlXeY9nKeMslH7AfnVwuGTMAu67f3iQIhDwc9vXKRbFQ7AzhesWXdlwVZ3dDACUfb3C4+ObPAFqOqkA==}
+  '@rudeigerc/shiki-transformer-copy-button@0.1.1':
+    resolution: {integrity: sha512-pI8G7TntB9Subvivyd2rpf2aLVQr+GwvGudtByv7i4QQxbGyXTNbJOWNxQX7okzGmF4DSlVaaD7S9ScEYmCoWg==}
 
   '@rudeigerc/shiki-transformer-title@0.2.1':
     resolution: {integrity: sha512-2BwTPg5DoBa4Qkq/QhiiKksKEo9IOu9wgZWLQ+9mECzj/GN/BDX/wBOnOMGMECFIHG3nJLW0MM2gIFg1TDwinw==}
@@ -5762,7 +5762,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.40.2':
     optional: true
 
-  '@rudeigerc/shiki-transformer-copy-button@0.1.0':
+  '@rudeigerc/shiki-transformer-copy-button@0.1.1':
     dependencies:
       '@shikijs/types': 3.8.1
       hast-util-from-html: 2.0.3
