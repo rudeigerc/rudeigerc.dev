@@ -16,7 +16,10 @@ import remarkMath from "remark-math";
 import remarkGithubAlerts from "remark-github-alerts";
 import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
 import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button";
-import { transformerMetaHighlight } from "@shikijs/transformers";
+import {
+  transformerMetaHighlight,
+  transformerNotationHighlight,
+} from "@shikijs/transformers";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 
 // https://astro.build/config
@@ -49,6 +52,7 @@ export default defineConfig({
               },
             },
             transformerCopyButton(),
+            transformerNotationHighlight(),
             transformerMetaHighlight(),
             transformerTitle(),
           ],
