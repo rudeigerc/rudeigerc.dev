@@ -42,14 +42,14 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={ogImageURL} />
+<meta property="og:image" content={ogImageURL.href} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImageURL} />
+<meta property="twitter:image" content={ogImageURL.href} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
