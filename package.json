@@ -13,7 +13,8 @@
     "check": "biome check",
     "format": "biome format . --write && prettier -w \"**/*\" \"!**/*.{md,mdx}\" --ignore-unknown --cache && biome check --formatter-enabled=false --write",
     "playwright": "playwright install chromium",
-    "postbuild": "pnpx pagefind"
+    "postbuild": "pnpx pagefind",
+    "post:new": "node scripts/new.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -32,6 +33,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "hast-util-from-html-isomorphic": "^2.0.0",
+    "htm": "^3.1.1",
     "katex": "^0.16.22",
     "lucide-react": "^0.525.0",
     "markdown-it": "^14.1.0",
