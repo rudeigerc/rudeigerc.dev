@@ -19,6 +19,7 @@ import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button"
 import {
   transformerMetaHighlight,
   transformerNotationHighlight,
+  transformerNotationDiff,
 } from "@shikijs/transformers";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 
@@ -54,6 +55,7 @@ export default defineConfig({
             transformerCopyButton(),
             transformerNotationHighlight(),
             transformerMetaHighlight(),
+            transformerNotationDiff(),
             transformerTitle(),
           ],
         },
