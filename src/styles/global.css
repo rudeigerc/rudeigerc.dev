@@ -219,12 +219,20 @@
       @apply relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm;
     }
 
+    figcaption {
+      @apply pt-2 text-center text-sm text-muted-foreground;
+    }
+
     .footnotes {
       @apply font-normal text-sm text-muted-foreground;
     }
 
     a.anchor {
       @apply float-left mt-[.25em] ml-[-1.5em] pr-[.15em] text-[.85em] opacity-0 hover:opacity-100 transition;
+    }
+
+    .markdown-alert {
+      @apply mt-4;
     }
   }
 }

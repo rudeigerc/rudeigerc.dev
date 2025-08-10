@@ -12,6 +12,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeFigure from "@microflash/rehype-figure";
 import remarkMath from "remark-math";
 import remarkGithubAlerts from "remark-github-alerts";
 import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
@@ -41,6 +42,7 @@ export default defineConfig({
     rehypePlugins: [
       rehypeKatex,
       rehypeMermaid,
+      rehypeFigure,
       [
         rehypeShiki,
         {
@@ -50,6 +52,13 @@ export default defineConfig({
               // https://github.com/shikijs/shiki/issues/3#issuecomment-2272168959
               preprocess(code) {
                 return code.endsWith("\n") ? code.slice(0, -1) : code;
+              },
+            },
+            {
+              span(node, line, col) {
+                if (!node.children || node.children.length === 0) {
+                  node.children = [{ type: "text", value: " " }];
+                }
               },
             },
             transformerCopyButton(),
