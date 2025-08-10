@@ -1,6 +1,6 @@
 ---
-title: 在 LLaMA Factory 中使用自定义的 Training Callback 进行实验记录
-description: 详细介绍如何在 LLaMA Factory 中基于 Transformers Trainer 实现自定义的 Training Callback，记录超参数、训练指标与GPU 使用情况，为 LLM 微调提供灵活的实验记录集成。
+title: 在 LLaMA Factory 中使用自定义的 Training Callback 进行实验跟踪
+description: 详细介绍如何在 LLaMA Factory 中基于 Transformers Trainer 实现自定义的 Training Callback，记录超参数、训练指标与GPU 使用情况，为 LLM 微调提供灵活的实验跟踪集成。
 pubDate: 2025-08-01T21:24:46+08:00
 categories:
   - LLM
@@ -10,9 +10,9 @@ tags:
   - Python
 ---
 
-随着 LLM 的快速发展，对模型进行微调已成为将通用模型适配到特定任务的关键技术。在微调过程中，实验记录和监控至关重要，它不仅帮助研究者追踪训练进度、分析模型性能，还能为后续的模型优化和参数调整提供重要依据。
+随着 LLM 的快速发展，对模型进行微调已成为将通用模型适配到特定任务的关键技术。在微调过程中，实验跟踪和监控至关重要，它不仅帮助研究者追踪训练进度、分析模型性能，还能为后续的模型优化和参数调整提供重要依据。
 
-本文将详细介绍如何利用 Transformers 库的 Training Callback 机制，在流行的微调框架 LLaMA Factory 中实现自定义的实验记录功能，使用户能够根据自身需求灵活地记录训练指标、系统资源使用情况和模型配置信息，为 LLM 微调提供完整的实验记录集成。
+本文将详细介绍如何利用 Transformers 库的 Training Callback 机制，在流行的微调框架 LLaMA Factory 中实现自定义的实验跟踪功能，使用户能够根据自身需求灵活地记录训练指标、系统资源使用情况和模型配置信息，为 LLM 微调提供完整的实验跟踪集成。
 
 ## 背景
 
@@ -162,13 +162,13 @@ class CustomTrackerCallback(TrainerCallback):
         pass
 ```
 
-为了实现自定义的实验记录，我们需要关注在以下几个方法：
+为了实现自定义的实验跟踪，我们需要关注在以下几个方法：
 
 - `on_train_begin()`：初始化实验记录，并记录相关的超参数。
 - `on_train_end()`：结束当前的实验记录，并上传实验小结。
 - `on_log()`：记录训练过程中的指标以及系统指标。
 
-需要注意的是，由于 LLaMA Factory 的 SFT 的 Workflow 在训练结束之后会根据 `do_eval` 与 `do_predict` 参数决定是否进行评估和预测，并将其结果通过 `log_metrics` 记录，即会再次调用 `on_log()` Callback。因此根据实验记录的实现，需要针对其进行额外的处理（如可能不能在 `on_train_end()` 的时候结束实验）。
+需要注意的是，由于 LLaMA Factory 的 SFT 的 Workflow 在训练结束之后会根据 `do_eval` 与 `do_predict` 参数决定是否进行评估和预测，并将其结果通过 `log_metrics` 记录，即会再次调用 `on_log()` Callback。因此根据实验跟踪的实现，需要针对其进行额外的处理（如可能不能在 `on_train_end()` 的时候结束实验）。
 
 ### 记录超参数
 
@@ -218,7 +218,7 @@ gpu_memory_logs = {
 
 ## 在 LLaMA Factory 中使用自定义的 Training Callback
 
-目前 LLaMa Factory 的微调入口都是直接调用了 `llamafactory.train.tuner.run_exp` 函数，但是实际上 `run_exp(args: Optional[dict[str, Any]] = None, callbacks: Optional[list["TrainerCallback"]] = None) -> None` 函数是可以接受 `callbacks` 参数的，因此用户可以通过传入自定义的 Callback 来实现实验记录。
+目前 LLaMa Factory 的微调入口都是直接调用了 `llamafactory.train.tuner.run_exp` 函数，但是实际上 `run_exp(args: Optional[dict[str, Any]] = None, callbacks: Optional[list["TrainerCallback"]] = None) -> None` 函数是可以接受 `callbacks` 参数的，因此用户可以通过传入自定义的 Callback 来实现实验跟踪。
 
 ```python title="src/tracker/cli.py"
 from llamafactory.train.tuner import run_exp
@@ -249,7 +249,7 @@ torchrun -m tracker.cli <args>
 
 ## 结语
 
-在本文中，我们详细介绍了如何在 LLaMA Factory 中使用自定义的 Training Callback 进行实验记录。
+在本文中，我们详细介绍了如何在 LLaMA Factory 中使用自定义的 Training Callback 进行实验跟踪。
 基于实现自定义的 Callback，并通过实现训练过程中的相关回调函数，我们可以灵活地记录训练过程中相关指标，包括超参数、训练指标和系统资源使用情况等。
 此外，我们还介绍了如何在 LLaMA Factory 中集成前述的自定义 Trainer Callback，并通过简单的 CLI 命令来运行微调任务。
 
@@ -257,13 +257,13 @@ torchrun -m tracker.cli <args>
 
 - [Callbacks](https://huggingface.co/docs/transformers/main/en/main_classes/callback)
 
-## 附录：在其它微调相关框架中进行自定义的实验记录
+## 附录：在其它微调相关框架中进行自定义的实验跟踪
 
-在附录中，本文会简要介绍一些在其它微调相关框架中进行自定义的实验记录的方式。
+在附录中，本文会简要介绍一些在其它微调相关框架中进行自定义的实验跟踪的方式。
 
 ### `transformers`
 
-与本文所介绍的 LLaMA Factory 相同，基于 `transformers` 的微调框架都可以通过实现自定义的 Training Callback 的方式来进行实验记录。
+与本文所介绍的 LLaMA Factory 相同，基于 `transformers` 的微调框架都可以通过实现自定义的 Training Callback 的方式来进行实验跟踪。
 
 可参考 [Callbacks](https://huggingface.co/docs/transformers/main/en/main_classes/callback) 文档获取更多示例。
 
@@ -369,7 +369,7 @@ accelerator = Accelerator(log_with=tracker)
 
 [TRL](https://github.com/huggingface/trl) 是 Hugging Face 开源一个用于进行包括 SFT、DPO、GRPO 等在内后训练的基于 Transformers 的 LLM 微调框架。
 
-在 TRL 中，基于 `transformers` 的 Trainer（如 [SFT](https://huggingface.co/docs/trl/sft_trainer)、[DPO](https://huggingface.co/docs/trl/dpo_trainer) 与 [GRPO](https://huggingface.co/docs/trl/grpo_trainer) 等）都可以使用实现自定义的 Training Callback 的方式来进行实验记录，而针对 Stable Diffusion 的 Trainer（如 [DDPO](https://huggingface.co/docs/trl/ddpo_trainer) 与 [AlignProp](https://huggingface.co/docs/trl/alignprop_trainer)），可以使用 `accelerate` 的自定义 Tracker 的方式来记录实验。
+在 TRL 中，基于 `transformers` 的 Trainer（如 [SFT](https://huggingface.co/docs/trl/sft_trainer)、[DPO](https://huggingface.co/docs/trl/dpo_trainer) 与 [GRPO](https://huggingface.co/docs/trl/grpo_trainer) 等）都可以使用实现自定义的 Training Callback 的方式来进行实验跟踪，而针对 Stable Diffusion 的 Trainer（如 [DDPO](https://huggingface.co/docs/trl/ddpo_trainer) 与 [AlignProp](https://huggingface.co/docs/trl/alignprop_trainer)），可以使用 `accelerate` 的自定义 Tracker 的方式来记录实验。
 
 ```python title="src/trl/trainer.py"
 from tracker.integrations.transformers import (
