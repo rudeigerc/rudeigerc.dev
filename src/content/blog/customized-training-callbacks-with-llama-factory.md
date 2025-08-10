@@ -2,6 +2,7 @@
 title: 在 LLaMA Factory 中使用自定义的 Training Callback 进行实验跟踪
 description: 详细介绍如何在 LLaMA Factory 中基于 Transformers Trainer 实现自定义的 Training Callback，记录超参数、训练指标与GPU 使用情况，为 LLM 微调提供灵活的实验跟踪集成。
 pubDate: 2025-08-01T21:24:46+08:00
+updatedDate: 2025-08-10T11:58:10+08:00
 categories:
   - LLM
 tags:

@@ -1,7 +1,7 @@
 ---
 title: 基于 MLflow 插件机制实现定制化的实验跟踪
 description: 通过对 MLflow 的 Autologging 功能的深入了解，以及以 Google Cloud 的 Vertex AI Experiments 为例，本文展示了如何基于 MLflow 的插件机制集成自定义的实验跟踪。
-pubDate: 2025-08-10T00:00:10+08:00
+pubDate: 2025-08-10T11:58:10+08:00
 categories:
   - MLOps
 tags:
