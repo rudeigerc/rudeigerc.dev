@@ -14,13 +14,16 @@ export const GET: APIRoute = async (context) => {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     site: context.site ?? "",
-    items: posts.map((post) => ({
-      link: `/posts/${post.id}/`,
-      content: sanitizeHtml(parser.render(post.body ?? ""), {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-      }),
-      ...post.data,
-    })),
+    items: posts
+      .filter((post) => !post.data.draft)
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+      .map((post) => ({
+        link: `/posts/${post.id}/`,
+        content: sanitizeHtml(parser.render(post.body ?? ""), {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+        }),
+        ...post.data,
+      })),
     customData: `
       <language>zh-Hans</language>
       <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
