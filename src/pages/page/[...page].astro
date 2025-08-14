@@ -27,7 +27,9 @@ const { page } = Astro.props;
 ---
 
 <BaseLayout>
-  <Website slot="head" />
+  {page.currentPage === 1 && <Website />}
+  {page.url.next && <link rel="next" href={page.url.next} slot="head" />}
+  {page.url.prev && <link rel="prev" href={page.url.prev} slot="head" />}
   <div class="prose py-6">
     <section>
       <ul class="space-y-10 list-none m-0">
