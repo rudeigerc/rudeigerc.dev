@@ -55,7 +55,7 @@ export default defineConfig({
               },
             },
             {
-              span(node, line, col) {
+              span(node) {
                 if (!node.children || node.children.length === 0) {
                   node.children = [{ type: "text", value: " " }];
                 }
