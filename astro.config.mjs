@@ -5,9 +5,6 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
-import tailwindcss from "@tailwindcss/vite";
-import devtoolsJson from "vite-plugin-devtools-json";
-
 import rehypeFigure from "@microflash/rehype-figure";
 import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button";
 import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
@@ -16,6 +13,7 @@ import {
   transformerNotationDiff,
   transformerNotationHighlight,
 } from "@shikijs/transformers";
+import tailwindcss from "@tailwindcss/vite";
 import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
@@ -23,6 +21,7 @@ import rehypeMermaid from "rehype-mermaid";
 import rehypeSlug from "rehype-slug";
 import remarkGithubAlerts from "remark-github-alerts";
 import remarkMath from "remark-math";
+import devtoolsJson from "vite-plugin-devtools-json";
 
 // https://astro.build/config
 export default defineConfig({
