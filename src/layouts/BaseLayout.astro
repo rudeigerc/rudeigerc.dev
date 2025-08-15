@@ -18,8 +18,8 @@ const { title, description, class: className } = Astro.props;
     <BaseHead title={title} description={description} />
     <slot name="head" slot="head" />
   </head>
-  <body class="min-h-screen bg-background">
-    <div class="relative flex min-h-screen flex-col bg-background">
+  <body class="bg-background min-h-screen">
+    <div class="bg-background relative flex min-h-screen flex-col">
       <Header />
       <div class={cn("container flex-1", className)}>
         <slot />

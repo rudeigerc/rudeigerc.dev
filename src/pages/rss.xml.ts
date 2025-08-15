@@ -1,10 +1,10 @@
-import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
 import { getImage } from "astro:assets";
+import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
-import sanitizeHtml from "sanitize-html";
+import type { APIRoute } from "astro";
 import MarkdownIt from "markdown-it";
 import { parse } from "node-html-parser";
+import sanitizeHtml from "sanitize-html";
 
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 

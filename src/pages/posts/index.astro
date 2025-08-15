@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const posts = (
   await getCollection("blog", ({ data }) =>
-    import.meta.env.PROD ? !data.draft : true
+    import.meta.env.PROD ? !data.draft : true,
   )
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -21,20 +21,20 @@ const years = [
   <Website slot="head" />
   <div class="prose py-6">
     <h1>Blog</h1>
-    <section class="space-y-10 mt-6">
+    <section class="mt-6 space-y-10">
       {
         years.map((year) => (
-          <ul class="space-y-6 list-none ml-0">
+          <ul class="ml-0 list-none space-y-6">
             <h2 class="mb-0 pb-2">{year}</h2>
             {posts
               .filter((post) => post.data.pubDate.getFullYear() === year)
               .map((post) => (
                 <a href={`/posts/${post.id}/`}>
-                  <li class="no-underline block gap-2 md:flex md:flex-row">
+                  <li class="block gap-2 no-underline md:flex md:flex-row">
                     <span
                       class={cn(
                         "text-base hover:opacity-100 hover:transition",
-                        post.data.draft ? "opacity-30" : "opacity-80"
+                        post.data.draft ? "opacity-30" : "opacity-80",
                       )}
                     >
                       {post.data.title}
@@ -42,7 +42,7 @@ const years = [
                     <div class="min-w-fit">
                       <FormattedDate
                         date={post.data.pubDate}
-                        class="text-sm text-muted-foreground md:inline opacity-50"
+                        class="text-muted-foreground text-sm opacity-50 md:inline"
                       />
                     </div>
                   </li>
@@ -59,7 +59,7 @@ const years = [
   @reference "@/styles/global.css";
 
   a {
-    @apply no-underline! font-normal!;
+    @apply font-normal! no-underline!;
   }
 
   .title {
@@ -67,6 +67,6 @@ const years = [
   }
 
   .description {
-    @apply mt-2! line-clamp-4! text-base! text-muted-foreground!;
+    @apply text-muted-foreground! mt-2! line-clamp-4! text-base!;
   }
 </style>

@@ -4,7 +4,7 @@ interface PrevNextLink {
   label: string;
 }
 
-interface Pagination{
+interface Pagination {
   prev?: PrevNextLink;
   next?: PrevNextLink;
 }
@@ -17,17 +17,18 @@ const { pagination } = Astro.props;
 const { prev, next } = pagination;
 ---
 
-<div class="grid md:grid-cols-2 gap-2 my-10">
+<div class="my-10 grid gap-2 md:grid-cols-2">
   {
     prev && (
       <a href={prev.href} rel="prev" class="flex flex-col gap-1">
         {prev.label && (
-          <span class="text-start font-light text-muted-foreground">
-            ← Previous
-          </span>
-          <span class="text-start">{prev.label}</span>
-        )
-      }
+          <>
+            <span class="text-muted-foreground text-start font-light">
+              ← Previous
+            </span>
+            <span class="text-start">{prev.label}</span>
+          </>
+        )}
       </a>
     )
   }
@@ -35,8 +36,12 @@ const { prev, next } = pagination;
     next && (
       <a href={next.href} rel="next" class="flex flex-col gap-1">
         {next.label && (
-          <span class="text-end font-light text-muted-foreground">Next →</span>
-          <span class="text-end">{next.label}</span>
+          <>
+            <span class="text-muted-foreground text-end font-light">
+              Next →
+            </span>
+            <span class="text-end">{next.label}</span>
+          </>
         )}
       </a>
     )

@@ -1,7 +1,7 @@
 onlyBuiltDependencies:
-  - '@biomejs/biome'
-  - '@rudeigerc/shiki-transformer-copy-button'
-  - '@rudeigerc/shiki-transformer-title'
-  - '@tailwindcss/oxide'
+  - "@biomejs/biome"
+  - "@rudeigerc/shiki-transformer-copy-button"
+  - "@rudeigerc/shiki-transformer-title"
+  - "@tailwindcss/oxide"
   - esbuild
   - sharp

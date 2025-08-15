@@ -1,28 +1,28 @@
-import { defineConfig } from "astro/config";
+import { rehypeShiki } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import { rehypeShiki } from "@astrojs/markdown-remark";
+import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 import devtoolsJson from "vite-plugin-devtools-json";
 
+import rehypeFigure from "@microflash/rehype-figure";
+import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button";
+import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
+import {
+  transformerMetaHighlight,
+  transformerNotationDiff,
+  transformerNotationHighlight,
+} from "@shikijs/transformers";
+import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeKatex from "rehype-katex";
 import rehypeMermaid from "rehype-mermaid";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeFigure from "@microflash/rehype-figure";
-import remarkMath from "remark-math";
 import remarkGithubAlerts from "remark-github-alerts";
-import { transformerTitle } from "@rudeigerc/shiki-transformer-title";
-import { transformerCopyButton } from "@rudeigerc/shiki-transformer-copy-button";
-import {
-  transformerMetaHighlight,
-  transformerNotationHighlight,
-  transformerNotationDiff,
-} from "@shikijs/transformers";
-import { fromHtmlIsomorphic } from "hast-util-from-html-isomorphic";
+import remarkMath from "remark-math";
 
 // https://astro.build/config
 export default defineConfig({

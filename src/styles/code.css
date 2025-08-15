@@ -1,7 +1,7 @@
 @reference "./global.css";
 
 .astro-code code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-white;
+  @apply grid min-w-full rounded-none border-0 bg-transparent p-0 text-sm break-words text-white;
   counter-reset: line;
   box-decoration-break: clone;
 }
@@ -25,13 +25,13 @@
   color: gray;
 }
 .astro-code .line.highlighted {
-  @apply bg-slate-200/50 dark:bg-slate-700/50 border-l-2 border-l-blue-400;
+  @apply border-l-2 border-l-blue-400 bg-slate-200/50 dark:bg-slate-700/50;
 }
 .astro-code .line.highlighted span {
   @apply relative;
 }
 .astro-code .highlighted-word {
-  @apply rounded-md bg-slate-300 bg-black/10 p-1;
+  @apply rounded-md bg-black/10 bg-slate-300 p-1;
 }
 
 .shiki-code-block-title {
@@ -45,14 +45,14 @@
 }
 
 .shiki-code-block-btn-clipboard {
-  @apply absolute top-2 right-2 p-2 rounded-md bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white transition-all duration-200 z-10 opacity-0;
+  @apply absolute top-2 right-2 z-10 rounded-md bg-gray-700 p-2 text-gray-300 opacity-0 transition-all duration-200 hover:bg-gray-600 hover:text-white;
 
   &:hover {
     @apply opacity-100;
   }
 
   svg {
-    @apply w-4 h-4;
+    @apply h-4 w-4;
 
     &.icon-check {
       @apply hidden;

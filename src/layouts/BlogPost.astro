@@ -13,9 +13,9 @@ import { cn } from "@/lib/utils";
 import BaseLayout from "./BaseLayout.astro";
 
 import "katex/dist/katex.min.css";
-import "remark-github-alerts/styles/github-colors-light.css";
-import "remark-github-alerts/styles/github-colors-dark-class.css";
 import "remark-github-alerts/styles/github-base.css";
+import "remark-github-alerts/styles/github-colors-dark-class.css";
+import "remark-github-alerts/styles/github-colors-light.css";
 
 type Props = CollectionEntry<"blog">["data"] & { headings?: MarkdownHeading[] };
 
@@ -43,7 +43,7 @@ const toc = generateToC(headings ?? [], {
     <main
       class={cn(
         "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-screen",
-        headings && "lg:grid-cols-[1fr_300px]"
+        headings && "lg:grid-cols-[1fr_300px]",
       )}
     >
       <div class="mx-auto w-full min-w-0">
@@ -53,11 +53,11 @@ const toc = generateToC(headings ?? [], {
             <div class="title">
               <h1
                 data-pagefind-meta="title"
-                class="mt-0 mb-4 leading-none text-4xl"
+                class="mt-0 mb-4 text-4xl leading-none"
               >
                 {title}
               </h1>
-              <div class="text-muted-foreground text-sm mb-2">
+              <div class="text-muted-foreground mb-2 text-sm">
                 Published on <FormattedDate
                   date={pubDate}
                   data-pagefind-meta="date"

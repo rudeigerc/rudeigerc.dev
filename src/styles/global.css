@@ -1,6 +1,6 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin 'tailwindcss-animate';
+@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -188,7 +188,7 @@
     }
 
     blockquote {
-      @apply mt-6 border-l-2 pl-6 italic *:text-muted-foreground;
+      @apply *:text-muted-foreground mt-6 border-l-2 pl-6 italic;
     }
 
     img {
@@ -200,7 +200,7 @@
     }
 
     tr {
-      @apply m-0 border-t p-0 even:bg-muted;
+      @apply even:bg-muted m-0 border-t p-0;
     }
 
     th {
@@ -212,7 +212,7 @@
     }
 
     pre {
-      @apply mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4;
+      @apply mt-6 mb-4 overflow-x-auto rounded-lg border bg-black py-4;
     }
 
     code {
@@ -220,15 +220,15 @@
     }
 
     figcaption {
-      @apply pt-2 text-center text-sm text-muted-foreground;
+      @apply text-muted-foreground pt-2 text-center text-sm;
     }
 
     .footnotes {
-      @apply font-normal text-sm text-muted-foreground;
+      @apply text-muted-foreground text-sm font-normal;
     }
 
     a.anchor {
-      @apply float-left mt-[.25em] ml-[-1.5em] pr-[.15em] text-[.85em] opacity-0 hover:opacity-100 transition;
+      @apply float-left mt-[.25em] ml-[-1.5em] pr-[.15em] text-[.85em] opacity-0 transition hover:opacity-100;
     }
 
     .markdown-alert {

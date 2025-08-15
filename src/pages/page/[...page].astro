@@ -1,18 +1,18 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import type { GetStaticPaths, Page } from "astro";
-import type { CollectionEntry } from "astro:content";
 
 import FormattedDate from "@/components/FormattedDate.astro";
+import PagePagination from "@/components/PagePagination.astro";
 import Website from "@/components/structured-data/WebSite.astro";
 import { Badge } from "@/components/ui/badge";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import PagePagination from "@/components/PagePagination.astro";
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const posts = (
     await getCollection("blog", ({ data }) =>
-      import.meta.env.PROD ? !data.draft : true
+      import.meta.env.PROD ? !data.draft : true,
     )
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -32,12 +32,12 @@ const { page } = Astro.props;
   {page.url.prev && <link rel="prev" href={page.url.prev} slot="head" />}
   <div class="prose py-6">
     <section>
-      <ul class="space-y-10 list-none m-0">
+      <ul class="m-0 list-none space-y-10">
         {
           page.data.map((post) => (
             <li>
               <div class="flex">
-                <p class="text-sm text-muted-foreground flex-1">
+                <p class="text-muted-foreground flex-1 text-sm">
                   <FormattedDate date={post.data.pubDate} />
                 </p>
                 <div>
@@ -79,6 +79,6 @@ const { page } = Astro.props;
   }
 
   .description {
-    @apply mt-2! line-clamp-4! text-base! text-muted-foreground!;
+    @apply text-muted-foreground! mt-2! line-clamp-4! text-base!;
   }
 </style>

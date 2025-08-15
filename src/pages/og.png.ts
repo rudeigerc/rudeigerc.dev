@@ -1,7 +1,7 @@
 import type { APIContext, APIRoute } from "astro";
 
-import { ImageResponse } from "@vercel/og";
 import { html } from "@/lib/html";
+import { ImageResponse } from "@vercel/og";
 
 export const GET: APIRoute = async ({ request }: APIContext) => {
   const siteURL = request.url.replace(/\/og\.png$/, "");

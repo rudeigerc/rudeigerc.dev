@@ -2,14 +2,14 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 
+import PostPagination from "@/components/PostPagination.astro";
 import BlogPosting from "@/components/structured-data/BlogPosting.astro";
 import BlogPost from "@/layouts/BlogPost.astro";
-import PostPagination from "@/components/PostPagination.astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
     await getCollection("blog", ({ data }) =>
-      import.meta.env.PROD ? !data.draft : true
+      import.meta.env.PROD ? !data.draft : true,
     )
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
