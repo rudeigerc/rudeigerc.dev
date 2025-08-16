@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /*.pdf$
 
 Sitemap: https://rudeigerc.dev/sitemap-index.xml
