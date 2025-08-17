@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /*.pdf$
+Disallow: /~partytown
 
 Sitemap: https://rudeigerc.dev/sitemap-index.xml

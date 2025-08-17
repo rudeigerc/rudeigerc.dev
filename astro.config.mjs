@@ -29,7 +29,9 @@ export default defineConfig({
   integrations: [
     react(),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes("/search/"),
+    }),
     partytown({
       config: {
         forward: ["dataLayer.push"],
