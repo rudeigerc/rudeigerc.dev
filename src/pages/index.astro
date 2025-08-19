@@ -1,3 +1,50 @@
 ---
-return Astro.rewrite("/page/");
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import PagePagination from "@/components/PagePagination.astro";
+import Website from "@/components/structured-data/WebSite.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PostList from "@/layouts/PostList.astro";
+
+const posts = (
+  await getCollection("blog", ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  )
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const pageSize = 10;
+const postSize = posts.length;
+const pages = Math.ceil(postSize / pageSize);
+
+const page: Page<CollectionEntry<"blog">> = {
+  data: posts.slice(0, 10),
+  currentPage: 1,
+  lastPage: pages,
+  size: pageSize,
+  total: postSize,
+  start: 0,
+  end: Math.min(pageSize - 1, postSize - 1),
+  url: {
+    current: "/",
+    prev: undefined,
+    next: pages > 1 ? "/page/2" : undefined,
+    first: "/",
+    last: pages > 1 ? `/page/${pages}` : "/",
+  },
+};
+
+type Props = {
+  page: Page<CollectionEntry<"blog">>;
+};
 ---
+
+<BaseLayout>
+  <Website slot="head" />
+  {page.url.next && <link rel="next" href={page.url.next} slot="head" />}
+  <div class="prose py-6">
+    <PostList page={page} />
+  </div>
+  <PagePagination page={page} />
+</BaseLayout>

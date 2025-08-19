@@ -1,6 +1,6 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
 
 import {
   Pagination,
@@ -79,7 +79,7 @@ const pageNumbers = getPageNumbers();
               href={
                 pageNumber === 1
                   ? "/"
-                  : `${page.url.current.replace(/\/\d+\/?$/, "")}/${pageNumber}`
+                  : `${page.url.current.replace(/\/\d+\/?$/, "").replace(/^\/$/, "/page")}/${pageNumber}`
               }
               isActive={pageNumber === page.currentPage}
             >

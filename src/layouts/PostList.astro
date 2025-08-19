@@ -1,0 +1,59 @@
+---
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+import FormattedDate from "@/components/FormattedDate.astro";
+import { Badge } from "@/components/ui/badge";
+
+type Props = {
+  page: Page<CollectionEntry<"blog">>;
+};
+
+const { page } = Astro.props;
+---
+
+<section>
+  <ul class="m-0 list-none space-y-10">
+    {
+      page.data.map((post) => (
+        <li>
+          <div class="flex">
+            <p class="text-muted-foreground flex-1 text-sm">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+            <div>
+              {post.data.draft && <Badge>DRAFT</Badge>}
+              {post.data.categories?.map((category) => (
+                <>
+                  <Badge variant="secondary" data-pagefind-filter="category">
+                    {category}
+                  </Badge>
+                </>
+              ))}
+            </div>
+          </div>
+          <a href={`/posts/${post.id}/`}>
+            <h4 class="title">{post.data.title}</h4>
+          </a>
+          <p class="description">{post.data.description ?? ""}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  @reference "@/styles/global.css";
+
+  a {
+    @apply no-underline! opacity-80! hover:opacity-100! hover:transition!;
+  }
+
+  .title {
+    @apply mt-0! no-underline!;
+  }
+
+  .description {
+    @apply text-muted-foreground! mt-2! line-clamp-4! text-base!;
+  }
+</style>
