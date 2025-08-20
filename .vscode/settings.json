@@ -6,7 +6,7 @@
 		["(?:classnames|classNames|cx|clsx)\\(([^)]*)\\)", "(?:`)((?:\\`|[^`])*)(?:`)"]
 	],
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
   },
   "[javascript]": {

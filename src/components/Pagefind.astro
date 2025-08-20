@@ -17,3 +17,13 @@ const { class: className } = Astro.props;
     new PagefindUI({ element: "#search", showSubResults: true });
   });
 </script>
+
+<style>
+  :root {
+    --pagefind-ui-primary: var(--color-foreground);
+    --pagefind-ui-text: var(--color-foreground);
+    --pagefind-ui-background: var(--color-background);
+    --pagefind-ui-border: var(--color-border);
+    --pagefind-ui-tag: var(--color-border);
+  }
+</style>

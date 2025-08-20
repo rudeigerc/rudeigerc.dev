@@ -1,5 +1,6 @@
 <section class="mx-auto mt-2">
   <script
+    id="giscus"
     is:inline
     src="https://giscus.app/client.js"
     data-repo="rudeigerc/rudeigerc.dev"
@@ -16,3 +17,10 @@
     crossorigin="anonymous"
     async></script>
 </section>
+
+<script is:inline>
+  const giscus = document.getElementById("giscus");
+  if (giscus) {
+    giscus.setAttribute("data-theme", isDark ? "dark" : "light");
+  }
+</script>

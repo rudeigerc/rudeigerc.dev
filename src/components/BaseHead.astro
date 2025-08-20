@@ -4,6 +4,7 @@ import "@/styles/global.css";
 
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import GTag from "./GTag.astro";
+import Theme from "./Theme.astro";
 
 interface Props {
   title?: string;
@@ -59,5 +60,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 
 <!-- Google Analytics -->
 {import.meta.env.PROD && <GTag />}
+
+<meta name="color-scheme" content="light dark" />
+
+<Theme />
 
 <slot name="head" />
