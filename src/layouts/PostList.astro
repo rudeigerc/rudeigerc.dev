@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 
 import FormattedDate from "@/components/FormattedDate.astro";
 import { Badge } from "@/components/ui/badge";
+import { ExternalLinkIcon } from "lucide-react";
 
 type Props = {
   page: Page<CollectionEntry<"blog">>;
@@ -23,6 +24,7 @@ const { page } = Astro.props;
             </p>
             <div>
               {post.data.draft && <Badge>DRAFT</Badge>}
+              {post.data.external && <Badge>External</Badge>}
               {post.data.categories?.map((category) => (
                 <>
                   <Badge variant="secondary" data-pagefind-filter="category">
@@ -32,8 +34,18 @@ const { page } = Astro.props;
               ))}
             </div>
           </div>
-          <a href={`/posts/${post.id}/`}>
-            <h4 class="title">{post.data.title}</h4>
+          <a
+            href={
+              post.data.external ? post.data.canonicalURL : `/posts/${post.id}/`
+            }
+            target={post.data.external ? "_blank" : "_self"}
+          >
+            <h4 class="title">
+              {post.data.title}
+              {post.data.external && (
+                <ExternalLinkIcon className="inline flex-shrink-0" size={16} />
+              )}
+            </h4>
           </a>
           <p class="description">{post.data.description ?? ""}</p>
         </li>
@@ -50,7 +62,7 @@ const { page } = Astro.props;
   }
 
   .title {
-    @apply mt-0! no-underline!;
+    @apply mt-0! inline-flex flex-wrap items-center gap-1 no-underline!;
   }
 
   .description {

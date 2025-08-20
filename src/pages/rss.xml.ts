@@ -55,10 +55,12 @@ export const GET: APIRoute = async (context) => {
     description: SITE_DESCRIPTION,
     site: context.site ?? "",
     items: posts.map((post) => ({
-      link: `/posts/${post.id}/`,
-      content: sanitizeHtml(post.html.toString(), {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-      }),
+      link: post.data.external ? post.data.canonicalURL : `/posts/${post.id}/`,
+      content: post.data.external
+        ? undefined
+        : sanitizeHtml(post.html.toString(), {
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+          }),
       ...post.data,
     })),
     customData: `
