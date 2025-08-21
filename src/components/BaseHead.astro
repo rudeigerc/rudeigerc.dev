@@ -11,10 +11,7 @@ interface Props {
   description?: string;
 }
 
-const getCanonicalURL = (pathname: string) =>
-  pathname === "/page/" ? "/" : pathname;
-
-const canonicalURL = new URL(getCanonicalURL(Astro.url.pathname), Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL("og.png", canonicalURL);
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
@@ -23,7 +20,8 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="48x48" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
@@ -52,17 +50,27 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImageURL.href} />
 
+<meta name="color-scheme" content="light dark" />
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: light)"
+  content="#ffffff"
+/>
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: dark)"
+  content="#09090b"
+/>
+
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- RSS Feed -->
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
 
+<Theme />
+
 <!-- Google Analytics -->
 {import.meta.env.PROD && <GTag />}
-
-<meta name="color-scheme" content="light dark" />
-
-<Theme />
 
 <slot name="head" />

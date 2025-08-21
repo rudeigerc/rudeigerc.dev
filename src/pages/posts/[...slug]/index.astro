@@ -9,7 +9,7 @@ import BlogPost from "@/layouts/BlogPost.astro";
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
     await getCollection("blog", ({ data }) =>
-      import.meta.env.PROD ? !data.draft : !data.external,
+      !data.external && import.meta.env.PROD ? !data.draft : true,
     )
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
