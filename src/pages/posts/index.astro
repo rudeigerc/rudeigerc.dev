@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 
+import { ExternalLinkIcon } from "lucide-react";
+
 import FormattedDate from "@/components/FormattedDate.astro";
 import Website from "@/components/structured-data/WebSite.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -8,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const posts = (
   await getCollection("blog", ({ data }) =>
-    import.meta.env.PROD ? !data.draft : true,
+    !data.external && import.meta.env.PROD ? !data.draft : true,
   )
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -29,15 +31,29 @@ const years = [
             {posts
               .filter((post) => post.data.pubDate.getFullYear() === year)
               .map((post) => (
-                <a href={`/posts/${post.id}/`}>
+                <a
+                  href={
+                    post.data.external
+                      ? post.data.canonicalURL
+                      : `/posts/${post.id}/`
+                  }
+                >
                   <li class="block gap-2 no-underline md:flex md:flex-row">
                     <span
                       class={cn(
                         "text-base hover:opacity-100 hover:transition",
                         post.data.draft ? "opacity-30" : "opacity-80",
+                        post.data.external &&
+                          "inline-flex flex-wrap items-center gap-1",
                       )}
                     >
                       {post.data.title}
+                      {post.data.external && (
+                        <ExternalLinkIcon
+                          className="inline flex-shrink-0"
+                          size={16}
+                        />
+                      )}
                     </span>
                     <div class="min-w-fit">
                       <FormattedDate
