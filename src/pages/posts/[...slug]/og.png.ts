@@ -6,8 +6,10 @@ import { html } from "@/lib/html";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
-    await getCollection("blog", ({ data }) =>
-      import.meta.env.PROD ? !data.draft : true,
+    await getCollection(
+      "blog",
+      ({ data }) =>
+        !data.external && (import.meta.env.PROD ? !data.draft : true),
     )
   ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
