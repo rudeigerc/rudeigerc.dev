@@ -14,6 +14,10 @@ export function ModeToggle() {
     "theme-light" | "dark" | "system"
   >("theme-light");
 
+  // Required for making ModeToggle work on iOS.
+  // Reference: https://github.com/shadcn-ui/ui/discussions/2130#discussioncomment-10443573
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
   React.useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains("dark");
     setThemeState(isDarkMode ? "dark" : "theme-light");
@@ -28,8 +32,16 @@ export function ModeToggle() {
   }, [theme]);
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <DropdownMenu
+      open={dropdownOpen}
+      onOpenChange={(val) => setDropdownOpen(val)}
+    >
+      <DropdownMenuTrigger
+        asChild
+        onClick={() => {
+          setDropdownOpen((val) => !val);
+        }}
+      >
         <Button variant="ghost" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
