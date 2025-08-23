@@ -6,10 +6,10 @@ import { buttonVariants } from "@/components/ui/button";
 import { SITE_TITLE } from "@/consts";
 import { cn } from "@/lib/utils";
 import { Mail, Rss } from "lucide-react";
-import CommandMenu from "./CommandMenu.astro";
 import HeaderLink from "./HeaderLink.astro";
 import { Icons } from "./Icons";
 import { ModeToggle } from "./ModeToggle";
+import { SearchCommandDialog } from "./SearchCommandDialog";
 ---
 
 <header
@@ -26,12 +26,8 @@ import { ModeToggle } from "./ModeToggle";
       class="flex flex-1 items-center justify-between space-x-4 md:justify-end"
     >
       <div class="w-full flex-1 md:w-auto md:flex-none">
-        <a href="/search">
-          <div>
-            <span class="sr-only">Search</span>
-            <CommandMenu />
-          </div>
-        </a>
+        <span class="sr-only">Search</span>
+        <SearchCommandDialog client:load />
       </div>
       <nav class="hidden w-full space-x-4 md:flex md:w-auto">
         <HeaderLink href="/">Home</HeaderLink>

@@ -89,5 +89,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [devtoolsJson(), tailwindcss()],
+    build: {
+      rollupOptions: {
+        external: ["/pagefind/pagefind.js"],
+      },
+    },
   },
 });

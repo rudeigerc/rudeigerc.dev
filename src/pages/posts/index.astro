@@ -37,6 +37,7 @@ const years = [
                       ? post.data.canonicalURL
                       : `/posts/${post.id}/`
                   }
+                  target={post.data.external ? "_blank" : "_self"}
                 >
                   <li class="block gap-2 no-underline md:flex md:flex-row">
                     <span

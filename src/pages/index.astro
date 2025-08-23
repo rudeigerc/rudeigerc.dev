@@ -1,7 +1,7 @@
 ---
-import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import type { Page } from "astro";
 
 import PagePagination from "@/components/PagePagination.astro";
 import Website from "@/components/structured-data/WebSite.astro";
@@ -10,7 +10,7 @@ import PostList from "@/layouts/PostList.astro";
 
 const posts = (
   await getCollection("blog", ({ data }) =>
-    import.meta.env.PROD ? !data.draft : true
+    import.meta.env.PROD ? !data.draft : true,
   )
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 

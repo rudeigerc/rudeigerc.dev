@@ -73,3 +73,7 @@
     }
   }
 }
+
+div[role="dialog"] mark {
+  @apply text-accent-foreground bg-accent-foreground/10 underline underline-offset-2;
+}
