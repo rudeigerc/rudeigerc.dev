@@ -14,7 +14,7 @@ tags:
 
 随着大语言模型（LLM）的广泛应用，LLM 的推理服务已成为现代人工智能基础设施的核心组件。在生产环境中，LLM 推理服务所面对的工作负载呈现出高度的异构性特征，不同的应用场景对延迟、吞吐量等指标反映的服务质量的要求差异巨大，如实时聊天要求较低的 TTFT 与 TPOT，RAG 的场景会相对更宽松，而批量推理则会更关注整体的端到端吞吐量。
 
-目前，推理引擎层面的工具如 vLLM 和 SGLang 各自开发了专门的基准测试工具来评估核心推理性能和优化效果。同时，同时，编排层的解决方案如 AIBrix、llm-d 等也提供了端到端的基准测试方案，用于验证复杂生产环境下的整体系统性能是否满足预期的服务等级目标（SLO）。值得注意的是，Kubernetes 的 Serving Workgroup 也提出了 kubernetes-sigs/inference-perf 项目，旨在为 LLM 推理服务建立标准化的性能评估框架。
+目前，推理引擎层面的工具如 vLLM 和 SGLang 各自开发了专门的基准测试工具来评估核心推理性能和优化效果。同时，同时，编排层的解决方案如 AIBrix、llm-d 等也提供了端到端的基准测试方案，用于验证复杂生产环境下的整体系统性能是否满足预期的服务等级目标（SLO）。值得注意的是，Kubernetes 的 Serving Workgroup 也提出了 [kubernetes-sigs/inference-perf](https://github.com/kubernetes-sigs/inference-perf) 项目，旨在为 LLM 推理服务建立标准化的性能评估框架。
 
 本文将分析 LLM 推理基准测试的理论基础与工程实践，深入理解核心原理以及当前开源社区中主要的 LLM 推理基准测试解决方案，为生产环境中的 LLM 推理服务性能评估提供实用指南。
 
@@ -210,18 +210,20 @@ LLM 推理服务的基准测试框架一般由以下几个部分构成：
 
 ### 小结
 
-现有的 LLM 推理基准测试解决方案在核心指标采集方面已形成相对成熟的标准，TTFT、TPOT 等关键指标的定义和计算方法基本达成共识。sglang/genai-bench 与 vllm-project/guidellm 等主流工具对兼容 OpenAI API 的推理服务提供了良好支持，简化了基准测试的部署和维护成本。
+现有的 LLM 推理基准测试解决方案在核心指标采集方面已形成相对成熟的标准，TTFT、TPOT 等关键指标的定义和计算方法基本达成共识。[sglang/genai-bench](https://github.com/sglang/genai-bench) 与 [vllm-project/guidellm](https://github.com/vllm-project/guidellm) 等主流工具对兼容 OpenAI API 的推理服务提供了良好支持，简化了基准测试的部署和维护成本。
 
 场景支持方面，文本生成是所有框架的基础功能，Embedding、Reranking 与多模态等场景的支持程度不一。数据生成支持方面，大多数框架都支持 HuggingFace 数据集、文件输入和合成数据生成，但在附加功能如基于 Trace 的重放方面存在差异。负载生成模式上，恒定与泊松分布是主流支持的模式，部分框架还支持带波动的负载和基于 Trace 的重放。
 
 除了前述内容以外，以下两点笔者认为相当值得关注：
 
-- **Harness**：llm-d 的 llm-d-benchmark 集成了 inference-perf、fmperf 与 guidellm 作为实际运行基准测试的工具，并且可以统合前述工具的实验报告生成统一的报告。
-- **Goodput**：Goodput 指的是实际有效的工作负载，在基准测试的场景中可以指满足特定 SLO 的请求的吞吐量。AIBrix Benchmark 与 NVIDIA genai-perf 都支持在生成报告的时候根据指定的 SLO 生成 Goodput。此外，vllm-project/guidellm#197 中提到了在对新的模型或硬件基准测试的时候，用户的目标可能是探究在满足特定 SLO 的前提下的最大并发数，因此提出了类似 Sweep 的方式基于二分搜索对可能的参数空间进行搜索。
+- **Harness**：[llm-d](https://github.com/llm-d) 的 [llm-d-benchmark](https://github.com/llm-d/llm-d-benchmark) 集成了 inference-perf、fmperf 与 guidellm 作为实际运行基准测试的工具，并且可以统合前述工具的实验报告生成统一的报告。
+- **Goodput**：Goodput 指的是实际有效的工作负载，在基准测试的场景中可以指满足特定 SLO 的请求的吞吐量。AIBrix Benchmark 与 NVIDIA genai-perf 都支持在生成报告的时候根据指定的 SLO 生成 Goodput。此外，[vllm-project/guidellm#197](https://github.com/vllm-project/guidellm/issues/197) 中提到了在对新的模型或硬件基准测试的时候，用户的目标可能是探究在满足特定 SLO 的前提下的最大并发数，因此提出了类似 Sweep 的方式基于二分搜索对可能的参数空间进行搜索。
 
 ## 结语
 
 随着大语言模型在各类应用中的持续落地，LLM 推理基准测试已成为保障服务性能和稳定性的关键环节。本文系统梳理了推理基准测试的理论基础、核心指标、主流工具及其对比，旨在帮助读者理解如何使用 LLM 推理基准测试评估 LLM 推理服务。随着模型规模和应用场景的不断扩展，推理基准测试工具和方法也将持续演进。建议开发者结合实际业务需求，灵活选用合适的基准测试方案，为 LLMOps 基础设施的性能优化提供更精确的数据支撑，并与生产环境监控体系协同，持续提升 LLM 推理服务的性能和可靠性。
+
+## 附录
 
 ### 相关文章
 
