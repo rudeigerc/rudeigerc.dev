@@ -40,6 +40,7 @@
     "katex": "^0.16.22",
     "lucide-react": "^0.539.0",
     "markdown-it": "^14.1.0",
+    "motion": "^12.23.12",
     "node-html-parser": "^7.0.1",
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
