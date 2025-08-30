@@ -26,6 +26,7 @@
     "@astrojs/sitemap": "^3.5.0",
     "@microflash/rehype-figure": "^2.1.4",
     "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-separator": "^1.1.7",
     "@rudeigerc/shiki-transformer-copy-button": "^0.1.1",
     "@rudeigerc/shiki-transformer-title": "^0.2.1",
     "@shikijs/transformers": "^3.11.0",

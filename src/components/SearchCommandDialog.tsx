@@ -14,6 +14,8 @@ import type {
   PagefindSearchFragment,
   PagefindSearchResult,
 } from "@/types/pagefind";
+import { NotebookTextIcon } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 declare global {
   interface Window {
@@ -74,6 +76,7 @@ export const SearchCommandDialog = () => {
             async (result: PagefindSearchResult) => await result.data(),
           ),
         );
+        console.log(data);
         setResults(data);
       }
     }
@@ -104,24 +107,41 @@ export const SearchCommandDialog = () => {
           {results.length > 0 && (
             <CommandGroup heading={`Found Posts (${results.length})`}>
               {results.map((result) => (
-                <CommandItem
-                  key={result.url}
-                  onSelect={() => {
-                    window.location.href = result.url;
-                  }}
-                  className="flex flex-col gap-1 items-baseline"
-                >
-                  <span className="min-w-0 font-medium text-sm">
-                    {result.meta.title}
-                  </span>
-                  <div
-                    className="text-xs text-muted-foreground min-w-0 font-medium"
-                    // biome-ignore lint/security/noDangerouslySetInnerHtml: rendered content
-                    dangerouslySetInnerHTML={{
-                      __html: result.excerpt,
+                <>
+                  <CommandItem
+                    key={result.url}
+                    onSelect={() => {
+                      window.location.href = result.url;
                     }}
-                  />
-                </CommandItem>
+                    className="font-medium text-sm"
+                  >
+                    <NotebookTextIcon />
+                    <span className="min-w-0 truncate">
+                      {result.meta.title}
+                    </span>
+                  </CommandItem>
+                  {result.sub_results.slice(0, 3).map((subResult) => (
+                    <CommandItem
+                      key={subResult.url}
+                      onSelect={() => {
+                        window.location.href = subResult.url;
+                      }}
+                      className="text-muted-foreground flex flex-row items-center gap-2 p-2 text-start text-xs ps-8!"
+                    >
+                      <Separator
+                        orientation="vertical"
+                        className="absolute start-4 inset-y-0"
+                      />
+                      <span
+                        className="min-w-0 truncate"
+                        // biome-ignore lint/security/noDangerouslySetInnerHtml: rendered content
+                        dangerouslySetInnerHTML={{
+                          __html: subResult.excerpt,
+                        }}
+                      />
+                    </CommandItem>
+                  ))}
+                </>
               ))}
             </CommandGroup>
           )}
