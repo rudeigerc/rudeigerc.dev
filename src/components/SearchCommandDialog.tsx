@@ -2,18 +2,19 @@
 
 import * as React from "react";
 
-import { CornerDownLeftIcon, NotebookTextIcon } from "lucide-react";
+import { navigate } from "astro:transitions/client";
 import { Command as CommandPrimitive } from "cmdk";
+import { CornerDownLeftIcon, NotebookTextIcon } from "lucide-react";
 
+import { Search } from "@/components/animate-ui/icons/search";
+import { Button } from "@/components/ui/button";
 import {
   Command,
-  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { Separator } from "@/components/ui/separator";
 import {
   Dialog,
   DialogContent,
@@ -22,13 +23,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Search } from "@/components/animate-ui/icons/search";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import type {
   PagefindSearchFragment,
   PagefindSearchResult,
 } from "@/types/pagefind";
-import { cn } from "@/lib/utils";
 
 declare global {
   interface Window {
@@ -172,7 +172,7 @@ export const SearchCommandDialog = () => {
                       <CommandItem
                         key={result.url}
                         onSelect={() => {
-                          window.location.href = result.url;
+                          navigate(result.url);
                         }}
                         className="font-medium text-sm"
                       >
@@ -185,7 +185,7 @@ export const SearchCommandDialog = () => {
                         <CommandItem
                           key={subResult.url}
                           onSelect={() => {
-                            window.location.href = subResult.url;
+                            navigate(subResult.url);
                           }}
                           className="text-muted-foreground flex flex-row items-center gap-2 p-2 text-start text-xs ps-8!"
                         >
