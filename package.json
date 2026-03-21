@@ -17,13 +17,13 @@
     "post:new": "node scripts/new.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/markdown-remark": "^6.3.6",
-    "@astrojs/mdx": "^4.3.4",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/markdown-remark": "^6.3.10",
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/partytown": "^2.1.4",
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.0",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "@microflash/rehype-figure": "^2.1.4",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-separator": "^1.1.7",
@@ -31,7 +31,7 @@
     "@rudeigerc/shiki-transformer-title": "^0.2.1",
     "@shikijs/transformers": "^3.11.0",
     "@vercel/og": "^0.8.5",
-    "astro": "^5.13.2",
+    "astro": "^5.17.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -70,11 +70,12 @@
     "prettier-plugin-astro-organize-imports": "^0.4.11",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "schema-dts": "^1.1.5",
+    "shadcn": "^4.1.0",
     "typescript": "^5.9.2",
-    "vite-plugin-devtools-json": "^0.4.1"
+    "vite-plugin-devtools-json": "^1.0.0"
   },
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.29.3",
   "engines": {
-    "node": "^18.17.1 || ^20.3.0 || >=21.0.0"
+    "node": "^18.20.8 || ^20.3.0 || >=22.12.0"
   }
 }

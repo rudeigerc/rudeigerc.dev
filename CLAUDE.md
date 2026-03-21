@@ -1,0 +1,1 @@
+/Users/rudeigerc/Desktop/rudeigerc.dev/AGENTS.md
