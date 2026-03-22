@@ -1,2 +1,2 @@
-export const SITE_TITLE = "Yuchen Cheng";
-export const SITE_DESCRIPTION = "Yuchen Cheng's Blog";
+export const SITE_TITLE = "Yu-Chen Cheng";
+export const SITE_DESCRIPTION = "Yu-Chen Cheng's Blog";

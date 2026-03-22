@@ -18,6 +18,23 @@ const isActive = href === pathname || href === `/${subpath?.[0]}`;
   @reference "@/styles/global.css";
 
   a {
-    @apply opacity-80! hover:opacity-100! hover:transition!;
+    @apply relative opacity-80! transition-all! duration-200! hover:opacity-100!;
+  }
+
+  a::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-200;
+  }
+
+  a:hover::after {
+    @apply w-full;
+  }
+
+  a.active {
+    @apply text-primary! opacity-100!;
+  }
+
+  a.active::after {
+    @apply w-full;
   }
 </style>

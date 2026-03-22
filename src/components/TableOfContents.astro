@@ -10,13 +10,18 @@ interface Props {
 const { toc, depth = 0 } = Astro.props;
 ---
 
-<ul class={cn("m-0 list-none", { "pl-4": depth !== 0 })}>
+<ul class={cn("m-0 list-none", { "pl-3 mt-0.5": depth !== 0 })}>
   {
     toc.map((heading) => (
-      <li class="mt-0 pt-2">
+      <li class="mt-0 py-0.5">
         <a
           href={`#${heading.slug}`}
-          class="hover:text-foreground text-muted-foreground inline-block no-underline transition-colors"
+          class={cn(
+            "hover:text-foreground inline-block no-underline transition-colors leading-snug",
+            depth === 0
+              ? "text-sm text-muted-foreground"
+              : "text-xs text-muted-foreground/60 hover:text-muted-foreground",
+          )}
         >
           <span>{heading.text}</span>
         </a>

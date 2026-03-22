@@ -22,10 +22,10 @@
   width: 1rem;
   margin-right: 1rem;
   text-align: right;
-  color: gray;
+  color: hsl(var(--muted-foreground));
 }
 .astro-code .line.highlighted {
-  @apply border-l-2 border-l-blue-400 bg-slate-200/50 dark:bg-slate-700/50;
+  @apply border-l-2 border-l-primary bg-slate-200/50 dark:bg-slate-700/50;
 }
 .astro-code .line.highlighted span {
   @apply relative;
@@ -47,8 +47,13 @@
 .shiki-code-block-btn-clipboard {
   @apply absolute top-2 right-2 z-10 rounded-md bg-gray-700 p-2 text-gray-300 opacity-0 transition-all duration-200 hover:bg-gray-600 hover:text-white;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     @apply opacity-100;
+  }
+
+  &:focus-visible {
+    @apply ring-2 ring-ring;
   }
 
   svg {

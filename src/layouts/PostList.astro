@@ -16,46 +16,47 @@ const { page } = Astro.props;
 ---
 
 <section>
-  <ul class="m-0 list-none space-y-10">
+  <ul class="m-0 list-none">
     {
       page.data.map((post) => (
-        <li>
-          <div class="flex">
-            <p class="text-muted-foreground flex-1 text-sm">
-              <FormattedDate date={post.data.pubDate} />
-            </p>
-            <div>
-              {post.data.draft && <Badge>DRAFT</Badge>}
-              {post.data.external && <Badge>External</Badge>}
-              {post.data.categories?.map((category) => (
-                <>
-                  <Badge variant="secondary" data-pagefind-filter="category">
-                    {category}
-                  </Badge>
-                </>
-              ))}
-            </div>
-          </div>
+        <li class="py-8 first:pt-0">
           <a
             href={
               post.data.external ? post.data.canonicalURL : `/posts/${post.id}/`
             }
             target={post.data.external ? "_blank" : "_self"}
           >
-            <h4
+            <h3
               class={cn(
                 "title",
                 post.data.external &&
-                  "inline-flex flex-wrap items-center gap-1",
+                  "inline-flex flex-wrap items-center gap-1.5",
               )}
             >
               {post.data.title}
               {post.data.external && (
-                <ExternalLinkIcon className="inline flex-shrink-0" size={16} />
+                <ExternalLinkIcon className="inline flex-shrink-0" size={15} />
               )}
-            </h4>
+            </h3>
           </a>
-          <p class="description">{post.data.description ?? ""}</p>
+          <div class="meta">
+            <span class="text-muted-foreground text-sm">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            {(post.data.draft || post.data.external || post.data.categories?.length) && (
+              <span class="text-muted-foreground/50 text-sm">·</span>
+            )}
+            {post.data.draft && <Badge>DRAFT</Badge>}
+            {post.data.external && <Badge>External</Badge>}
+            {post.data.categories?.map((category) => (
+              <Badge variant="secondary" data-pagefind-filter="category">
+                {category}
+              </Badge>
+            ))}
+          </div>
+          {post.data.description && (
+            <p class="description">{post.data.description}</p>
+          )}
         </li>
       ))
     }
@@ -66,14 +67,22 @@ const { page } = Astro.props;
   @reference "@/styles/global.css";
 
   a {
-    @apply no-underline! opacity-80! hover:opacity-100! hover:transition!;
+    @apply no-underline! opacity-80! hover:opacity-100! transition-all! duration-200!;
   }
 
   .title {
-    @apply mt-0! no-underline!;
+    @apply mt-0! mb-1.5! text-base! font-semibold! no-underline! leading-snug! transition-colors! duration-200!;
+  }
+
+  a:hover .title {
+    @apply text-primary!;
+  }
+
+  .meta {
+    @apply flex items-center gap-2 mt-0;
   }
 
   .description {
-    @apply text-muted-foreground! mt-2! line-clamp-4! text-base!;
+    @apply text-muted-foreground! mt-2! line-clamp-2! text-sm!;
   }
 </style>

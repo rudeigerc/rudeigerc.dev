@@ -26,46 +26,51 @@ const years = [
     <section class="mt-6 space-y-10">
       {
         years.map((year) => (
-          <ul class="ml-0 list-none space-y-6">
+          <div>
             <h2 class="mb-0 pb-2">{year}</h2>
-            {posts
-              .filter((post) => post.data.pubDate.getFullYear() === year)
-              .map((post) => (
-                <a
-                  href={
-                    post.data.external
-                      ? post.data.canonicalURL
-                      : `/posts/${post.id}/`
-                  }
-                  target={post.data.external ? "_blank" : "_self"}
-                >
-                  <li class="block gap-2 no-underline md:flex md:flex-row">
-                    <span
+            <ul class="ml-0 list-none space-y-6">
+              {posts
+                .filter((post) => post.data.pubDate.getFullYear() === year)
+                .map((post) => (
+                  <li>
+                    <a
+                      href={
+                        post.data.external
+                          ? post.data.canonicalURL
+                          : `/posts/${post.id}/`
+                      }
+                      target={post.data.external ? "_blank" : "_self"}
                       class={cn(
-                        "text-base hover:opacity-100 hover:transition",
+                        "block gap-2 no-underline transition-opacity duration-200 hover:opacity-100 md:flex md:flex-row",
                         post.data.draft ? "opacity-30" : "opacity-80",
-                        post.data.external &&
-                          "inline-flex flex-wrap items-center gap-1",
                       )}
                     >
-                      {post.data.title}
-                      {post.data.external && (
-                        <ExternalLinkIcon
-                          className="inline flex-shrink-0"
-                          size={16}
+                      <span
+                        class={cn(
+                          "text-base flex-1",
+                          post.data.external &&
+                            "inline-flex flex-wrap items-center gap-1",
+                        )}
+                      >
+                        {post.data.title}
+                        {post.data.external && (
+                          <ExternalLinkIcon
+                            className="inline flex-shrink-0"
+                            size={16}
+                          />
+                        )}
+                      </span>
+                      <div class="min-w-fit">
+                        <FormattedDate
+                          date={post.data.pubDate}
+                          class="text-muted-foreground/60 text-sm md:inline"
                         />
-                      )}
-                    </span>
-                    <div class="min-w-fit">
-                      <FormattedDate
-                        date={post.data.pubDate}
-                        class="text-muted-foreground text-sm opacity-50 md:inline"
-                      />
-                    </div>
+                      </div>
+                    </a>
                   </li>
-                </a>
-              ))}
-          </ul>
+                ))}
+            </ul>
+          </div>
         ))
       }
     </section>
@@ -79,11 +84,4 @@ const years = [
     @apply font-normal! no-underline!;
   }
 
-  .title {
-    @apply mt-0! no-underline!;
-  }
-
-  .description {
-    @apply text-muted-foreground! mt-2! line-clamp-4! text-base!;
-  }
 </style>

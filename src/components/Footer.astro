@@ -5,14 +5,13 @@
     <p
       class="text-muted-foreground text-center text-sm leading-loose text-balance md:text-left"
     >
-      &copy; {new Date().getFullYear()} Yuchen Cheng. This site is licensed under
-      a Creative Commons Attribution 4.0 International license. Built by{" "}
-      <a href="https://astro.build" target="_blank" rel="noreferrer"> Astro </a>
-      · {" "}
-      <a href="https://x.com/shadcn" target="_blank" rel="noreferrer">
-        shadcn
-      </a>
-      .
+      &copy; {new Date().getFullYear()} Yu-Chen Cheng. This site is licensed under
+      a Creative Commons Attribution 4.0 International license. Built with{" "}
+      <a href="https://astro.build" target="_blank" rel="noreferrer">Astro</a>
+      {" "}& {" "}
+      <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer">
+        shadcn/ui
+      </a>.
     </p>
   </div>
 </footer>
@@ -21,6 +20,6 @@
   @reference "@/styles/global.css";
 
   a {
-    @apply font-medium! opacity-80! hover:opacity-100! hover:transition!;
+    @apply font-medium! underline! underline-offset-4! opacity-80! hover:opacity-100! transition-opacity! duration-200!;
   }
 </style>

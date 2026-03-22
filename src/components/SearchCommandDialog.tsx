@@ -148,9 +148,9 @@ export const SearchCommandDialog = () => {
         </DialogTrigger>
         <DialogContent className="p-0 pb-11">
           <DialogHeader className="sr-only">
-            <DialogTitle>Search...</DialogTitle>
+            <DialogTitle>Search posts</DialogTitle>
             <DialogDescription>
-              Search for a command to run...
+              Search blog posts by title or content.
             </DialogDescription>
           </DialogHeader>
           <Command
@@ -164,9 +164,9 @@ export const SearchCommandDialog = () => {
               isLoading={isLoading}
             />
             <CommandList>
-              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandEmpty>No matching posts. Try a different keyword.</CommandEmpty>
               {results.length > 0 && (
-                <CommandGroup heading={`Found Posts (${results.length})`}>
+                <CommandGroup heading={`${results.length} ${results.length === 1 ? "post" : "posts"} found`}>
                   {results.map((result) => (
                     <>
                       <CommandItem

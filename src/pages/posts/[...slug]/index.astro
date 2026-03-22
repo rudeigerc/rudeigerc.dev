@@ -6,6 +6,11 @@ import PostPagination from "@/components/PostPagination.astro";
 import BlogPosting from "@/components/structured-data/BlogPosting.astro";
 import BlogPost from "@/layouts/BlogPost.astro";
 
+import "katex/dist/katex.min.css";
+import "remark-github-alerts/styles/github-base.css";
+import "remark-github-alerts/styles/github-colors-dark-class.css";
+import "remark-github-alerts/styles/github-colors-light.css";
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (
     await getCollection(

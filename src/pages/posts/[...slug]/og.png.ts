@@ -24,33 +24,23 @@ export const GET: APIRoute = async ({ params, request }: APIContext) => {
   const postURL = request.url.replace(/\/og\.png$/, "");
 
   const element = html`
-    <div tw="flex flex-col justify-between w-full h-full bg-white p-16 rounded-2xl border border-gray-200 shadow-xl relative">
-      <div tw="absolute inset-0 flex items-center justify-end pr-32 opacity-5">
-        <svg width="400" height="400" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon stroke="#2E5C6E" stroke-width="60" points="512 49 945.012702 280.666667 945.012702 744 512 975.666667 78.9872981 744 78.9872981 280.666667"></polygon>
-          <line x1="512" y1="512" x2="512" y2="965" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
-          <line x1="512" y1="512" x2="91" y2="291" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
-          <line x1="512" y1="512" x2="927" y2="291" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
-          <line x1="538" y1="640" x2="915" y2="437" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
-          <line x1="621" y1="481" x2="621" y2="880" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
-        </svg>
-      </div>
-      <div tw="flex flex-col relative z-10">
+    <div tw="flex w-full h-full" style=${{ backgroundColor: "#0a0a0b" }}>
+      <div tw="flex w-1 h-full" style=${{ backgroundColor: "#2E5C6E" }}></div>
+      <div tw="flex flex-col justify-between flex-1 px-20 py-16">
         <div tw="flex flex-col">
-          <div tw="flex items-center">
+          <div tw="flex items-center mb-4">
             ${post?.data.categories?.map(
               (cat: string) =>
-                html`<span tw="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide">${cat}</span>`,
+                html`<span tw="text-white text-xs font-semibold px-3 py-1 rounded uppercase tracking-wide mr-2" style=${{ backgroundColor: "#2E5C6E" }}>${cat}</span>`,
             )}
           </div>
+          <h1 tw="text-6xl font-extrabold leading-tight text-white mt-2 mb-0">${post?.data.title}</h1>
+          ${post?.data.description ? html`<p tw="text-lg mt-4 leading-relaxed" style=${{ color: "#888" }}>${post.data.description}</p>` : ""}
         </div>
-        <h1 tw="text-6xl font-extrabold leading-tight text-gray-900 mt-4 mb-2">${post?.data.title}</h1>
-      </div>
-      <div tw="flex items-center justify-between w-full mt-10 pt-8 border-t border-gray-100 relative z-10">
-        <span tw="text-lg text-gray-500 font-medium">${postURL}</span>
-        <div tw="flex items-center">
-          <span tw="flex items-center">
-            <svg width="32" height="32" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div tw="flex items-center justify-between w-full">
+          <span tw="text-base font-medium" style=${{ color: "#555" }}>${postURL}</span>
+          <div tw="flex items-center">
+            <svg width="28" height="28" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
               <polygon stroke="#2E5C6E" stroke-width="60" points="512 49 945.012702 280.666667 945.012702 744 512 975.666667 78.9872981 744 78.9872981 280.666667"></polygon>
               <line x1="512" y1="512" x2="512" y2="965" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
               <line x1="512" y1="512" x2="91" y2="291" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
@@ -58,8 +48,8 @@ export const GET: APIRoute = async ({ params, request }: APIContext) => {
               <line x1="538" y1="640" x2="915" y2="437" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
               <line x1="621" y1="481" x2="621" y2="880" stroke="#2E5C6E" stroke-width="60" stroke-linecap="square"></line>
             </svg>
-            <span tw="ml-2 text-lg font-semibold text-gray-800">Yuchen Cheng</span>
-          </span>
+            <span tw="ml-2 text-base font-semibold" style=${{ color: "#7BAEBF" }}>Yu-Chen Cheng</span>
+          </div>
         </div>
       </div>
     </div>

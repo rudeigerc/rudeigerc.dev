@@ -1,13 +1,12 @@
 ---
-import { Image } from "astro:assets";
+import logoRaw from "@/assets/logo.svg?raw";
 
-import Logo from "@/assets/logo.svg";
 import { buttonVariants } from "@/components/ui/button";
-import { SITE_TITLE } from "@/consts";
 import { cn } from "@/lib/utils";
 import { Mail, Rss } from "lucide-react";
 import HeaderLink from "./HeaderLink.astro";
 import { Icons } from "./Icons";
+import { MobileNav } from "./MobileNav";
 import { ModeToggle } from "./ModeToggle";
 import { SearchCommandDialog } from "./SearchCommandDialog";
 ---
@@ -16,10 +15,13 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
   class="border-border/40 bg-background/95 sticky top-0 z-50 w-full backdrop-blur-sm"
 >
   <div class="container flex h-14 max-w-(--breakpoint-2xl) items-center">
+    <MobileNav client:load />
     <div class="mr-4 md:flex">
-      <a href="/" class="flex items-center space-x-2 md:mr-4 lg:mr-6">
-        <Image src={Logo} alt="logo" class="h-6 w-6" />
-        <span class="hidden font-bold lg:inline-block">{SITE_TITLE}</span>
+      <a href="/" class="brand-link group flex items-center space-x-2 md:mr-4 lg:mr-6">
+        <span class="brand-logo text-primary inline-flex h-6 w-6 shrink-0 items-center [&>svg]:h-full [&>svg]:w-full" set:html={logoRaw} />
+        <span class="hidden text-sm font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary lg:inline">
+          Yu-Chen Cheng
+        </span>
       </a>
     </div>
     <div
@@ -41,7 +43,7 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
               buttonVariants({
                 variant: "ghost",
               }),
-              "h-8 w-8 px-0",
+              "h-9 w-9 px-0",
             )}
           >
             <span class="sr-only">GitHub</span>
@@ -54,7 +56,7 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
               buttonVariants({
                 variant: "ghost",
               }),
-              "h-8 w-8 px-0",
+              "h-9 w-9 px-0",
             )}
           >
             <span class="sr-only">X</span>
@@ -72,7 +74,7 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
               buttonVariants({
                 variant: "ghost",
               }),
-              "h-8 w-8 px-0",
+              "h-9 w-9 px-0",
             )}
           >
             <span class="sr-only">Mail</span>
@@ -90,7 +92,7 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
               buttonVariants({
                 variant: "ghost",
               }),
-              "h-8 w-8 px-0",
+              "h-9 w-9 px-0",
             )}
           >
             <span class="sr-only">RSS</span>
@@ -102,3 +104,25 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
     </div>
   </div>
 </header>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .brand-logo {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .brand-link:hover .brand-logo {
+    transform: rotate(60deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-logo {
+      transition: none;
+    }
+
+    .brand-link:hover .brand-logo {
+      transform: none;
+    }
+  }
+</style>
