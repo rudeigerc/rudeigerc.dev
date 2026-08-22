@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Mail, Menu, Rss } from "lucide-react";
+import { useState } from "react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -11,8 +11,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Icons } from "./Icons";
 import { cn } from "@/lib/utils";
+import { Icons } from "./Icons";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -56,7 +56,7 @@ export function MobileNav() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden min-h-[44px] min-w-[44px]"
+          className="md:hidden mr-3.5 min-h-[44px] min-w-[44px]"
           aria-label="Open navigation menu"
         >
           <Menu className="h-5 w-5" />
