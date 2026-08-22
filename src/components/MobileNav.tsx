@@ -52,15 +52,17 @@ export function MobileNav() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden mr-3.5 min-h-[44px] min-w-[44px]"
-          aria-label="Open navigation menu"
-        >
-          <Menu className="h-5 w-5" />
-        </Button>
+      <SheetTrigger
+        render={
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden mr-3.5 min-h-[44px] min-w-[44px]"
+            aria-label="Open navigation menu"
+          />
+        }
+      >
+        <Menu className="h-5 w-5" />
       </SheetTrigger>
       <SheetContent side="left" className="w-72">
         <SheetHeader>
@@ -71,32 +73,40 @@ export function MobileNav() {
         </SheetHeader>
         <nav className="flex flex-col gap-1 px-4">
           {navLinks.map((link) => (
-            <SheetClose key={link.href} asChild>
-              <a
-                href={link.href}
-                className="text-foreground/80 hover:text-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent"
-              >
-                {link.label}
-              </a>
+            <SheetClose
+              key={link.href}
+              nativeButton={false}
+              render={
+                <a
+                  href={link.href}
+                  className="text-foreground/80 hover:text-foreground rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent"
+                />
+              }
+            >
+              {link.label}
             </SheetClose>
           ))}
         </nav>
         <div role="separator" className="bg-border mx-4 h-px" />
         <nav className="flex items-center gap-1 px-4">
           {socialLinks.map((link) => (
-            <SheetClose key={link.href} asChild>
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "ghost" }),
-                  "h-9 w-9 px-0",
-                )}
-              >
-                <span className="sr-only">{link.label}</span>
-                {link.icon}
-              </a>
+            <SheetClose
+              key={link.href}
+              nativeButton={false}
+              render={
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "h-9 w-9 px-0",
+                  )}
+                />
+              }
+            >
+              <span className="sr-only">{link.label}</span>
+              {link.icon}
             </SheetClose>
           ))}
         </nav>
