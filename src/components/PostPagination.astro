@@ -17,12 +17,15 @@ const { pagination } = Astro.props;
 const { prev, next } = pagination;
 ---
 
-<div class="mt-16 border-t border-border pt-8 grid gap-6 md:grid-cols-2">
+<div class="border-border mt-16 grid gap-6 border-t pt-8 md:grid-cols-2">
   {
     prev?.label ? (
       <a href={prev.href} rel="prev" class="group flex flex-col gap-1.5">
-        <span class="text-xs font-medium uppercase tracking-widest text-muted-foreground transition-colors duration-200 group-hover:text-primary">
-          <span class="inline-block transition-transform duration-200 group-hover:-translate-x-0.5">←</span> Previous
+        <span class="text-muted-foreground group-hover:text-primary text-xs font-medium tracking-widest uppercase transition-colors duration-200">
+          <span class="inline-block transition-transform duration-200 group-hover:-translate-x-0.5">
+            ←
+          </span>{" "}
+          Previous
         </span>
         <span class="nav-label">{prev.label}</span>
       </a>
@@ -32,9 +35,16 @@ const { prev, next } = pagination;
   }
   {
     next?.label && (
-      <a href={next.href} rel="next" class="group flex flex-col gap-1.5 md:items-end">
-        <span class="text-xs font-medium uppercase tracking-widest text-muted-foreground md:text-end transition-colors duration-200 group-hover:text-primary">
-          Next <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+      <a
+        href={next.href}
+        rel="next"
+        class="group flex flex-col gap-1.5 md:items-end"
+      >
+        <span class="text-muted-foreground group-hover:text-primary text-xs font-medium tracking-widest uppercase transition-colors duration-200 md:text-end">
+          Next{" "}
+          <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
+            →
+          </span>
         </span>
         <span class="nav-label md:text-end">{next.label}</span>
       </a>
@@ -50,6 +60,6 @@ const { prev, next } = pagination;
   }
 
   .nav-label {
-    @apply text-sm font-medium text-foreground/70 leading-snug transition-colors group-hover:text-primary;
+    @apply text-foreground/70 group-hover:text-primary text-sm leading-snug font-medium transition-colors;
   }
 </style>

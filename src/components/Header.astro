@@ -17,9 +17,17 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
   <div class="container flex h-14 max-w-(--breakpoint-2xl) items-center">
     <MobileNav client:load />
     <div class="mr-4 md:flex">
-      <a href="/" class="brand-link group flex items-center space-x-2 md:mr-4 lg:mr-6">
-        <span class="brand-logo text-primary inline-flex h-6 w-6 shrink-0 items-center [&>svg]:h-full [&>svg]:w-full" set:html={logoRaw} />
-        <span class="hidden text-sm font-semibold tracking-tight text-foreground transition-colors duration-200 group-hover:text-primary lg:inline">
+      <a
+        href="/"
+        class="brand-link group flex items-center space-x-2 md:mr-4 lg:mr-6"
+      >
+        <span
+          class="brand-logo text-primary inline-flex h-6 w-6 shrink-0 items-center [&>svg]:h-full [&>svg]:w-full"
+          set:html={logoRaw}
+        />
+        <span
+          class="text-foreground group-hover:text-primary hidden text-sm font-semibold tracking-tight transition-colors duration-200 lg:inline"
+        >
           Yu-Chen Cheng
         </span>
       </a>

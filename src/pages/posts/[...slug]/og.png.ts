@@ -1,8 +1,8 @@
 import { getCollection, getEntry } from "astro:content";
 import type { APIContext, APIRoute, GetStaticPaths } from "astro";
 
-import { ImageResponse } from "@vercel/og";
 import { html } from "@/lib/html";
+import { ImageResponse } from "@vercel/og";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = (

@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
 import {
-  type SVGMotionProps,
-  useAnimation,
   type LegacyAnimationControls,
+  type SVGMotionProps,
   type Variants,
+  useAnimation,
 } from "motion/react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 

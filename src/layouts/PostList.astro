@@ -43,7 +43,9 @@ const { page } = Astro.props;
             <span class="text-muted-foreground text-sm">
               <FormattedDate date={post.data.pubDate} />
             </span>
-            {(post.data.draft || post.data.external || post.data.categories?.length) && (
+            {(post.data.draft ||
+              post.data.external ||
+              post.data.categories?.length) && (
               <span class="text-muted-foreground/50 text-sm">·</span>
             )}
             {post.data.draft && <Badge>DRAFT</Badge>}
@@ -67,11 +69,11 @@ const { page } = Astro.props;
   @reference "@/styles/global.css";
 
   a {
-    @apply no-underline! opacity-80! hover:opacity-100! transition-all! duration-200!;
+    @apply no-underline! opacity-80! transition-all! duration-200! hover:opacity-100!;
   }
 
   .title {
-    @apply mt-0! mb-1.5! text-base! font-semibold! no-underline! leading-snug! transition-colors! duration-200!;
+    @apply mt-0! mb-1.5! text-base! leading-snug! font-semibold! no-underline! transition-colors! duration-200!;
   }
 
   a:hover .title {
@@ -79,7 +81,7 @@ const { page } = Astro.props;
   }
 
   .meta {
-    @apply flex items-center gap-2 mt-0;
+    @apply mt-0 flex items-center gap-2;
   }
 
   .description {

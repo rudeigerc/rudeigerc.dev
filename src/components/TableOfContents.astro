@@ -17,10 +17,10 @@ const { toc, depth = 0 } = Astro.props;
         <a
           href={`#${heading.slug}`}
           class={cn(
-            "hover:text-foreground inline-block no-underline transition-colors leading-snug",
+            "hover:text-foreground inline-block leading-snug no-underline transition-colors",
             depth === 0
-              ? "text-sm text-muted-foreground"
-              : "text-xs text-muted-foreground/60 hover:text-muted-foreground",
+              ? "text-muted-foreground text-sm"
+              : "text-muted-foreground/60 hover:text-muted-foreground text-xs",
           )}
         >
           <span>{heading.text}</span>

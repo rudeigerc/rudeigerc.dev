@@ -164,9 +164,13 @@ export const SearchCommandDialog = () => {
               isLoading={isLoading}
             />
             <CommandList>
-              <CommandEmpty>No matching posts. Try a different keyword.</CommandEmpty>
+              <CommandEmpty>
+                No matching posts. Try a different keyword.
+              </CommandEmpty>
               {results.length > 0 && (
-                <CommandGroup heading={`${results.length} ${results.length === 1 ? "post" : "posts"} found`}>
+                <CommandGroup
+                  heading={`${results.length} ${results.length === 1 ? "post" : "posts"} found`}
+                >
                   {results.map((result) => (
                     <>
                       <CommandItem

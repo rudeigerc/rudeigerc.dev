@@ -12,7 +12,6 @@ import { generateToC } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 import BaseLayout from "./BaseLayout.astro";
 
-
 type Props = CollectionEntry<"blog">["data"] & { headings?: MarkdownHeading[] };
 
 const {
@@ -47,49 +46,46 @@ const toc = generateToC(headings ?? [], {
           <article data-pagefind-body>
             {cover && <Image src={cover} alt={title} class="mb-6" />}
             <div class="title">
-              <h1
-                data-pagefind-meta="title"
-                class="mt-0 mb-3"
-              >
+              <h1 data-pagefind-meta="title" class="mt-0 mb-3">
                 {title}
               </h1>
-              {(pubDate || updatedDate || draft || categories?.length || tags?.length) && (
-                <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5 mb-8 text-sm">
-                  {pubDate && (
-                    <span class="text-muted-foreground">
-                      <FormattedDate
-                        date={pubDate}
-                        data-pagefind-meta="date"
-                      />
-                    </span>
-                  )}
-                  {
-                    updatedDate && (
+              {
+                (pubDate ||
+                  updatedDate ||
+                  draft ||
+                  categories?.length ||
+                  tags?.length) && (
+                  <div class="mb-8 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm">
+                    {pubDate && (
+                      <span class="text-muted-foreground">
+                        <FormattedDate
+                          date={pubDate}
+                          data-pagefind-meta="date"
+                        />
+                      </span>
+                    )}
+                    {updatedDate && (
                       <span class="text-muted-foreground">
                         · Updated <FormattedDate date={updatedDate} />
                       </span>
-                    )
-                  }
-                  {draft && <Badge>DRAFT</Badge>}
-                  {
-                    categories?.map((category) => (
+                    )}
+                    {draft && <Badge>DRAFT</Badge>}
+                    {categories?.map((category) => (
                       <Badge
                         variant="secondary"
                         data-pagefind-filter="category"
                       >
                         {category}
                       </Badge>
-                    ))
-                  }
-                  {
-                    tags?.map((tag) => (
+                    ))}
+                    {tags?.map((tag) => (
                       <Badge variant="outline" data-pagefind-filter="tag">
                         #{tag}
                       </Badge>
-                    ))
-                  }
-                </div>
-              )}
+                    ))}
+                  </div>
+                )
+              }
             </div>
             <slot />
           </article>
@@ -103,7 +99,9 @@ const toc = generateToC(headings ?? [], {
             <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-16">
               <ScrollArea className="h-full pb-10">
                 <nav class="space-y-3">
-                  <p class="text-xs font-medium uppercase tracking-widest text-muted-foreground">On This Page</p>
+                  <p class="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+                    On This Page
+                  </p>
                   <TableOfContents toc={toc} />
                 </nav>
               </ScrollArea>

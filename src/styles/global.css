@@ -11,11 +11,12 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system,
-    "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei",
-    sans-serif;
-  --font-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", Menlo,
-    Monaco, Consolas, "Liberation Mono", monospace;
+  --font-sans:
+    "Geist Variable", ui-sans-serif, system-ui, -apple-system, "PingFang SC",
+    "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  --font-mono:
+    "Geist Mono Variable", ui-monospace, "SFMono-Regular", Menlo, Monaco,
+    Consolas, "Liberation Mono", monospace;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -146,7 +147,10 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -208,7 +212,7 @@
     }
 
     img {
-      @apply rounded-md border my-2;
+      @apply my-2 rounded-md border;
     }
 
     figure {
@@ -220,23 +224,23 @@
     }
 
     hr {
-      @apply my-8 md:my-12 border-border/60;
+      @apply border-border/60 my-8 md:my-12;
     }
 
     table {
-      @apply my-6 w-full overflow-x-auto block text-sm;
+      @apply my-6 block w-full overflow-x-auto text-sm;
     }
 
     tr {
-      @apply even:bg-muted/50 m-0 border-t border-border/60 p-0;
+      @apply even:bg-muted/50 border-border/60 m-0 border-t p-0;
     }
 
     th {
-      @apply border border-border/60 px-4 py-2.5 text-left font-semibold text-foreground/90 [&[align=center]]:text-center [&[align=right]]:text-right;
+      @apply border-border/60 text-foreground/90 border px-4 py-2.5 text-left font-semibold [&[align=center]]:text-center [&[align=right]]:text-right;
     }
 
     td {
-      @apply border border-border/60 px-4 py-2.5 text-left text-foreground/80 [&[align=center]]:text-center [&[align=right]]:text-right;
+      @apply border-border/60 text-foreground/80 border px-4 py-2.5 text-left [&[align=center]]:text-center [&[align=right]]:text-right;
     }
 
     pre {
@@ -252,7 +256,7 @@
     }
 
     .footnotes {
-      @apply text-muted-foreground text-sm font-normal mt-12 pt-6 border-t border-border/60;
+      @apply text-muted-foreground border-border/60 mt-12 border-t pt-6 text-sm font-normal;
     }
 
     a.anchor {

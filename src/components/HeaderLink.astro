@@ -23,7 +23,7 @@ const isActive = href === pathname || href === `/${subpath?.[0]}`;
 
   a::after {
     content: "";
-    @apply absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-200;
+    @apply bg-primary absolute -bottom-1 left-0 h-px w-0 transition-all duration-200;
   }
 
   a:hover::after {
