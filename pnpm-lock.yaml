@@ -38,12 +38,6 @@ importers:
       '@microflash/rehype-figure':
         specifier: ^2.1.4
         version: 2.1.4
-      '@radix-ui/react-dialog':
-        specifier: ^1.1.15
-        version: 1.1.15(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      '@radix-ui/react-separator':
-        specifier: ^1.1.7
-        version: 1.1.7(@types/react-dom@19.1.7(@types/react@19.1.10))(@types/react@19.1.10)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@rudeigerc/shiki-transformer-copy-button':
         specifier: ^0.1.1
         version: 0.1.1
