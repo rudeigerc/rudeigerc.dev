@@ -1,90 +1,158 @@
 ---
-import { Card } from "@/components/ui/card";
+import { statSync } from "node:fs";
+import { join } from "node:path";
+
+import { Image } from "astro:assets";
+
+import wechatQrImage from "@/assets/wechat_subscription.jpg";
+import {
+  Attachment,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/ui/attachment";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { FileText } from "lucide-react";
+
+const socials = [
+  {
+    title: "GitHub",
+    handle: "@rudeigerc",
+    href: "https://github.com/rudeigerc",
+    path: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+  },
+  {
+    title: "Medium",
+    handle: "@rudeigerc",
+    href: "https://medium.com/@rudeigerc",
+    path: "M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z",
+  },
+  {
+    title: "Zhihu",
+    handle: "@rudeigerc",
+    href: "https://www.zhihu.com/people/rudeigerc",
+    path: "M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24h12.56C21.751 24 24 21.75 24 18.281V5.72C24 2.249 21.75 0 18.281 0zm1.964 4.078c-.271.73-.5 1.434-.68 2.11h4.587c.545-.006.445 1.168.445 1.171H9.384a58.104 58.104 0 01-.112 3.797h2.712c.388.023.393 1.251.393 1.266H9.183a9.223 9.223 0 01-.408 2.102l.757-.604c.452.456 1.512 1.712 1.906 2.177.473.681.063 2.081.063 2.081l-2.794-3.382c-.653 2.518-1.845 3.607-1.845 3.607-.523.468-1.58.82-2.64.516 2.218-1.73 3.44-3.917 3.667-6.497H4.491c0-.015.197-1.243.806-1.266h2.71c.024-.32.086-3.254.086-3.797H6.598c-.136.406-.158.447-.268.753-.594 1.095-1.603 1.122-1.907 1.155.906-1.821 1.416-3.6 1.591-4.064.425-1.124 1.671-1.125 1.671-1.125zM13.078 6h6.377v11.33h-2.573l-2.184 1.373-.401-1.373h-1.219zm1.313 1.219v8.86h.623l.263.937 1.455-.938h1.456v-8.86z",
+  },
+];
+
+// Read at build time so the sizes never go stale when a résumé is replaced.
+// Resolved from the project root: import.meta.url points into the bundled
+// chunk at build time, not at this file.
+const fileSize = (publicPath: string) => {
+  try {
+    const { size } = statSync(join(process.cwd(), "public", publicPath));
+    return `${Math.round(size / 1024)} KB`;
+  } catch {
+    return null;
+  }
+};
+
+const resumes = [
+  {
+    label: "EN",
+    href: "/files/resume.pdf",
+    size: fileSize("files/resume.pdf"),
+  },
+  {
+    label: "中文",
+    href: "/files/resume_zh.pdf",
+    size: fileSize("files/resume_zh.pdf"),
+  },
+];
+
+const resumeSizes = resumes.map((resume) => resume.size).filter(Boolean);
+const resumeMeta = resumeSizes.length
+  ? `PDF · ${resumeSizes.join(" / ")}`
+  : "PDF";
+
+const attachmentClass =
+  "transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm";
+const mediaClass = "transition-colors duration-200 group-hover:bg-primary/10";
+const iconClass =
+  "text-muted-foreground transition-colors duration-200 group-hover:text-primary";
 ---
 
-<div class="not-prose my-8 space-y-3">
+<div class="not-prose my-8 flex flex-col gap-3">
   <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-    <a
-      href="https://github.com/rudeigerc"
-      target="_blank"
-      rel="noreferrer"
-      class="social-card group"
-    >
-      <Card className="flex h-full items-center gap-3 px-4 py-3 transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm">
-        <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted transition-colors duration-200 group-hover:bg-primary/10">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground transition-colors duration-200 group-hover:text-primary">
-            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-          </svg>
-        </div>
-        <div class="flex flex-col min-w-0">
-          <span class="text-sm font-medium text-foreground">GitHub</span>
-          <span class="text-xs text-muted-foreground truncate">@rudeigerc</span>
-        </div>
-      </Card>
-    </a>
-    <a
-      href="https://medium.com/@rudeigerc"
-      target="_blank"
-      rel="noreferrer"
-      class="social-card group"
-    >
-      <Card className="flex h-full items-center gap-3 px-4 py-3 transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm">
-        <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted transition-colors duration-200 group-hover:bg-primary/10">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground transition-colors duration-200 group-hover:text-primary">
-            <path fill="currentColor" d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-          </svg>
-        </div>
-        <div class="flex flex-col min-w-0">
-          <span class="text-sm font-medium text-foreground">Medium</span>
-          <span class="text-xs text-muted-foreground truncate">@rudeigerc</span>
-        </div>
-      </Card>
-    </a>
-    <a
-      href="https://www.zhihu.com/people/rudeigerc"
-      target="_blank"
-      rel="noreferrer"
-      class="social-card group"
-    >
-      <Card className="flex h-full items-center gap-3 px-4 py-3 transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm">
-        <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted transition-colors duration-200 group-hover:bg-primary/10">
-          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-muted-foreground transition-colors duration-200 group-hover:text-primary">
-            <path fill="currentColor" d="M5.721 0C2.251 0 0 2.25 0 5.719V18.28C0 21.751 2.252 24 5.721 24h12.56C21.751 24 24 21.75 24 18.281V5.72C24 2.249 21.75 0 18.281 0zm1.964 4.078c-.271.73-.5 1.434-.68 2.11h4.587c.545-.006.445 1.168.445 1.171H9.384a58.104 58.104 0 01-.112 3.797h2.712c.388.023.393 1.251.393 1.266H9.183a9.223 9.223 0 01-.408 2.102l.757-.604c.452.456 1.512 1.712 1.906 2.177.473.681.063 2.081.063 2.081l-2.794-3.382c-.653 2.518-1.845 3.607-1.845 3.607-.523.468-1.58.82-2.64.516 2.218-1.73 3.44-3.917 3.667-6.497H4.491c0-.015.197-1.243.806-1.266h2.71c.024-.32.086-3.254.086-3.797H6.598c-.136.406-.158.447-.268.753-.594 1.095-1.603 1.122-1.907 1.155.906-1.821 1.416-3.6 1.591-4.064.425-1.124 1.671-1.125 1.671-1.125zM13.078 6h6.377v11.33h-2.573l-2.184 1.373-.401-1.373h-1.219zm1.313 1.219v8.86h.623l.263.937 1.455-.938h1.456v-8.86z" />
-          </svg>
-        </div>
-        <div class="flex flex-col min-w-0">
-          <span class="text-sm font-medium text-foreground">Zhihu</span>
-          <span class="text-xs text-muted-foreground truncate">@rudeigerc</span>
-        </div>
-      </Card>
-    </a>
+    {
+      socials.map((social) => (
+        <a
+          href={social.href}
+          target="_blank"
+          rel="noreferrer"
+          class="social-card group"
+        >
+          <Attachment className={`h-full w-full ${attachmentClass}`}>
+            <AttachmentMedia className={mediaClass}>
+              <svg
+                role="img"
+                aria-label={social.title}
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                class={iconClass}
+              >
+                <path fill="currentColor" d={social.path} />
+              </svg>
+            </AttachmentMedia>
+            <AttachmentContent>
+              <AttachmentTitle>{social.title}</AttachmentTitle>
+              <AttachmentDescription>{social.handle}</AttachmentDescription>
+            </AttachmentContent>
+          </Attachment>
+        </a>
+      ))
+    }
   </div>
 
-  <div class="flex gap-3">
-    <a
-      href="/files/resume.pdf"
-      target="_blank"
-      rel="noreferrer"
-      class="social-card group"
-    >
-      <Card className="flex items-center gap-2.5 px-4 py-2.5 transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm">
-        <FileText className="h-4 w-4 text-muted-foreground transition-colors duration-200 group-hover:text-primary" />
-        <span class="text-sm font-medium text-foreground">Résumé</span>
-      </Card>
-    </a>
-    <a
-      href="/files/resume_zh.pdf"
-      target="_blank"
-      rel="noreferrer"
-      class="social-card group"
-    >
-      <Card className="flex items-center gap-2.5 px-4 py-2.5 transition-all duration-200 group-hover:border-primary/40 group-hover:bg-accent/50 group-hover:shadow-sm">
-        <FileText className="h-4 w-4 text-muted-foreground transition-colors duration-200 group-hover:text-primary" />
-        <span class="text-sm font-medium text-foreground">简历</span>
-      </Card>
-    </a>
-  </div>
+  <Attachment className="w-full">
+    <AttachmentMedia>
+      <FileText className="text-muted-foreground" />
+    </AttachmentMedia>
+    <AttachmentContent>
+      <AttachmentTitle>Résumé</AttachmentTitle>
+      <AttachmentDescription>{resumeMeta}</AttachmentDescription>
+    </AttachmentContent>
+    <AttachmentActions className="gap-2">
+      {
+        resumes.map((resume) => (
+          <a
+            href={resume.href}
+            target="_blank"
+            rel="noreferrer"
+            class={cn(
+              buttonVariants({ variant: "outline", size: "xs" }),
+              // .prose a would otherwise tint these and underline them on hover
+              "text-foreground no-underline hover:no-underline",
+            )}
+          >
+            {resume.label}
+          </a>
+        ))
+      }
+    </AttachmentActions>
+  </Attachment>
+
+  <Attachment className="w-full">
+    <AttachmentMedia variant="image" className="w-32 sm:w-36">
+      <Image
+        src={wechatQrImage}
+        alt="微信公众号「YC Cheng」二维码"
+        width={288}
+        height={288}
+        class="my-0 rounded-none border-0"
+      />
+    </AttachmentMedia>
+    <AttachmentContent>
+      <AttachmentTitle>微信公众号</AttachmentTitle>
+      <AttachmentDescription>YC Cheng</AttachmentDescription>
+      <span class="mt-2 block text-xs text-muted-foreground">
+        扫码或在微信中搜索「YC Cheng」关注
+      </span>
+    </AttachmentContent>
+  </Attachment>
 </div>
 
 <style>

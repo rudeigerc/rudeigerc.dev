@@ -1,7 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
-import subscriptionImage from "@/assets/subscription.png";
 import Giscus from "@/components/Giscus.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
@@ -13,19 +10,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
     <p>
       <strong>Yu-Chen Cheng</strong> is a software engineer at Tencent Cloud TI-ONE,
-      focusing on building AI/LLM infrastructure based on Kubernetes.
-      He holds M.Eng. and B.Eng. in software engineering from Shanghai Jiao Tong University.
+      focusing on building AI/LLM infrastructure based on Kubernetes. He holds M.Eng.
+      and B.Eng. in software engineering from Shanghai Jiao Tong University.
     </p>
 
     <SocialLinks />
-
-    <div class="not-prose mt-10">
-      <Image
-        src={subscriptionImage}
-        alt="WeChat subscription"
-        class="rounded-lg border shadow-sm"
-      />
-    </div>
 
     <Giscus />
   </div>
