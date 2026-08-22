@@ -7,12 +7,12 @@ This file provides a comprehensive guide for AI agents working on the **rudeiger
 **rudeigerc.dev** is a personal blog built with Astro and styled using shadcn/ui components. The site focuses on technical articles covering topics like cloud-native, Kubernetes, LLM, and infrastructure.
 
 - **Site URL**: <https://rudeigerc.dev>
-- **Framework**: Astro 5.x
+- **Framework**: Astro 7.x
 - **UI Components**: shadcn/ui (New York style) + Radix UI
 - **Styling**: Tailwind CSS v4
 - **Content**: Markdown/MDX with advanced plugins
 - **Package Manager**: pnpm (required via `only-allow`)
-- **Node Version**: ^18.17.1 || ^20.3.0 || >=21.0.0
+- **Node Version**: >=22.12.0
 
 ## Tech Stack
 
@@ -35,6 +35,11 @@ This file provides a comprehensive guide for AI agents working on the **rudeiger
 - `@astrojs/partytown`: Third-party script optimization
 
 #### Markdown Processing
+
+Astro 7 defaults to the Sätteri pipeline. This project stays on the unified pipeline via
+`markdown.processor: unified({ ... })` from `@astrojs/markdown-remark`, so remark/rehype
+plugins must be passed to `unified()` (not to `markdown.remarkPlugins` / `markdown.rehypePlugins`,
+which are deprecated).
 
 - **Remark Plugins**:
   - `remark-math`: Math equation support
@@ -400,7 +405,7 @@ Update [src/content.config.ts](src/content.config.ts) with schema and loader.
 6. **Asset Organization**: Post-specific assets (images, diagrams) should be placed in `src/assets/{post-slug}/` for better organization.
 
 7. **External Dependencies**: When suggesting new dependencies, verify compatibility with:
-   - Astro 5.x
+   - Astro 7.x
    - React 19.x
    - Tailwind CSS v4
    - Node.js version constraints

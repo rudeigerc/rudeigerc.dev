@@ -1,4 +1,4 @@
-import { rehypeShiki } from "@astrojs/markdown-remark";
+import { rehypeShiki, unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
@@ -39,52 +39,54 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkMath, remarkGithubAlerts],
-    rehypePlugins: [
-      rehypeKatex,
-      rehypeMermaid,
-      rehypeFigure,
-      [
-        rehypeShiki,
-        {
-          theme: "github-dark",
-          transformers: [
-            {
-              // https://github.com/shikijs/shiki/issues/3#issuecomment-2272168959
-              preprocess(code) {
-                return code.endsWith("\n") ? code.slice(0, -1) : code;
+    processor: unified({
+      remarkPlugins: [remarkMath, remarkGithubAlerts],
+      rehypePlugins: [
+        rehypeKatex,
+        rehypeMermaid,
+        rehypeFigure,
+        [
+          rehypeShiki,
+          {
+            theme: "github-dark",
+            transformers: [
+              {
+                // https://github.com/shikijs/shiki/issues/3#issuecomment-2272168959
+                preprocess(code) {
+                  return code.endsWith("\n") ? code.slice(0, -1) : code;
+                },
               },
-            },
-            {
-              span(node) {
-                if (!node.children || node.children.length === 0) {
-                  node.children = [{ type: "text", value: " " }];
-                }
+              {
+                span(node) {
+                  if (!node.children || node.children.length === 0) {
+                    node.children = [{ type: "text", value: " " }];
+                  }
+                },
               },
-            },
-            transformerCopyButton(),
-            transformerNotationHighlight(),
-            transformerMetaHighlight(),
-            transformerNotationDiff(),
-            transformerTitle(),
-          ],
-        },
+              transformerCopyButton(),
+              transformerNotationHighlight(),
+              transformerMetaHighlight(),
+              transformerNotationDiff(),
+              transformerTitle(),
+            ],
+          },
+        ],
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            content: /** @type {Array<ElementContent>} */ (
+              fromHtmlIsomorphic(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></svg>',
+                { fragment: true },
+              ).children
+            ),
+            behavior: "append",
+            properties: { ariaHidden: true, tabIndex: -1, className: "anchor" },
+          },
+        ],
       ],
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          content: /** @type {Array<ElementContent>} */ (
-            fromHtmlIsomorphic(
-              '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hash"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></svg>',
-              { fragment: true },
-            ).children
-          ),
-          behavior: "append",
-          properties: { ariaHidden: true, tabIndex: -1, className: "anchor" },
-        },
-      ],
-    ],
+    }),
     syntaxHighlight: false,
   },
   vite: {

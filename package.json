@@ -17,13 +17,13 @@
     "post:new": "node scripts/new.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/markdown-remark": "^6.3.10",
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/partytown": "^2.1.4",
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/partytown": "^2.1.7",
+    "@astrojs/react": "^6.0.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/geist": "^5.2.8",
     "@fontsource-variable/geist-mono": "^5.2.7",
     "@microflash/rehype-figure": "^2.1.4",
@@ -31,9 +31,9 @@
     "@radix-ui/react-separator": "^1.1.7",
     "@rudeigerc/shiki-transformer-copy-button": "^0.1.1",
     "@rudeigerc/shiki-transformer-title": "^0.2.1",
-    "@shikijs/transformers": "^3.11.0",
+    "@shikijs/transformers": "^4.4.3",
     "@vercel/og": "^0.8.5",
-    "astro": "^5.17.2",
+    "astro": "^7.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -56,12 +56,12 @@
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.3",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.12",
+    "tailwindcss": "^4.3.3",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@tailwindcss/vite": "^4.1.12",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/markdown-it": "^14.1.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
@@ -74,10 +74,10 @@
     "schema-dts": "^1.1.5",
     "shadcn": "^4.1.0",
     "typescript": "^5.9.2",
-    "vite-plugin-devtools-json": "^1.0.0"
+    "vite-plugin-devtools-json": "^1.1.0"
   },
   "packageManager": "pnpm@10.29.3",
   "engines": {
-    "node": "^18.20.8 || ^20.3.0 || >=22.12.0"
+    "node": ">=22.12.0"
   }
 }
