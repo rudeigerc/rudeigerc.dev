@@ -23,6 +23,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Kbd } from "@/components/ui/kbd";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import type {
@@ -58,18 +59,6 @@ const CommandInput = ({
     />
   </div>
 );
-
-function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
-  return (
-    <kbd
-      className={cn(
-        "bg-background text-muted-foreground pointer-events-none flex h-5 items-center justify-center gap-1 rounded border px-1 font-sans text-[0.7rem] font-medium select-none [&_svg:not([class*='size-'])]:size-3",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
 
 export const SearchCommandDialog = () => {
   const [open, setOpen] = React.useState(false);
@@ -144,9 +133,9 @@ export const SearchCommandDialog = () => {
           }
         >
           <span className="inline-flex"> Search... </span>
-          <kbd className="bg-muted pointer-events-none absolute top-[0.3rem] right-[0.3rem] hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none sm:flex">
+          <Kbd className="absolute top-[0.3rem] right-[0.3rem] hidden rounded border px-1.5 font-mono text-[10px] sm:flex">
             <span className="text-xs">⌘</span>K
-          </kbd>
+          </Kbd>
         </DialogTrigger>
         <DialogContent className="p-0 pb-11">
           <DialogHeader className="sr-only">
@@ -216,9 +205,9 @@ export const SearchCommandDialog = () => {
           </Command>
           <div className="text-muted-foreground absolute inset-x-0 bottom-0 z-20 flex h-10 items-center gap-2 rounded-b-xl border-t border-t-neutral-100 bg-neutral-50 px-4 text-xs font-medium dark:border-t-neutral-700 dark:bg-neutral-800">
             <div className="flex items-center gap-2">
-              <CommandMenuKbd>
+              <Kbd className="bg-background border">
                 <CornerDownLeftIcon />
-              </CommandMenuKbd>
+              </Kbd>
               Go to Page
             </div>
           </div>
