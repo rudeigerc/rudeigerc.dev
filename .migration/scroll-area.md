@@ -1,7 +1,8 @@
 # scroll-area
 
-2026-08-23. Transformation engine. Migrated, but with an UNRESOLVED
-regression: the custom scrollbar no longer renders.
+2026-08-23. Transformation engine. Migrated cleanly. An earlier revision of
+this report called the missing scrollbar a Base UI regression; that was a
+misdiagnosis and is corrected below.
 
 ## Changed
 
@@ -14,38 +15,52 @@ regression: the custom scrollbar no longer renders.
     omits it)
   - class strings unchanged; this wrapper used JS conditionals rather than
     `data-[orientation=...]`, so no class rewrite applied
-- leftover scan: `grep -n "radix-ui\|@radix-ui" src/components/ui/scroll-area.tsx` -> clean
+- `src/layouts/BlogPost.astro`: `<ScrollArea>` -> `<ScrollArea client:visible>`
+- leftover scan: clean
+
+## The real defect (pre-existing, not caused by this migration)
+
+`ScrollArea` is a JS-driven component but was used from `.astro` with no
+`client:*` directive, so it was rendered to static HTML and never hydrated.
+Base UI's effects, ResizeObserver and thumb measurement therefore never ran,
+`hiddenState` stayed at its SSR default, and `Scrollbar` returned null.
+`grep -c scroll-area-scrollbar` on the built page: 0.
+
+The same was true under Radix, and it was worse there. Fetched from the live
+site, which still runs the pre-migration build:
+
+- Radix: viewport inline style `overflow-x:hidden;overflow-y:hidden`
+  -> a table of contents taller than the viewport could NOT be scrolled
+- Base UI: viewport inline style `overflow:scroll`
+  -> it scrolls
+
+Neither version ever rendered a custom scrollbar (0 occurrences in both).
+So the migration improved this component; it did not regress it.
+
+Adding `client:visible` fixes the remaining half. Verified in the production
+build with the ToC overflowing (viewport 190px / content 468px):
+
+- root gains `data-has-overflow-y`, `data-overflow-y-start`, `data-overflow-y-end`
+- scrollbar renders 10x230
+- thumb is 76.3px tall with `visibility: visible`
+
+Cost: the `scroll-area` island chunk is 12.7 KB uncompressed, loaded only on
+post pages and only once the ToC scrolls into view. The React runtime is
+already on every page for the search dialog.
 
 ## Left alone
 
-Consumer `src/layouts/BlogPost.astro` (`<ScrollArea className="h-full pb-10">`)
-was not touched; no prop on the `consumer-props.md` list is used here
-(notably `type`, which Base UI drops, was never passed).
+No prop on the `consumer-props.md` list is used at the call site (notably
+`type`, which Base UI drops, was never passed).
 
 ## Behavior changes
 
-The scrollbar element is not rendered at all. Measured in the production
-build with the table of contents overflowing (viewport 260px / content
-468px, later 340px / 468px after a real window resize):
-
-- root carries no `data-has-overflow-y`, i.e. Base UI computes
-  hasOverflowY = false despite the real overflow
-- `ScrollAreaScrollbar` returns null when hidden and `keepMounted` is false,
-  so nothing mounts
-- forcing `keepMounted` mounts a 10x300 track whose thumb stays
-  `visibility:hidden` with `--scroll-area-thumb-height: 0px`, including
-  after a genuine ResizeObserver-triggering window resize
-
-`keepMounted` was therefore reverted rather than shipping an empty track.
-
-Native scrolling of the table of contents is UNAFFECTED (scrollTop applies,
-content reachable). The Radix version only showed its scrollbar on hover, so
-the visible difference is small, but this is a real unresolved defect and is
-reported as such, not as a successful migration.
+The ToC is now scrollable where it previously was not, and it now shows the
+styled scrollbar it was always supposed to have.
 
 ## Verify by hand
 
-1. Open a long post at >=1280px so the right-hand table of contents shows.
-2. Shrink the window until the ToC overflows.
-3. Hover the ToC: no scrollbar appears (regression).
-4. Scroll with the wheel over the ToC: content must still scroll.
+1. Open a long post at >=1280px wide so the right-hand ToC shows.
+2. Shrink the window height until the ToC overflows.
+3. The thin scrollbar must appear on the right of the ToC and the thumb must
+   track the wheel.

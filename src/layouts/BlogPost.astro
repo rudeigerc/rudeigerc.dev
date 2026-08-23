@@ -97,7 +97,7 @@ const toc = generateToC(headings ?? [], {
         headings && (
           <div class="hidden text-sm xl:block">
             <div class="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] pt-16">
-              <ScrollArea className="h-full pb-10">
+              <ScrollArea client:visible className="h-full pb-10">
                 <nav class="space-y-3">
                   <p class="text-muted-foreground text-xs font-medium tracking-widest uppercase">
                     On This Page

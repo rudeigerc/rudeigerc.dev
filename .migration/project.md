@@ -64,7 +64,10 @@ for "kubernetes" returns 59 Pagefind results. Mobile sheet slides in from the
 left, its links are real `<a>` elements with correct hrefs. Badges carry
 `data-slot` / `data-variant`.
 
-## Open regression
+## Resolved during the migration
 
-scroll-area: see `.migration/scroll-area.md`. Scrolling works; the custom
-scrollbar never renders. Not resolved.
+scroll-area's missing scrollbar turned out NOT to be a Base UI problem: the
+component was used from `.astro` without a `client:*` directive, so it never
+hydrated - under Radix too, where the viewport was additionally frozen at
+`overflow:hidden` and the ToC could not scroll at all. Adding `client:visible`
+makes it work. Full evidence in `.migration/scroll-area.md`.
