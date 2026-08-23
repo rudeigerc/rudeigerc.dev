@@ -1,15 +1,12 @@
 ---
 import logoRaw from "@/assets/logo.svg?raw";
 
-import { buttonVariants } from "@/components/ui/button";
 import { SITE_TITLE } from "@/consts";
-import { cn } from "@/lib/utils";
-import { Mail, Rss } from "lucide-react";
 import HeaderLink from "./HeaderLink.astro";
-import { Icons } from "./Icons";
 import { MobileNav } from "./MobileNav";
 import { ModeToggle } from "./ModeToggle";
 import { SearchCommandDialog } from "./SearchCommandDialog";
+import { SocialNav } from "./SocialNav";
 ---
 
 <header
@@ -52,68 +49,7 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
         <HeaderLink href="/about">About</HeaderLink>
       </nav>
       <nav class="flex items-center space-x-2">
-        <a href="https://github.com/rudeigerc" target="_blank" rel="noreferrer">
-          <div
-            class={cn(
-              buttonVariants({
-                variant: "ghost",
-              }),
-              "h-9 w-9 px-0",
-            )}
-          >
-            <span class="sr-only">GitHub</span>
-            <Icons.github className="h-4 w-4" />
-          </div>
-        </a>
-        <a href="https://x.com/yuchenrcheng" target="_blank" rel="noreferrer">
-          <div
-            class={cn(
-              buttonVariants({
-                variant: "ghost",
-              }),
-              "h-9 w-9 px-0",
-            )}
-          >
-            <span class="sr-only">X</span>
-            <Icons.x className="h-4 w-4" />
-          </div>
-        </a>
-        <a
-          href="mailto:rudeigerc@gmail.com"
-          target="_blank"
-          rel="noreferrer"
-          class="hidden md:block"
-        >
-          <div
-            class={cn(
-              buttonVariants({
-                variant: "ghost",
-              }),
-              "h-9 w-9 px-0",
-            )}
-          >
-            <span class="sr-only">Mail</span>
-            <Mail className="h-4 w-4" />
-          </div>
-        </a>
-        <a
-          href="/rss.xml"
-          target="_blank"
-          rel="noreferrer"
-          class="hidden md:block"
-        >
-          <div
-            class={cn(
-              buttonVariants({
-                variant: "ghost",
-              }),
-              "h-9 w-9 px-0",
-            )}
-          >
-            <span class="sr-only">RSS</span>
-            <Rss className="h-4 w-4" />
-          </div>
-        </a>
+        <SocialNav client:idle />
         <ModeToggle client:load />
       </nav>
     </div>
