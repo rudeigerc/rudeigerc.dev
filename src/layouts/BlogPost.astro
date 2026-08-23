@@ -5,6 +5,7 @@ import type { MarkdownHeading } from "astro";
 
 import FormattedDate from "@/components/FormattedDate.astro";
 import Giscus from "@/components/Giscus.astro";
+import { MobileTableOfContents } from "@/components/MobileTableOfContents";
 import TableOfContents from "@/components/TableOfContents.astro";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -37,8 +38,8 @@ const toc = generateToC(headings ?? [], {
   <div class="mx-auto max-w-6xl">
     <main
       class={cn(
-        "relative py-6 lg:grid lg:gap-10 lg:py-10 xl:gap-20 max-w-screen",
-        headings && "lg:grid-cols-[1fr_300px]",
+        "relative max-w-screen py-6 lg:py-10",
+        headings && "xl:grid xl:grid-cols-[1fr_300px] xl:gap-20",
       )}
     >
       <div class="mx-auto w-full min-w-0">
@@ -87,6 +88,13 @@ const toc = generateToC(headings ?? [], {
                 )
               }
             </div>
+            {
+              headings && (
+                <div data-pagefind-ignore>
+                  <MobileTableOfContents toc={toc} client:visible />
+                </div>
+              )
+            }
             <slot />
           </article>
           <slot name="foot" slot="foot" />
