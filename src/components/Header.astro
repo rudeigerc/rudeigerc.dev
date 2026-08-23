@@ -2,6 +2,7 @@
 import logoRaw from "@/assets/logo.svg?raw";
 
 import { buttonVariants } from "@/components/ui/button";
+import { SITE_TITLE } from "@/consts";
 import { cn } from "@/lib/utils";
 import { Mail, Rss } from "lucide-react";
 import HeaderLink from "./HeaderLink.astro";
@@ -16,22 +17,28 @@ import { SearchCommandDialog } from "./SearchCommandDialog";
 >
   <div class="container flex h-14 max-w-(--breakpoint-2xl) items-center">
     <MobileNav client:load />
-    <div class="mr-4 md:flex">
-      <a
-        href="/"
-        class="brand-link group flex items-center space-x-2 md:mr-4 lg:mr-6"
-      >
+    <a
+      href="/"
+      rel="home"
+      aria-label={SITE_TITLE}
+      class="brand-link group focus-visible:border-ring focus-visible:ring-ring/50 mr-4 flex items-center gap-2 rounded-md outline-none focus-visible:ring-[3px] lg:mr-6"
+    >
+      <span
+        class="brand-logo text-primary inline-flex h-6 w-6 shrink-0 items-center [&>svg]:h-full [&>svg]:w-full"
+        aria-hidden="true"
+        set:html={logoRaw}
+      />
+      <span class="hidden items-baseline gap-2 md:flex">
         <span
-          class="brand-logo text-primary inline-flex h-6 w-6 shrink-0 items-center [&>svg]:h-full [&>svg]:w-full"
-          set:html={logoRaw}
-        />
-        <span
-          class="text-foreground group-hover:text-primary hidden text-sm font-semibold tracking-tight transition-colors duration-200 lg:inline"
+          class="text-foreground group-hover:text-primary text-sm font-medium tracking-tight whitespace-nowrap transition-colors duration-200"
+          >{SITE_TITLE}</span
         >
-          Yu-Chen Cheng
-        </span>
-      </a>
-    </div>
+        <span
+          class="text-muted-foreground group-hover:text-primary/70 hidden font-mono text-xs whitespace-nowrap transition-colors duration-200 xl:inline"
+          >@rudeigerc</span
+        >
+      </span>
+    </a>
     <div
       class="flex flex-1 items-center justify-between space-x-4 md:justify-end"
     >
